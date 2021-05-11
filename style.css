@@ -1,0 +1,102 @@
+:root {
+  --text: #333;
+  --link-text: #0eae8b;
+  --link-bg: rgba(177, 240, 225, 0.4);
+}
+
+/* LAYOUT */
+.container {
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 650px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.project {
+  margin: 3rem 0 4rem;
+}
+
+.logo {
+  margin-right: 24px;
+  border-radius: 9999px;
+}
+
+.app-card {
+  border-radius: 9px;
+  overflow: hidden;
+  padding: 24px;
+  transition: box-shadow 200ms ease-in-out;
+}
+
+.app-card:hover {
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+}
+
+.app-card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.app-card h3 {
+  color: black;
+  margin-top: 12px;
+  text-align: center;
+  font-weight: 650;
+}
+
+.app-card p {
+  text-align: center;
+}
+
+.app-card img {
+  display: block;
+  margin: 0 auto;
+  vertical-align: bottom;
+  filter: drop-shadow(0 0 3px rgba(0,0,0,0.14));
+}
+
+.app-grid-container {
+  display: grid;
+  grid-template-columns: 240px 240px 240px;
+  gap: 18px;
+}
+
+.intro-container {
+  width: 100%;
+  padding: 3rem 0 6rem;
+  background: linear-gradient(0deg, #037ded -105%, #10c8e2 80%);
+}
+.intro-name {
+  background: none;
+  padding: 0;
+  font-weight: 800;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  font-family: "Inter var", "Inter", -apple-system, BlinkMacSystemFont, "Cantarell", "Helvetica", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.03em;
+  word-spacing: -0.03em;
+}
+body {
+  color: var(--text);
+  background-color: #fff;
+}
+h1, h2 {
+  color: black;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 10px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+body {
+  color: var(--text);
+  background-color: #fff;
+}
