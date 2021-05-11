@@ -29,7 +29,7 @@
 }
 
 .logo {
-  margin-bottom: 12px;
+  margin-bottom: 0.5em;
   border-radius: 9999px;
 }
 
@@ -51,6 +51,7 @@
   background-color: #e8e8e8;
 }
 .app-card h3 {
+  margin-top: 0.6em;
   text-align: center;
   font-weight: 650;
 }
