@@ -22,7 +22,7 @@
 .intro-container {
   width: 100%;
   padding: 3rem 0 6rem;
-  background: linear-gradient(0deg, #037ded -105%, #10c8e2 80%);
+  background: linear-gradient(0deg, #037ded -80%, #10c8e2 80%);
 }
 .intro-name {
   font-weight: 800;
@@ -34,37 +34,37 @@
 }
 
 .app-grid-container {
-  display: grid;
-  grid-template-columns: 240px 240px 240px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 18px;
 }
 .app-card {
+  max-width: 162px;
   border-radius: 9px;
-  overflow: hidden;
-  padding: 24px;
-  transition: box-shadow 200ms ease-in-out;
-}
-.app-card:hover {
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-}
-.app-card {
+  padding: 18px;
   text-decoration: none;
   color: inherit;
+  transition: background-color 200ms ease-in-out;
+}
+.app-card:hover {
+  background-color: #e8e8e8;
 }
 .app-card h3 {
-  color: black;
-  margin-top: 12px;
   text-align: center;
   font-weight: 650;
 }
 .app-card p {
   text-align: center;
+  line-height: 1.25em;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
 }
 .app-card img {
   display: block;
-  margin: 0 auto;
+  margin: 6px auto;
   vertical-align: bottom;
-  filter: drop-shadow(0 0 3px rgba(0,0,0,0.14));
+  filter: drop-shadow(0 0 3px rgba(0,0,0,0.2));
 }
 
 
