@@ -84,13 +84,16 @@
   height: auto;
   margin: auto;
   border-radius: 9px;
-
-  transition:  all 0.5s ease;
-  position: relative;
-  overflow: hidden;
 }
 
 
+tag {
+  font-size: 0.8em;
+  text-align: right;
+  margin-right: 3px;
+  color: var(--link-text);
+  font-weight: 600;
+}
 
 html, body {
   margin: 0;
