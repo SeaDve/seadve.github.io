@@ -24,7 +24,11 @@
 .intro-container {
   width: 100%;
   padding: 3rem 0 6rem;
-  background: linear-gradient(0deg, #037ded -80%, #10c8e2 80%);
+  background-image: url("assets/banner.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 .intro-name {
   font-weight: 800;
