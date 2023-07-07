@@ -1,4 +1,3 @@
-# The URL the site will be built for
 base_url = "https://seadve.github.io"
 title = "SeaDve"
 description = "Application developer based in the Philippines"
