@@ -36,6 +36,7 @@ menu = [
 feed_icon = true
 socials = [
     { name = "GitHub", url = "https://github.com/SeaDve/", icon = "github" },
+    { name = "GitLab", url = "https://gitlab.gnome.org/SeaDve", icon = "gitlab" },
     { name = "LinkedIn", url = "https://www.linkedin.com/in/dave-patrick-caberto", icon = "linkedin" },
     { name = "Mastodon", url = "https://mastodon.social/@seadve", icon = "mastodon" },
 ]
