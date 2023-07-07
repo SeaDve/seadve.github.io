@@ -1,7 +1,7 @@
 +++
 title = "GSoC 2023: Rust and GTK 4 Bustle Rewrite (Week 3 & 4)"
-date = 2023-07-05
-updated = 2023-07-07
+date = 2023-07-05T09:30:00.002+08:00
+updated = 2023-07-05T09:30:00.002+08:00
 
 [taxonomies]
 tags = ["GSoC"]

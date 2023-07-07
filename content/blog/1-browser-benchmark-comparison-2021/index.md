@@ -1,7 +1,7 @@
 +++
 title = "Browser Benchmark Comparison 2021: Chrome vs. Edge vs. Firefox vs. Brave vs. Chromium vs. Epiphany"
-date = 2021-01-16
-updated = 2023-07-07
+date = 2021-01-16T15:46:00.004+08:00
+updated = 2023-05-11T23:45:51.417+08:00
 
 [taxonomies]
 tags = ["Benchmark"]

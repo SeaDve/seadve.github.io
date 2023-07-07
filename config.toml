@@ -3,7 +3,10 @@ base_url = "https://seadve.github.io"
 title = "SeaDve"
 description = "Application developer based in the Philippines"
 author = "seadve"
+
 generate_feed = true
+feed_filename = "rss.xml"
+
 compile_sass = true
 minify_html = true
 build_search_index = true
