@@ -1,0 +1,38 @@
+# The URL the site will be built for
+base_url = "https://seadve.github.io"
+title = "SeaDve"
+description = "Application developer based in the Philippines"
+author = "seadve"
+generate_feed = true
+compile_sass = true
+minify_html = true
+build_search_index = true
+
+theme = "tabi"
+
+taxonomies = [{ name = "tags", feed = true }]
+
+[markdown]
+external_links_target_blank = true
+highlight_code = true
+highlight_theme = "css"
+default_language = "en"
+
+[extra]
+favicon = "/img/logo.png"
+favicon_emoji = ""
+
+headerImage = "/img/banner.png"
+
+menu = [
+    { name = "blog", url = "blog/" },
+    { name = "tags", url = "tags/" },
+    { name = "projects", url = "projects/" },
+]
+
+feed_icon = true
+socials = [
+    { name = "GitHub", url = "https://github.com/SeaDve/", icon = "github" },
+    { name = "LinkedIn", url = "https://www.linkedin.com/in/dave-patrick-caberto", icon = "linkedin" },
+    { name = "Mastodon", url = "https://mastodon.social/@seadve", icon = "mastodon" },
+]
