@@ -27,9 +27,10 @@ favicon_emoji = ""
 headerImage = "/img/banner.png"
 
 menu = [
-    { name = "blog", url = "blog/" },
-    { name = "tags", url = "tags/" },
-    { name = "projects", url = "projects/" },
+    { name = "Blog", url = "blog/" },
+    { name = "Tags", url = "tags/" },
+    { name = "Portfolio", url = "portfolio/" },
+    { name = "About", url = "about/" },
 ]
 
 feed_icon = true

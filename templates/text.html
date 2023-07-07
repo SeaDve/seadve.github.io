@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    {{ macros_page_header::page_header(title=section.title) }}
+
+    <br>
+
+    {{ section.content | safe }}
+{% endblock main_content %}

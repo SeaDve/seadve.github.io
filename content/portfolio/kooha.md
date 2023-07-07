@@ -6,6 +6,6 @@ weight = 2
 permalink = "https://flathub.org/apps/io.github.seadve.Mousai"
 
 [extra]
-local_image = "img/projects/kooha.svg"
+local_image = "img/portfolio/kooha.svg"
 link_to = "https://github.com/SeaDve/Kooha"
 +++
