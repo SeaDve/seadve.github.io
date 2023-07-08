@@ -5,11 +5,13 @@
 :root {
     --primary-color: #1c71d8;
     --primary-color-dark: #1a5fb4;
+    --bg-2: #fcfcfc;
 }
 
 [data-theme='dark'] {
     --primary-color: #99c1f1;
     --primary-color-dark: #62a0ea;
+    --bg-2: #171717;
 }
 
 // parts/_cards.scss
@@ -27,12 +29,11 @@
 
     min-width: 128px;
     padding: 24px;
-    box-shadow: none;
+    box-shadow: 0 0 0 1px transparentize(black, 0.97),
+                0 1px 3px 1px transparentize(black, .93),
+                0 2px 6px 2px transparentize(black, .97);
+    border-radius: 12px;
     text-align: center;
-}
-
-.card:hover {
-    background-color: var(--hover-color);
 }
 
 .card-image {
