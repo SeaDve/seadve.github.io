@@ -9,9 +9,9 @@ tags = ["Benchmark"]
 
 ![Thumbnail](thumbnail.png)
 
-We all know that Google is already dominating the search engine share. Meanwhile, in terms of the browser market share, it is no different. Many browsers nowadays such as Brave and even Microsoft Edge are based on Google's open source project, Chromium.
+We all know that Google is already dominating the search engine share. Meanwhile, in terms of the browser market share, it is no different. Many browsers nowadays such as Brave and even Microsoft Edge are based on Google's open-source project, Chromium.
 
-In this article, I will compare various popular web browsers. Four of which uses Blink/V8 as their engine while Firefox and GNOME Web (Epiphany) uses Gecko and WebKitGTK respectively.
+In this article, I will compare various popular web browsers. Four of them use Blink/V8 as their engine while Firefox and GNOME Web (Epiphany) use Gecko and WebKitGTK respectively.
 
 I ran eight benchmarks to test the performance of these browsers. I also measured the RAM usage of each browser manually using GNOME System Monitor. Note that if you replicate this test, your results may differ because you are probably using a different computer.
 
@@ -51,7 +51,7 @@ All are set in their default configurations. No additional extensions are instal
 
 ### Kraken 1.1
 
-[Kraken](https://mozilla.github.io/krakenbenchmark.mozilla.org/) is a JavaScript performance benchmark which measures the speed of browsers through different tests extracted from real-world applications and libraries.
+[Kraken](https://mozilla.github.io/krakenbenchmark.mozilla.org/) is a JavaScript performance benchmark that measures the speed of browsers through different tests extracted from real-world applications and libraries.
 
 #### Chrome wins!
 
@@ -67,7 +67,7 @@ All are set in their default configurations. No additional extensions are instal
 
 ### WebXPRT 3
 
-[WebXPRT](https://www.principledtechnologies.com/benchmarkxprt/webxprt/2018/3_v5/) measures performance of a browser through six HTML5 and JavaScript scenarios which mirror real life tasks.
+[WebXPRT](https://www.principledtechnologies.com/benchmarkxprt/webxprt/2018/3_v5/) measures the performance of a browser through six HTML5 and JavaScript scenarios that mirror real-life tasks.
 
 #### Epiphany wins!
 
@@ -75,7 +75,7 @@ All are set in their default configurations. No additional extensions are instal
 
 ### Maze Solver (30x30)
 
-[Maze Solver](https://testdrive-archive.azurewebsites.net/performance/mazesolver/default.html) exercise the browser's handling of CSS 2.1 and CSS 3 layer constructs which are important components of overall web browser performance.
+[Maze Solver](https://testdrive-archive.azurewebsites.net/performance/mazesolver/default.html) exercises the browser's handling of CSS 2.1 and CSS 3 layer constructs which are important components of overall web browser performance.
 
 #### Epiphany wins!
 
@@ -105,11 +105,11 @@ I opened a total of five tabs: YouTube, Reddit, DuckDuckGo, GitHub and New York 
 
 <br>
 
-Take note that I didn't include Basemark and JetStream results on the overall average as Firefox and Epiphany was not able to run these benchmarks without crashing, at least on my hardware.
+Take note that I didn't include Basemark and JetStream results on the overall average as Firefox and Epiphany were not able to run these benchmarks without crashing, at least on my hardware.
 
 ### Basemark Web 3.0
 
-[Basemark Web](https://web.basemark.com) tests how well a browser perform on web based applications.
+[Basemark Web](https://web.basemark.com) tests how well a browser performs on web-based applications.
 
 #### Epiphany wins!
 
@@ -117,7 +117,7 @@ Take note that I didn't include Basemark and JetStream results on the overall av
 
 ### JetStream 2
 
-[Jetstream](https://browserbench.org/JetStream/) rewards browser that start up quickly, execute code quickly and run smoothly.
+[Jetstream](https://browserbench.org/JetStream/) rewards browsers that start up quickly, execute code quickly and run smoothly.
 
 #### Chrome wins!
 
@@ -125,7 +125,7 @@ Take note that I didn't include Basemark and JetStream results on the overall av
 
 ## Conclusion
 
-At the end, all browsers are capable of handling daily tasks. As long as it provides you regular security updates and also privacy, you do not need to switch to another web browser for miniscule performance difference. And remember, performance should not be your only consideration on choosing a web browser. Have a nice day!
+In the end, all browsers are capable of handling daily tasks. As long as it provides you with regular security updates and also privacy, you do not need to switch to another web browser for a minuscule performance difference. And remember, performance should not be your only consideration on choosing a web browser. Have a nice day!
 
 ## Appendix
 

@@ -13,13 +13,13 @@ tags = ["GSoC"]
 
 Before the GSoC coding period started, I started implementing the diagram used to display DBus activity with the help of the template repository made by my mentor, Maximiliano. One of the first challenges is figuring out how to load the PCAP files, which is the format Bustle uses to store the DBus messages. Without implementing that first, it would be difficult to test how the diagram will look like.
 
-The Rust pcap library was used to load the packets from the PCAP file, which contains the bytes of a DBus Message. It is nice to use, though it is missing an async API for loading files. That could be fixed in the future, but this week mainly focused on a basic diagram implementation. The bytes can then be parsed through GDBus into a `GDBusMessage`, which contains the information to implement the diagram.
+The Rust PCAP library was used to load the packets from the PCAP file, which contains the bytes of a DBus Message. It is nice to use, though it is missing an async API for loading files. That could be fixed in the future, but this week mainly focused on a basic diagram implementation. The bytes can then be parsed through GDBus into a `GDBusMessage`, which contains the information to implement the diagram.
 
 Through the parsed message, the diagram can be implemented. It uses `GtkListView` to display the rows as, aside from having a nice separation of view and model, it is more efficient because it recycles widgets, especially since PCAP files could possibly contain thousands of messages. Each row contains the elapsed time, path, destination, interface, and member of the message.
 
 ![Diagram With ListView Screenshot](diagram-with-list-view-screenshot.png)
 
-Aside from the diagram, a `DetailsView` was also implemented. It shows the sender and the body, and also the destination, path, and the member of the message. For more information about it, you can check out the [merge request](https://gitlab.gnome.org/msandova/bustle/-/merge_requests/1).
+Aside from the diagram, a `DetailsView` was also implemented. It shows the sender and the body, and also the destination, path, and member of the message. For more information about it, you can check out the [merge request](https://gitlab.gnome.org/msandova/bustle/-/merge_requests/1).
 
 ![DetailsView Screenshot](details-view-screenshot.png)
 

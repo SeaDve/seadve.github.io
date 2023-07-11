@@ -27,7 +27,7 @@ There are definitely a lot of things I missed, but that was a quick summary of m
 
 ## More about Bustle and the project
 
-For those who have not heard of Bustle, it is an application used to visualize D-Bus activities. It shows signal emissions, method calls, method returns, and errors, which is useful in observing traffic, debugging, and optimizing performance in D-Bus applications.
+For those who have not heard of Bustle, it is an application used to visualize D-Bus activities. It shows signal emissions, method calls, method returns, and errors, which are useful in observing traffic, debugging, and optimizing performance in D-Bus applications.
 
 ![Bustle Screenshot](old-bustle-screenshot.png)
 
