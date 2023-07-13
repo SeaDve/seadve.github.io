@@ -8,7 +8,7 @@ Hi! My name is **Dave Patrick Caberto**, sometimes known as **SeaDve** online. I
 
 I contribute to various free and open-source software in my free time as I support the adoption of the Linux desktop.
 
-## Experiences and Pursues
+## Experiences and Pursuits
 
 I have experience in:
 
