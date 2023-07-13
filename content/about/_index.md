@@ -12,7 +12,7 @@ I contribute to various free and open-source software in my free time as I suppo
 
 I have experience in:
 
-* Software development (Rust and Python)
+* Software development (Rust, Python, and C)
 * Desktop application development (GTK and Libadwaita)
 * Git and hosting platforms (GitHub and GitLab)
 * Multimedia (GStreamer)
@@ -20,6 +20,7 @@ I have experience in:
 * Linux
 * Web development (Typescript/Javascript, CSS, and HTML)
 * Database (SQL and LMDB)
+* Graphics Design (Inkscape)
 
 I am currently pursuing:
 
