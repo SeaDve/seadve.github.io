@@ -8,6 +8,24 @@ Hi! My name is **Dave Patrick Caberto**, sometimes known as **SeaDve** online. I
 
 I contribute to various free and open-source software in my free time as I support the adoption of the Linux desktop.
 
+## Experiences and Pursues
+
+I have experience in:
+
+* Software development (Rust and Python)
+* Desktop application development (GTK and Libadwaita)
+* Git and hosting platforms (GitHub and GitLab)
+* Multimedia (GStreamer)
+* Embedded Systems (Raspberry Pi and Arduino)
+* Linux
+* Web development (Typescript/Javascript, CSS, and HTML)
+* Database (SQL and LMDB)
+
+I am currently pursuing:
+
+* Game development (Godot)
+* Computer Vision
+
 ## Setup
 
 Currently, I use Fedora Silverblue on my PC and Ubuntu on my laptop.
