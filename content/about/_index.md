@@ -1,7 +1,7 @@
 +++
 path = "/about"
 title = "About Me"
-template = "text.html"
+template = "about.html"
 +++
 
 Hi! My name is **Dave Patrick Caberto**, sometimes known as **SeaDve** online. I am currently 19 years old and a student of BS Electronics Engineering in the Philippines.
@@ -17,7 +17,7 @@ I have experience in:
 * Git and hosting platforms (GitHub and GitLab)
 * Multimedia (GStreamer)
 * Embedded Systems (Raspberry Pi and Arduino)
-* Linux
+* Linux (Bash)
 * Web development (Typescript/Javascript, CSS, and HTML)
 * Database (SQL and LMDB)
 * Graphics Design (Inkscape)
