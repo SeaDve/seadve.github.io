@@ -4,7 +4,7 @@ date = 2023-06-11T19:09:00.005+08:00
 updated = 2023-06-11T19:25:18.353+08:00
 
 [taxonomies]
-tags = ["GSoC"]
+tags = ["GSoC 2023"]
 +++
 
 ![Thumbnail](thumbnail.png)
