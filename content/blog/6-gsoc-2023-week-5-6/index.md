@@ -19,7 +19,7 @@ Furthermore, my mentor, Bilal, started implementing session monitoring and savin
 
 Aside from those mentioned above, I have also been working on drawing the diagram. I am still studying the older Haskell codebase to prevent reinventing the wheel on some implementations. Unfortunately, the current implementation is still not ready enough for a screenshot.
 
-To easily track the missing features easier, we also set up an [issue board](https://gitlab.gnome.org/msandova/bustle/-/boards).
+To easily track the missing features, we also set up an [issue board](https://gitlab.gnome.org/msandova/bustle/-/boards).
 
 ## Plans for the Following Weeks
 
