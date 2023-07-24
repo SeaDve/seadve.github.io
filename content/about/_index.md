@@ -16,7 +16,7 @@ I have experience in:
 * Desktop application development (GTK and Libadwaita)
 * Git and hosting platforms (GitHub and GitLab)
 * Multimedia (GStreamer)
-* Embedded Systems (Raspberry Pi and Arduino)
+* Embedded Systems + IoT (Raspberry Pi and Arduino)
 * Linux (Bash)
 * Web development (Typescript/Javascript, CSS, and HTML)
 * Database (SQL and LMDB)
