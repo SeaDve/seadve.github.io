@@ -31,6 +31,10 @@ I am currently pursuing:
 
 Currently, I use Fedora Silverblue on my PC and Ubuntu on my laptop.
 
+## Donate
+
+If you would like to back my work and support me as a developer, you may [buy me a coffee](https://www.buymeacoffee.com/seadve).
+
 ## Contact
 
 You can contact me in [Matrix](https://matrix.to/#/@sedve:matrix.org).
