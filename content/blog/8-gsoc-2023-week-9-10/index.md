@@ -29,7 +29,7 @@ There is also now a waiting page that shows before the first message arrives whi
 
 ![Waiting Page](waiting-page.png)
 
-We also landed the [statistics](https://gitlab.gnome.org/msandova/bustle/-/merge_requests/20) which shows frequencies of messages, durations of method calls, and sizes information of each message.
+We also landed [statistics window](https://gitlab.gnome.org/msandova/bustle/-/merge_requests/20) which shows frequencies of messages, durations of method calls, and sizes information of each message.
 
 ![Statistics Frequencies Page](statistics-frequencies-page.png)
 
