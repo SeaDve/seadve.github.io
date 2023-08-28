@@ -19,6 +19,8 @@ highlight_theme = "css"
 default_language = "en"
 
 [extra]
+remote_repository_url = "https://github.com/SeaDve/seadve.github.io"
+
 favicon = "/img/logo.png"
 favicon_emoji = ""
 
