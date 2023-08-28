@@ -17,7 +17,7 @@ Over the summer, for 12 weeks, I worked on rewriting Bustle in Rust and GTK 4 as
 
 ![Old Bustle](old-bustle.png)
 
-Bustle represents these messages through rows. Each row shows the time elapsed since the first message, message path, and message member, which can be the name of the emitted signal or called method. On the other hand, each column represents a D-Bus service. Bustle draws arrows that transverse these columns to visualize the communication between services and arcs to represent method calls and returns. This representation is valuable as, for instance, it can be used to see which services your application talk to and how often, which can be useful when debugging your D-Bus applications, security and performance-wise.
+Bustle represents these messages using a row-based layout. Each row is dedicated to displaying the following information: the elapsed time since the first message, the message path, and the member, which could be the name of the emitted signal or invoked method. On the other hand, individual columns correspond to distinct D-Bus services. Bustle draws arrows that transverse these columns to visualize the communication between services, while arcs represent method invocations and returns. This visual paradigm is valuable as, for instance, it can be used to see which services a D-Bus application talks to and how often, which can be handy in debugging, enhancing security, and optimizing performance within the application.
 
 ## Project Goal
 
