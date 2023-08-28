@@ -1,7 +1,7 @@
 +++
 title = "GSoC 2023: Rust and GTK 4 Bustle Rewrite (Final Overview)"
 date = 2023-08-28T12:29:00.001+08:00
-updated = 2023-08-28T17:42:00.002+08:00
+updated = 2023-08-28T20:22:00.002+08:00
 
 [taxonomies]
 tags = ["GSoC 2023"]
@@ -9,7 +9,7 @@ tags = ["GSoC 2023"]
 
 ![Thumbnail](thumbnail.png)
 
-Over the summer, I worked on rewriting Bustle in Rust and GTK 4 as part of the Google Summer of Code (GSoC) 2023 program. This post is an overview of the work done and the future plans for the project.
+Over the summer, for 12 weeks, I worked on rewriting Bustle in Rust and GTK 4 as part of the Google Summer of Code (GSoC) 2023 program. This post is an overview of the work done and the future plans for the project.
 
 ## About Bustle
 
@@ -17,17 +17,15 @@ Over the summer, I worked on rewriting Bustle in Rust and GTK 4 as part of the G
 
 ![Old Bustle](old-bustle.png)
 
-Bustle represents these messages through rows. Each row shows the time elapsed since the first message, the path of the message, and the member which could be the name of the emitted signal or called method. On the other hand, each column represents a D-Bus service. Bustle draws arrows that transverse columns to visualize the communication between these services and arcs to represent method calls and returns.
-
-This representation is valuable as, for instance, it could be used to see which services your application talk to and how often, which is advantageous security and performance-wise.
+Bustle represents these messages through rows. Each row shows the time elapsed since the first message, message path, and message member, which can be the name of the emitted signal or called method. On the other hand, each column represents a D-Bus service. Bustle draws arrows that transverse these columns to visualize the communication between services and arcs to represent method calls and returns. This representation is valuable as, for instance, it can be used to see which services your application talk to and how often, which can be useful when debugging your D-Bus applications, security and performance-wise.
 
 ## Project Goal
 
 The ultimate goal of this project is to port Bustle to GTK 4 and rewrite it in Rust. Although the current implementation of Bustle in Haskell and GTK 3 is functional, there are compelling reasons to consider a rewrite in Rust. This includes enabling the tool to take advantage of a range of ergonomic libraries, including [zbus](https://github.com/dbus2/zbus), [gtk4-rs](https://github.com/gtk-rs/gtk4-rs), and [pcap-file](https://github.com/courvoif/pcap-file), that would ease the burden in maintenance. Furthermore, the growing Rust community and the availability of the Rust SDK in [Flathub](https://flathub.org/) would make the tool more accessible to potential contributors and simpler to distribute to users.
 
-Porting the tool to [GTK 4](https://www.gtk.org/), on the other hand, would offer several benefits, such as access to newer and more performant widgets and APIs like `GtkListView` and `GskPath`. This would allow Bustle to benefit from the latest developments in the platform and remain current with evolving standards.
+Porting the tool to [GTK 4](https://www.gtk.org/), on the other hand, would offer several benefits, such as access to newer and more performant widgets and drawing APIs like `GtkListView` and `GskPath`. This would allow Bustle to benefit from the latest developments in the platform and remain current with evolving standards.
 
-Altogether, a rewrite of Bustle in Rust and GTK 4 would provide advantages that could enhance the tool's functionality, maintainability, longevity, accessibility, and possibly efficiency.
+Altogether, a rewrite of Bustle in Rust and GTK 4 would provide advantages that can enhance the tool's functionality, maintainability, longevity, accessibility, and possibly efficiency.
 
 ## Work Done
 
@@ -114,7 +112,7 @@ Due to time constraints and unexpected issues, some of the pull requests are sti
 
 ## Future Plans
 
-While most of the tasks in the proposal have been completed, there are still a few things that need to be done. This includes the following:
+While most of the tasks in the proposal have been completed, there are still a few things that need to be done, including the following:
 
 1. Optimizing performance
 2. Hunting and squashing bugs:
@@ -129,6 +127,6 @@ While most of the tasks in the proposal have been completed, there are still a f
 
 ## Final Words
 
-I have to say this is the most challenging part so far of my software development journey. It wasn't a smooth ride, but I learned new things along the path. There were moments of time pressure and frustration but with experimentation, collaboration, and a lot of reading, I was able to overcome these challenges and make meaningful progress. The complexity of the project pushed me out of my comfort zone, forcing me to delve into unfamiliar areas of code and technology.
+I have to say this is, so far, the most challenging part of my software development journey. It felt like a hackathon since I had to understand things and create something that works quickly. While it was challenging, it was also rewarding as I was able to learn a lot of things and create something that I am proud of. There were moments of time pressure and frustration, but with experimentation, collaboration, and a lot of reading, I was able to overcome these challenges and make meaningful progress. The complexity of the project pushed me out of my comfort zone, forcing me to delve into unfamiliar areas of programming and technology.
 
-Lastly, I would like to express my gratitude to my mentors **Bilal Elmoussaoui** and **Maximiliano Sandoval**, for tirelessly reviewing my pull requests and guiding me. I would also like to thank the GNOME Foundation and the community, especially the GNOME GSoC admin, **Felipe Borges**, for giving me the opportunity to work on this project. I would also like to extend my appreciation to zbus maintainer, **Zeeshan Ali**, for their help in getting my pull requests merged against zbus. Finally, I would like to thank my family and friends for their support and encouragement.
+Lastly, I would like to express my gratitude to my mentors, **Bilal Elmoussaoui** and **Maximiliano Sandoval**, for tirelessly reviewing my pull requests and guiding me. I would also like to thank the GNOME Foundation and the community, especially the GNOME GSoC admin, **Felipe Borges**, for giving me the opportunity to work on this project. I would also like to extend my appreciation to zbus maintainer **Zeeshan Ali** for their help in getting my pull requests merged against zbus. Finally, I would like to thank my family and friends for their support and encouragement.
