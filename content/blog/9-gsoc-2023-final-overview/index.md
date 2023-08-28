@@ -9,6 +9,8 @@ tags = ["GSoC 2023"]
 
 ![Thumbnail](thumbnail.png)
 
+Over the summer, I worked on rewriting Bustle in Rust and GTK 4 as part of the Google Summer of Code (GSoC) 2023 program. This post is an overview of the work done and the future plans for the project.
+
 ## The Project
 
 The ultimate goal of this project is to port [Bustle](https://gitlab.freedesktop.org/bustle/bustle), a graphical application used to analyze [D-Bus](https://www.freedesktop.org/wiki/Software/dbus/) activities, to GTK 4 and rewrite it in Rust.
@@ -24,6 +26,8 @@ Altogether, a rewrite of Bustle in Rust and GTK 4 would provide advantages that 
 ## Work Done
 
 Most of the tasks in the original proposal have been completed. This includes having an initial MVP, porting GDBus usage to zbus, implementing file loading and saving, completing the recording functionality, and porting the UI, which comprises the diagram, details view, and services filter, to GTK 4.
+
+For more details on the work done, I posted [bi-weekly updates](https://seadve.github.io/tags/gsoc-2023/) on my blog.
 
 ### Snapshots
 
