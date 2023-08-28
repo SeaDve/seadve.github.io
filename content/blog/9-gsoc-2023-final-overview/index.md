@@ -27,7 +27,7 @@ Altogether, a rewrite of Bustle in Rust and GTK 4 would provide advantages that 
 
 Most of the tasks in the original proposal have been completed. This includes having an initial MVP, porting GDBus usage to zbus, implementing file loading and saving, completing the recording functionality, and porting the UI, which comprises the diagram, details view, and services filter, to GTK 4.
 
-For more details on the work done, I posted [bi-weekly updates](https://seadve.github.io/tags/gsoc-2023/) on my blog.
+For more details on the work done, there are also [bi-weekly updates](https://seadve.github.io/tags/gsoc-2023/) on my blog.
 
 ### Snapshots
 
@@ -98,7 +98,7 @@ While the project is focused on Bustle, some changes are necessary to be upstrea
 
 ## Code to be Merged
 
-Due to time constraints and unexpected issues, some of the pull requests are still pending review. The following pull requests are still open:
+Due to time constraints and unexpected issues, some of the pull requests are still pending review:
 
 ### Bustle
 
@@ -114,17 +114,17 @@ While most of the tasks in the proposal have been completed, there are still a f
 
 1. Optimizing performance
 2. Hunting and squashing bugs
-   1. Improving name owner changed signal handling
-   2. Drawing method call arc regardless if the row is not drawable
-   3. Properly killing the `dbus-monitor` process
+   * Improving name owner changed signal handling
+   * Drawing method call arc regardless if the row is not drawable
+   * Properly killing the `dbus-monitor` process
 3. Adding more features:
-   1. Adding a button that scrolls to the method call message of a method return message or vice-versa
-   2. Adding a way to open multiple diagrams at once via tabs and multiple windows
+   * Adding a button that scrolls to the method call message of a method return message or vice-versa
+   * Adding a way to open multiple diagrams at once via tabs and multiple windows
 4. Continuous involvement and contribution to the open-source community
 
 ## Acknowledgments
 
-I would like to express my gratitude to my mentors Bilal Elmoussaoui and Maximiliano Sandoval, for tirelessly reviewing my pull requests and guiding me. I would also like to thank the GNOME Foundation and the community, especially the GNOME GSoC Admin, Felipe Borges, for giving me the opportunity to work on this project. I would also like to extend my appreciation to zbus maintainer, Zeeshan Ali, for their help in getting my pull requests merged against zbus. Finally, I would like to thank my family and friends for their support and encouragement.
+Lastly, I would like to express my gratitude to my mentors Bilal Elmoussaoui and Maximiliano Sandoval, for tirelessly reviewing my pull requests and guiding me. I would also like to thank the GNOME Foundation and the community, especially the GNOME GSoC Admin, Felipe Borges, for giving me the opportunity to work on this project. I would also like to extend my appreciation to zbus maintainer, Zeeshan Ali, for their help in getting my pull requests merged against zbus. Finally, I would like to thank my family and friends for their support and encouragement.
 
 
 
