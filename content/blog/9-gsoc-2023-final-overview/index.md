@@ -11,11 +11,19 @@ tags = ["GSoC 2023"]
 
 Over the summer, I worked on rewriting Bustle in Rust and GTK 4 as part of the Google Summer of Code (GSoC) 2023 program. This post is an overview of the work done and the future plans for the project.
 
-## The Project
+## About Bustle
 
-The ultimate goal of this project is to port [Bustle](https://gitlab.freedesktop.org/bustle/bustle), a graphical application used to analyze [D-Bus](https://www.freedesktop.org/wiki/Software/dbus/) activities, to GTK 4 and rewrite it in Rust.
+[Bustle](https://gitlab.freedesktop.org/bustle/bustle) is a graphical application used to analyze [D-Bus](https://www.freedesktop.org/wiki/Software/dbus/) activities. It uses sequence diagrams to present signal emissions and method calls messages.
 
 ![Old Bustle](old-bustle.png)
+
+Bustle represents these messages through rows. Each row shows the time elapsed since the first message, the path of the message, and the member which could be the name of the emitted signal or called method. On the other hand, each column represents a D-Bus service. Bustle draws arrows that transverse columns to visualize the communication between these services and arcs to represent method calls and returns.
+
+This representation is valuable as, for instance, it could be used to see which services your application talk to and how often, which is advantageous security and performance-wise.
+
+## Project Goal
+
+The ultimate goal of this project is to port Bustle to GTK 4 and rewrite it in Rust.
 
 Although the current implementation of Bustle in Haskell and GTK 3 is functional, there are compelling reasons to consider a rewrite in Rust. This includes enabling the tool to take advantage of a range of ergonomic libraries, including [zbus](https://github.com/dbus2/zbus), [gtk4-rs](https://github.com/gtk-rs/gtk4-rs), and [pcap-file](https://github.com/courvoif/pcap-file), that would ease the burden in maintenance. Furthermore, the growing Rust community and the availability of the Rust SDK in [Flathub](https://flathub.org/) would make the tool more accessible to potential contributors and simpler to distribute to users.
 
@@ -122,9 +130,10 @@ While most of the tasks in the proposal have been completed, there are still a f
    * Adding a way to open multiple diagrams at once via tabs and multiple windows
 4. Continuous involvement and contribution to open-source
 
+## Key Takeaways
+
+I have to say this is the most challenging part so far of my software development journey. It wasn't a smooth ride, but I learned new things along the path. There were moments of time pressure and frustration but with experimentation, collaboration, and a lot of reading, I was able to overcome these challenges and make meaningful progress. The complexity of the project pushed me out of my comfort zone, forcing me to delve into unfamiliar areas of code and technology.
+
 ## Acknowledgments
 
 Lastly, I would like to express my gratitude to my mentors **Bilal Elmoussaoui** and **Maximiliano Sandoval**, for tirelessly reviewing my pull requests and guiding me. I would also like to thank the GNOME Foundation and the community, especially the GNOME GSoC Admin, **Felipe Borges**, for giving me the opportunity to work on this project. I would also like to extend my appreciation to zbus maintainer, **Zeeshan Ali**, for their help in getting my pull requests merged against zbus. Finally, I would like to thank my family and friends for their support and encouragement.
-
-
-
