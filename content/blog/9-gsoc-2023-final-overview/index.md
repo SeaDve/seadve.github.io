@@ -88,17 +88,17 @@ Most of the work done is in the [Bustle GNOME GitLab repository](https://gitlab.
 * [Fix DiagramHeader labels UI glitch](https://gitlab.gnome.org/msandova/bustle/-/merge_requests/54)
 * [ColorWidget and DiagramView cleanups](https://gitlab.gnome.org/msandova/bustle/-/merge_requests/55)
 
-### Zbus and Gtk4-rs
+### zbus and gtk4-rs
 
 While the project is focused on Bustle, some changes are necessary to be upstreamed to other projects. This includes changes to zbus and gtk4-rs, where the following pull requests have been merged:
 
-#### Zbus
+#### zbus
 
 * [zb: Add a from_bytes constructor for Message](https://github.com/dbus2/zbus/pull/370)
 * [zv: Implement Display for Value, Array, Structure, Dict & Maybe](https://github.com/dbus2/zbus/pull/379)
 * [zv, zn: Improve Str, Owned*Name, BusName Debug implementations](https://github.com/dbus2/zbus/pull/450)
 
-#### Gtk4-rs
+#### gtk4-rs
 
 * [gdk: Make RGBA::new const and add with_* constructors](https://github.com/gtk-rs/gtk4-rs/pull/1468)
 
@@ -131,4 +131,4 @@ While most of the tasks in the proposal have been completed, there are still a f
 
 I have to say this is the most challenging part so far of my software development journey. It wasn't a smooth ride, but I learned new things along the path. There were moments of time pressure and frustration but with experimentation, collaboration, and a lot of reading, I was able to overcome these challenges and make meaningful progress. The complexity of the project pushed me out of my comfort zone, forcing me to delve into unfamiliar areas of code and technology.
 
-Lastly, I would like to express my gratitude to my mentors **Bilal Elmoussaoui** and **Maximiliano Sandoval**, for tirelessly reviewing my pull requests and guiding me. I would also like to thank the GNOME Foundation and the community, especially the GNOME GSoC Admin, **Felipe Borges**, for giving me the opportunity to work on this project. I would also like to extend my appreciation to zbus maintainer, **Zeeshan Ali**, for their help in getting my pull requests merged against zbus. Finally, I would like to thank my family and friends for their support and encouragement.
+Lastly, I would like to express my gratitude to my mentors **Bilal Elmoussaoui** and **Maximiliano Sandoval**, for tirelessly reviewing my pull requests and guiding me. I would also like to thank the GNOME Foundation and the community, especially the GNOME GSoC admin, **Felipe Borges**, for giving me the opportunity to work on this project. I would also like to extend my appreciation to zbus maintainer, **Zeeshan Ali**, for their help in getting my pull requests merged against zbus. Finally, I would like to thank my family and friends for their support and encouragement.
