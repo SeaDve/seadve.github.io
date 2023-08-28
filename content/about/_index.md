@@ -19,7 +19,7 @@ I have experience in:
 * Embedded Systems + IoT (Raspberry Pi and Arduino)
 * Linux (Bash)
 * Web development (Typescript/Javascript, CSS, and HTML)
-* Database (SQL and LMDB)
+* Database (SQLite and LMDB)
 * Graphics Design (Inkscape)
 
 I am currently pursuing:
@@ -29,7 +29,7 @@ I am currently pursuing:
 
 ## Setup
 
-Currently, I use Fedora Silverblue on my PC and Ubuntu on my laptop.
+I currently use vanilla Fedora Silverblue both on my PC and laptop.
 
 ## Donate
 
