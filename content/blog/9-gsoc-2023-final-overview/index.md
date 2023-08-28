@@ -19,7 +19,7 @@ The ultimate goal of this project is to port [Bustle](https://gitlab.freedesktop
 
 Although the current implementation of Bustle in Haskell and GTK 3 is functional, there are compelling reasons to consider a rewrite in Rust. This includes enabling the tool to take advantage of a range of ergonomic libraries, including [zbus](https://github.com/dbus2/zbus), [gtk4-rs](https://github.com/gtk-rs/gtk4-rs), and [pcap-file](https://github.com/courvoif/pcap-file), that would ease the burden in maintenance. Furthermore, the growing Rust community and the availability of the Rust SDK in [Flathub](https://flathub.org/) would make the tool more accessible to potential contributors and simpler to distribute to users.
 
-Porting the tool to [GTK 4](https://www.gtk.org/), on the other hand, would offer several benefits, such as access to newer and more performant widgets like `ListView`. This would allow Bustle to benefit from the latest developments in the platform and remain current with evolving standards.
+Porting the tool to [GTK 4](https://www.gtk.org/), on the other hand, would offer several benefits, such as access to newer and more performant widgets and APIs like `GtkListView` and `GskPath`. This would allow Bustle to benefit from the latest developments in the platform and remain current with evolving standards.
 
 Altogether, a rewrite of Bustle in Rust and GTK 4 would provide advantages that could enhance the tool's functionality, maintainability, longevity, accessibility, and possibly efficiency.
 
@@ -113,18 +113,18 @@ Due to time constraints and unexpected issues, some of the pull requests are sti
 While most of the tasks in the proposal have been completed, there are still a few things that need to be done. This includes the following:
 
 1. Optimizing performance
-2. Hunting and squashing bugs
+2. Hunting and squashing bugs:
    * Improving name owner changed signal handling
    * Drawing method call arc regardless if the row is not drawable
    * Properly killing the `dbus-monitor` process
 3. Adding more features:
    * Adding a button that scrolls to the method call message of a method return message or vice-versa
    * Adding a way to open multiple diagrams at once via tabs and multiple windows
-4. Continuous involvement and contribution to the open-source community
+4. Continuous involvement and contribution to open-source
 
 ## Acknowledgments
 
-Lastly, I would like to express my gratitude to my mentors Bilal Elmoussaoui and Maximiliano Sandoval, for tirelessly reviewing my pull requests and guiding me. I would also like to thank the GNOME Foundation and the community, especially the GNOME GSoC Admin, Felipe Borges, for giving me the opportunity to work on this project. I would also like to extend my appreciation to zbus maintainer, Zeeshan Ali, for their help in getting my pull requests merged against zbus. Finally, I would like to thank my family and friends for their support and encouragement.
+Lastly, I would like to express my gratitude to my mentors **Bilal Elmoussaoui** and **Maximiliano Sandoval**, for tirelessly reviewing my pull requests and guiding me. I would also like to thank the GNOME Foundation and the community, especially the GNOME GSoC Admin, **Felipe Borges**, for giving me the opportunity to work on this project. I would also like to extend my appreciation to zbus maintainer, **Zeeshan Ali**, for their help in getting my pull requests merged against zbus. Finally, I would like to thank my family and friends for their support and encouragement.
 
 
 
