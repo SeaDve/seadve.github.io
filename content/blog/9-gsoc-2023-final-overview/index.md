@@ -1,7 +1,7 @@
 +++
 title = "GSoC 2023: Rust and GTK 4 Bustle Rewrite (Final Overview)"
 date = 2023-08-28T12:29:00.001+08:00
-updated = 2023-08-28T15:34:00.002+08:00
+updated = 2023-08-28T17:42:00.002+08:00
 
 [taxonomies]
 tags = ["GSoC 2023"]
@@ -95,7 +95,7 @@ While the project is focused on Bustle, some changes are necessary to be upstrea
 #### Zbus
 
 * [zb: Add a from_bytes constructor for Message](https://github.com/dbus2/zbus/pull/370)
-* [zv: impl Display implementation for Value, Array, Structure, Dict & Maybe](https://github.com/dbus2/zbus/pull/379)
+* [zv: implement Display for Value, Array, Structure, Dict & Maybe](https://github.com/dbus2/zbus/pull/379)
 * [zv, zn: Improve Str, Owned*Name, BusName Debug implementations](https://github.com/dbus2/zbus/pull/450)
 
 #### Gtk4-rs
