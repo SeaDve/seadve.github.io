@@ -1,0 +1,144 @@
+<!-- Modifications from original theme:
+* use page.title or section.title first instead of config.title
+* don't use config.description when page.title or section.title is found -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {# Site title #}
+    <title>{{ macros_set_title::set_title() }}</title>
+
+    {# Favicon #}
+    {% if config.extra.favicon %}
+        <link rel="icon" type="image/png" href={{ config.extra.favicon }} />
+    {% endif %}
+    {% if config.extra.favicon_emoji %}
+        <link rel=icon href='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg" viewBox="0 0 105 55"><text y=".7em" font-size="90">{{ config.extra.favicon_emoji }}</text></svg>'>
+    {% endif %}
+
+    {# Feed #}
+    <link rel="alternate" type="application/atom+xml" title="{{ config.title }}" href="{{ get_url(path="atom.xml",
+        trailing_slash=false) }}">
+
+    {# CSS #}
+    {# Load subset of glyphs for header. Avoids flashing issue in Firefox #}
+    {% if config.extra.custom_subset == true %}
+        <link rel="stylesheet" href={{ get_url(path="custom_subset.css" ) }}>
+    {% elif lang == 'en' %}
+        <link rel="stylesheet" href={{ get_url(path="inter_subset_en.css" ) }}>
+    {% elif lang == 'es' %}
+        <link rel="stylesheet" href={{ get_url(path="inter_subset_es.css" ) }}>
+    {% endif %}
+
+    {# Define array of CSS files to load. main.css is always loaded. #}
+    {%- set stylesheets = [ "main.css" ] -%}
+
+    {# Load extra CSS files from config.toml #}
+    {%- if config.extra.stylesheets -%}
+        {%- set stylesheets = stylesheets | concat(with=config.extra.stylesheets) -%}
+    {%- endif -%}
+
+    {# Load extra CSS files from page metadata #}
+    {%- if page.extra.stylesheets -%}
+        {%- set stylesheets = stylesheets | concat(with=page.extra.stylesheets) -%}
+    {%- endif -%}
+
+    {# Load extra CSS for custom skin #}
+    {%- if config.extra.skin and config.extra.skin != "teal" -%}
+        {%- set stylesheets = stylesheets | concat(with='skins/' ~ config.extra.skin ~ '.css') -%}
+    {%- endif -%}
+
+    {# Load all stylesheets #}
+    {%- for stylesheet in stylesheets %}
+        <link rel="stylesheet" href="{{ get_url(path=stylesheet, cachebust=true) | safe }}" />
+    {%- endfor %}
+
+    <meta name="color-scheme" content="{%- if config.extra.theme_switcher -%}light dark{%- elif config.extra.default_theme -%}{{config.extra.default_theme}}{%- else -%}light{%- endif -%}">
+
+    {%- if page.description %}
+        <meta name="description" content="{{ page.description | striptags | safe }}" />
+        <meta property="og:description" content="{{ page.description | striptags | safe }}">
+    {%- elif page.summary %}
+        <meta name="description" content="{{ page.summary | striptags | safe }}" />
+        <meta property="og:description" content="{{ page.summary | striptags | safe }}">
+    {%- elif not page.title and not section.title %}
+        <meta name="description" content="{{ config.description }}" />
+        <meta property="og:description" content="{{ config.description }}">
+    {%- endif %}
+
+    {% if is_404 %}
+        <meta name="robots" content="noindex, follow">
+    {% else %}
+        <meta name="robots" content="index, nofollow">
+    {% endif %}
+
+    {%- if page.title %}
+        <meta property="og:title" content="{{ page.title }}">
+    {%- elif section.title %}
+        <meta property="og:title" content="{{ section.title }}">
+    {%- else %}
+        <meta property="og:title" content="{{ config.title }}">
+    {%- endif %}
+
+    <meta property="og:type" content="article" />
+
+    {% if config.extra.headerImage %}
+        <meta property="og:image" content="{{ config.extra.headerImage }}">
+        <meta name="twitter:card" content="{{ config.extra.headerImage }}">
+    {% endif %}
+
+    {% set current_url = current_url | default(value="/") %}
+    <meta property="og:url" content="{{ current_url }}">
+
+    <meta property="og:site_name" content="{{ config.title }}">
+
+    <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'
+    {%- if config.extra.allowed_domains -%}
+    ;
+        {#- Check if a comment system is enabled to allow the necessary domains and directives -#}
+        {%- set utterances_enabled = config.extra.utterances.enabled_for_all_posts or page.extra.utterances -%}
+        {%- set giscus_enabled = config.extra.giscus.enabled_for_all_posts or page.extra.giscus -%}
+        {%- set hyvortalk_enabled = config.extra.hyvortalk.enabled_for_all_posts or page.extra.hyvortalk -%}
+        {%- set isso_enabled = config.extra.isso.enabled_for_all_posts or page.extra.isso -%}
+
+        {% if hyvortalk_enabled %}
+            connect-src talk.hyvor.com;
+        {% elif isso_enabled %}
+            connect-src {{ config.extra.isso.endpoint_url }};
+        {% endif %}
+
+        {%- for domain in config.extra.allowed_domains -%}
+            {{ domain.directive }} {{ domain.domains | join(sep=' ') -}}
+
+            {% if utterances_enabled or hyvortalk_enabled -%}
+                {%- if domain.directive == "style-src" %} 'unsafe-inline'
+                {%- endif -%}
+            {% endif -%}
+
+            {%- if domain.directive == "script-src" or domain.directive == "frame-src" -%}
+                {%- if giscus_enabled %} giscus.app
+                {%- elif utterances_enabled %} utteranc.es
+                {%- elif hyvortalk_enabled %} talk.hyvor.com
+                {%- endif %}
+            {%- endif -%}
+
+            {%- if domain.directive == "script-src" -%}
+                {%- if isso_enabled %} {{ config.extra.isso.endpoint_url }}
+                {%- endif %}
+            {%- endif -%}
+            {%- if not loop.last -%}
+            ;
+            {%- endif -%}
+        {%- endfor -%}
+    {%- endif -%}">
+
+    {%- if config.extra.theme_switcher and config.extra.theme_switcher == true -%}
+        {# If JavaScript is disabled, hide the button. #}
+        <noscript><link rel="stylesheet" href="{{ get_url(path='no_js.css') | safe }}"/></noscript>
+        <script type="text/javascript" src="{{ get_url(path='js/initializeTheme.min.js') | safe }}"></script>
+        <script defer src="{{ get_url(path='js/themeSwitcher.min.js', trailing_slash=false) | safe }}"/></script>
+    {%- endif -%}
+
+</head>
