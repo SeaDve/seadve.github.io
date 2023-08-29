@@ -1,6 +1,6 @@
 +++
 path = "/about"
-title = "About Me"
+title = "About"
 template = "about.html"
 +++
 
