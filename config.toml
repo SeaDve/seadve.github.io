@@ -24,8 +24,6 @@ remote_repository_url = "https://github.com/SeaDve/seadve.github.io"
 favicon = "/img/logo.png"
 favicon_emoji = ""
 
-headerImage = "/img/banner.png"
-
 menu = [
     { name = "Blog", url = "blog", trailing_slash = true },
     { name = "Tags", url = "tags", trailing_slash = true },
