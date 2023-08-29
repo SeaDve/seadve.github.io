@@ -1,6 +1,7 @@
 <!-- Modifications from original theme:
 * use page.title or section.title first instead of config.title
-* don't use config.description when page.title or section.title is found -->
+* don't use config.description when page.title or section.title is found
+* use page.extra.thumbnail as image if it exist -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -83,7 +84,10 @@
 
     <meta property="og:type" content="article" />
 
-    {% if config.extra.headerImage %}
+    {% if page.extra.thumbnail %}
+        <meta property="og:image" content="{{ page.extra.thumbnail }}">
+        <meta name="twitter:card" content="{{ page.extra.thumbnail }}">
+    {% elif config.extra.headerImage %}
         <meta property="og:image" content="{{ config.extra.headerImage }}">
         <meta name="twitter:card" content="{{ config.extra.headerImage }}">
     {% endif %}

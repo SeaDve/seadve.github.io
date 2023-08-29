@@ -5,9 +5,10 @@ updated = 2023-08-04T21:34:00.002+08:00
 
 [taxonomies]
 tags = ["GSoC 2023"]
-+++
 
-![Thumbnail](thumbnail.png)
+[extra]
+thumbnail = "thumbnail.png"
++++
 
 ## Progress Made
 
