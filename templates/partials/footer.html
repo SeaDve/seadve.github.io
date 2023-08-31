@@ -1,6 +1,6 @@
 <!-- Modifications from original theme:
-* renames `feed` to `Feed`
-* adds personal copyright -->
+* renames `feed` to `Feed`-->
+{% set separator = config.extra.separator | default(value="•") %}
 <footer>
     <section>
         <nav class="socials nav-navs">
@@ -9,14 +9,42 @@
                     {%- if config.generate_feed and config.extra.feed_icon -%}
                     <li>
                         <a rel="noopener noreferrer" target="_blank" class="nav-links no-hover-padding social" href={{ get_url(path=config.feed_filename, lang=lang, trailing_slash=false) | safe }}>
-                        <img alt="Feed" title="Feed" src="{{config.base_url}}/social_icons/rss.svg">
+                        <img alt="Feed" title="Feed" src="{{ get_url(path='/social_icons/rss.svg') }}">
                         </a>
                     </li>
                     {%- endif -%}
+
+                    {# Mail icon #}
+                    {%- if config.extra.email -%}
+                        {%- set email_already_encoded = (config.extra.email is not containing("@")) -%}
+                        {%- set email_needs_decoding = email_already_encoded or config.extra.encode_plaintext_email -%}
+
+                        {%- if email_already_encoded -%}
+                            {%- set encoded_email = config.extra.email -%}
+                            {# Verify the pre-encoded e-mail is valid (i.e. contains an '@') #}
+                            {%- set decoded_email = encoded_email | base64_decode -%}
+                            {%- if '@' not in decoded_email -%}
+                                {{ throw(message="ERROR: The provided e-mail appears to be base64-encoded, but does not decode to a valid e-mail address.")}}
+                            {%- endif -%}
+                        {%- elif config.extra.encode_plaintext_email -%}
+                            {%- set encoded_email = config.extra.email | base64_encode -%}
+                        {%- endif -%}
+
+                        <li class="{% if email_needs_decoding %}js{% endif %}">
+                            {%- if email_needs_decoding -%}
+                                <a rel="noopener noreferrer" target="_blank" class="nav-links no-hover-padding social" href="#" data-encoded-email="{{ encoded_email | safe }}">
+                            {%- else -%}
+                                <a rel="noopener noreferrer" target="_blank" class="nav-links no-hover-padding social" href="mailto:{{ config.extra.email | safe }}">
+                            {%- endif -%}
+                                <img alt="email" title="email" src="{{ get_url(path='social_icons/email.svg') }}">
+                            </a>
+                        </li>
+                    {%- endif -%}
+
                     {% for social in config.extra.socials %}
                         <li>
                             <a rel="noopener noreferrer me" target="_blank" class="nav-links no-hover-padding social" href={{ social.url | safe }}>
-                                <img alt={{ social.name }} title={{ social.name }} src="{{config.base_url}}/social_icons/{{ social.icon }}.svg">
+                                <img alt={{ social.name }} title={{ social.name }} src="{{ get_url(path='social_icons/' ~ social.icon ~ '.svg') }}">
                             </a>
                         </li>
                     {% endfor %}
@@ -24,10 +52,50 @@
             {% endif %}
         </nav>
         <div class="credits">
-            <small>Copyright © 2023 Dave Patrick Caberto. All rights reserved.</small>
-        </div>
-        <div class="credits">
-            <small>{%- if lang != config.default_language %} {{ trans(key="powered_by" | safe, lang=lang) }} {% else %} Powered by {% endif %} <a href="https://www.getzola.org" target="_blank">Zola</a> {%- if lang != config.default_language %} {{ trans(key="and" | safe, lang=lang) }} {% else %} & {% endif %} <a href="https://github.com/welpo/tabi" target="_blank">tabi</a></small>
+            <small>
+                {# Shows optional Copyright notice #}
+                {%- if config.extra.copyright -%}
+                    {% set current_year = now() | date(format="%Y") %}
+                    {# Translate the copyright if set in the config #}
+                    {%- if config.extra.translate_copyright and lang != config.default_language -%}
+                        <p>{{ trans(key="copyright", lang=lang) | replace(from="$CURRENT_YEAR", to=current_year) | replace(from="$SEPARATOR", to=separator) | markdown | safe }}</p>
+                    {%- else -%}
+                        <p>{{ config.extra.copyright | replace(from="$CURRENT_YEAR", to=current_year) | replace(from="$SEPARATOR", to=separator) | markdown | safe }}</p>
+                    {%- endif -%}
+                {%- endif -%}
+
+                {# Shows "Powered by Zola & tabi" notice #}
+                {%- if lang != config.default_language -%}
+                    {{ trans(key="powered_by" | safe, lang=lang) }}
+                {%- else -%}
+                    Powered by
+                {%- endif -%}
+                &nbsp;<a href="https://www.getzola.org" target="_blank">Zola</a>&nbsp;
+                {%- if lang != config.default_language -%}
+                    {{ trans(key="and" | safe, lang=lang) }}
+                {%- else -%}
+                    &
+                {%- endif -%}
+                &nbsp;<a href="https://github.com/welpo/tabi" target="_blank">tabi</a>
+
+                {# Shows link to remote repository if repository is set and `show_remote_source` is not false #}
+                {% set show_source = config.extra.show_remote_source | default(value=true) %}
+                {%- if config.extra.remote_repository_url and show_source -%}
+                {{ separator }}
+                    <a href="{{ config.extra.remote_repository_url }}" target="_blank">
+                        {%- if lang != config.default_language -%}
+                            {{ trans(key="site_source" | safe, lang=lang) }}
+                        {%- else -%}
+                            Site source
+                        {%- endif -%}
+                    </a>
+                {%- endif -%}
+            </small>
         </div>
     </section>
+
+    {# Load the decoding script if email is encoded #}
+    {%- if email_needs_decoding -%}
+        <script src="{{ get_url(path='js/decodeMail.min.js') }}" async></script>
+    {%- endif -%}
 </footer>
