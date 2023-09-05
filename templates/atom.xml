@@ -81,7 +81,7 @@
         {% elif page.description -%}
             <summary type="html">{{ page.description | striptags | safe }}</summary>
         {% endif -%}
-        <!-- Modification: Added content tag -->
+        <!-- MOD: add content tag -->
         <content type="html">{{ page.content }}</content>
     </entry>
     {%- endfor %}

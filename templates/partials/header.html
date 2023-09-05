@@ -1,7 +1,3 @@
-<!-- Modifications from original theme:
-* use page.title or section.title first instead of config.title
-* don't use config.description when page.title or section.title is found
-* use page.extra.thumbnail as image if it exist -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -63,6 +59,7 @@
     {%- elif page.summary %}
         <meta name="description" content="{{ page.summary | striptags | safe | trim_end_matches(pat=".") }}…" />
         <meta property="og:description" content="{{ page.summary | striptags | safe | trim_end_matches(pat=".") }}…">
+    <!-- MOD: don't use config.description when page.title or section.title is found -->
     {%- elif not page.title and not section.title %}
         <meta name="description" content="{{ config.description }}" />
         <meta property="og:description" content="{{ config.description }}">
@@ -74,6 +71,7 @@
         <meta name="robots" content="index, nofollow">
     {% endif %}
 
+    <!-- MOD: use page.title or section.title first instead of config.title -->
     {%- if page.title %}
         <meta property="og:title" content="{{ page.title }}">
     {%- elif section.title %}
@@ -84,6 +82,7 @@
 
     <meta property="og:type" content="article" />
 
+    <!-- MOD: use page.extra.thumbnail as image if it exist -->
     {% if page.extra.thumbnail %}
         <meta property="og:image" content="{{ page.extra.thumbnail }}">
         <meta name="twitter:card" content="{{ page.extra.thumbnail }}">

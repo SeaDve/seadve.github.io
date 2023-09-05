@@ -1,5 +1,3 @@
-<!-- Modifications from original theme:
-* add page.extra.thumbnail paragraph if it exist -->
 {% macro content(page) %}
 
 {%- set separator = config.extra.separator | default(value="•") -%}
@@ -101,6 +99,7 @@
             {{ macros_toc::toc(page=page, header=true) }}
         {% endif %}
 
+        <!-- MOD: add thumbnail if it exist -->
         {% if page.extra.thumbnail %}
             <p>
                 <img src="{{ current_url }}{{ page.extra.thumbnail }}" alt="Thumbnail" />
