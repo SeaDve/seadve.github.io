@@ -1,5 +1,3 @@
-<!-- Modifications from original theme:
-* add content tag -->
 {% import "macros/translate.html" as macros_translate %}
 
 <?xml version="1.0" encoding="utf-8"?>
@@ -83,6 +81,7 @@
         {% elif page.description -%}
             <summary type="html">{{ page.description | striptags | safe }}</summary>
         {% endif -%}
+        <!-- Modification: Added content tag -->
         <content type="html">{{ page.content }}</content>
     </entry>
     {%- endfor %}
