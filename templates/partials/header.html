@@ -12,7 +12,7 @@
 
     {# Favicon #}
     {% if config.extra.favicon %}
-        <link rel="icon" type="image/png" href={{ config.extra.favicon }} />
+        <link rel="icon" type="image/png" href="{{ get_url(path=config.extra.favicon) }}"/>
     {% endif %}
     {% if config.extra.favicon_emoji %}
         <link rel=icon href='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg" viewBox="0 0 105 55"><text y=".7em" font-size="90">{{ config.extra.favicon_emoji }}</text></svg>'>
@@ -61,8 +61,8 @@
         <meta name="description" content="{{ page.description | striptags | safe }}" />
         <meta property="og:description" content="{{ page.description | striptags | safe }}">
     {%- elif page.summary %}
-        <meta name="description" content="{{ page.summary | striptags | safe }}" />
-        <meta property="og:description" content="{{ page.summary | striptags | safe }}">
+        <meta name="description" content="{{ page.summary | striptags | safe | trim_end_matches(pat=".") }}…" />
+        <meta property="og:description" content="{{ page.summary | striptags | safe | trim_end_matches(pat=".") }}…">
     {%- elif not page.title and not section.title %}
         <meta name="description" content="{{ config.description }}" />
         <meta property="og:description" content="{{ config.description }}">
@@ -107,11 +107,11 @@
         {%- set hyvortalk_enabled = config.extra.hyvortalk.enabled_for_all_posts or page.extra.hyvortalk -%}
         {%- set isso_enabled = config.extra.isso.enabled_for_all_posts or page.extra.isso -%}
 
-        {% if hyvortalk_enabled %}
+        {%- if hyvortalk_enabled -%}
             connect-src talk.hyvor.com;
-        {% elif isso_enabled %}
+        {%- elif isso_enabled -%}
             connect-src {{ config.extra.isso.endpoint_url }};
-        {% endif %}
+        {%- endif -%}
 
         {%- for domain in config.extra.allowed_domains -%}
             {{ domain.directive }} {{ domain.domains | join(sep=' ') -}}
