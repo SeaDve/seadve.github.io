@@ -64,7 +64,8 @@
         {% if config.extra.full_content_in_feed %}
             <!-- MOD: remove safe -->
             <content type="html">{{ page.content }}</content>
-        {% elif page.summary -%}
+        {% endif -%}
+        {% if page.summary -%}
             <summary type="html">{{ page.summary | striptags | safe | trim_end_matches(pat=".") }}…</summary>
         {% elif page.description -%}
             <summary type="html">{{ page.description | striptags | safe }}</summary>
