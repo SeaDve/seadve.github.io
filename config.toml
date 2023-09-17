@@ -25,6 +25,7 @@ favicon = "/img/logo.png"
 favicon_emoji = ""
 
 custom_subset = false
+theme_switcher = false
 
 menu = [
     { name = "Blog", url = "blog", trailing_slash = true },
