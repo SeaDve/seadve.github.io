@@ -37,6 +37,8 @@ menu = [
 ]
 
 feed_icon = true
+full_content_in_feed = true
+
 email = ""
 socials = [
     { name = "github", url = "https://github.com/SeaDve/", icon = "github" },

@@ -1,7 +1,7 @@
 +++
-path = "/about"
+path = "about"
 title = "About"
-template = "about.html"
+template = "info-page.html"
 +++
 
 Hi! My name is **Dave Patrick Caberto**, sometimes known as **SeaDve** online. I am currently 19 years old and a student of BS Electronics Engineering in the Philippines.

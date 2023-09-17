@@ -61,13 +61,14 @@
         </author>
         <link rel="alternate" href="{{ page.permalink | safe }}" type="text/html"/>
         <id>{{ page.permalink | safe }}</id>
-        {% if page.summary -%}
+        {% if config.extra.full_content_in_feed %}
+            <!-- MOD: remove safe -->
+            <content type="html">{{ page.content }}</content>
+        {% elif page.summary -%}
             <summary type="html">{{ page.summary | striptags | safe | trim_end_matches(pat=".") }}…</summary>
         {% elif page.description -%}
             <summary type="html">{{ page.description | striptags | safe }}</summary>
         {% endif -%}
-        <!-- MOD: add content tag -->
-        <content type="html">{{ page.content }}</content>
     </entry>
     {%- endfor %}
 </feed>
