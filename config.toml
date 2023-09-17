@@ -21,7 +21,7 @@ default_language = "en"
 [extra]
 remote_repository_url = "https://github.com/SeaDve/seadve.github.io"
 
-favicon = "/img/logo.png"
+favicon = "/img/logo-circle.png"
 favicon_emoji = ""
 
 custom_subset = false

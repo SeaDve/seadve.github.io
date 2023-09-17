@@ -68,8 +68,7 @@
     {%- elif page.summary %}
         <meta name="description" content="{{ page.summary | striptags | safe | trim_end_matches(pat=".") }}…" />
         <meta property="og:description" content="{{ page.summary | striptags | safe | trim_end_matches(pat=".") }}…" />
-    <!-- MOD: don't use config.description when page.title or section.title is found -->
-    {%- elif not page.title and not section.title %}
+    {%- else %}
         <meta name="description" content="{{ config.description }}" />
         <meta property="og:description" content="{{ config.description }}" />
     {%- endif %}
@@ -80,14 +79,7 @@
         <meta name="robots" content="index, nofollow" />
     {% endif %}
 
-    <!-- MOD: use page.title or section.title first instead of config.title -->
-    {%- if page.title %}
-        <meta property="og:title" content="{{ page.title }}">
-    {%- elif section.title %}
-        <meta property="og:title" content="{{ section.title }}">
-    {%- else %}
-        <meta property="og:title" content="{{ config.title }}">
-    {%- endif %}
+    <meta property="og:title" content="{{ page.title | default(value=config.title) | safe }}" />
     <meta property="og:type" content="article" />
 
     {# Add og:locale and hreflang tags for multilingual sites #}
@@ -106,8 +98,15 @@
         {%- endif -%}
         <meta name="twitter:image" content="{{ page.extra.thumbnail }}">
         <meta name="twitter:card" content="summary_large_image" />
-    {% endif %}
-
+    {% else %}
+        <meta property="og:image" content="img/logo.png">
+        {%- if meta -%}
+            <meta property="og:image:width" content="{{ meta.width }}" />
+            <meta property="og:image:height" content="{{ meta.height }}" />
+        {%- endif -%}
+        <meta name="twitter:image" content="img/logo.png">
+        <meta name="twitter:card" content="summary_large_image" />
+    {%- endif %}
 
     {# Image for social media sharing #}
     {%- set social_media_card = macros_settings::evaluate_setting_priority(setting="social_media_card", page=page | default(value=""), section=section | default(value=""), default_global_value="") -%}
