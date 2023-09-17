@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {# Site title #}
-    <title>{{ macros_set_title::set_title() }}</title>
+    <title>{%- include "partials/title.html" -%}</title>
 
     {# Favicon #}
     {% if config.extra.favicon %}
@@ -15,12 +15,12 @@
     {% endif %}
 
     {# Feed #}
-    <link rel="alternate" type="application/atom+xml" title="{{ config.title }}" href="{{ get_url(path="atom.xml",
+    <link rel="alternate" type="application/atom+xml" title="{{ config.title | safe }}" href="{{ get_url(path="atom.xml",
         trailing_slash=false) }}">
 
     {# CSS #}
     {# Load subset of glyphs for header. Avoids flashing issue in Firefox #}
-    {% if config.extra.custom_subset == true %}
+    {% if config.extra.custom_subset and config.extra.custom_subset == true %}
         <link rel="stylesheet" href={{ get_url(path="custom_subset.css" ) }}>
     {% elif lang == 'en' %}
         <link rel="stylesheet" href={{ get_url(path="inter_subset_en.css" ) }}>
@@ -51,24 +51,33 @@
         <link rel="stylesheet" href="{{ get_url(path=stylesheet, cachebust=true) | safe }}" />
     {%- endfor %}
 
-    <meta name="color-scheme" content="{%- if config.extra.theme_switcher -%}light dark{%- elif config.extra.default_theme -%}{{config.extra.default_theme}}{%- else -%}light{%- endif -%}">
+    <meta name="color-scheme" content="{%- if config.extra.theme_switcher -%}light dark{%- elif config.extra.default_theme -%}{{config.extra.default_theme}}{%- else -%}light{%- endif -%}" />
+
+    {%- if config.extra.browser_theme_color and config.extra.browser_theme_color is iterable -%}
+        {# Handle array values: theme_color[0] for light mode, theme_color[1] for dark mode #}
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="{{ config.extra.browser_theme_color[0] }}" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="{{ config.extra.browser_theme_color[1] }}" />
+    {%- elif config.extra.browser_theme_color -%}
+        {# Handle single value #}
+        <meta name="theme-color" content="{{ config.extra.browser_theme_color }}" />
+    {%- endif -%}
 
     {%- if page.description %}
         <meta name="description" content="{{ page.description | striptags | safe }}" />
-        <meta property="og:description" content="{{ page.description | striptags | safe }}">
+        <meta property="og:description" content="{{ page.description | striptags | safe }}" />
     {%- elif page.summary %}
         <meta name="description" content="{{ page.summary | striptags | safe | trim_end_matches(pat=".") }}…" />
-        <meta property="og:description" content="{{ page.summary | striptags | safe | trim_end_matches(pat=".") }}…">
+        <meta property="og:description" content="{{ page.summary | striptags | safe | trim_end_matches(pat=".") }}…" />
     <!-- MOD: don't use config.description when page.title or section.title is found -->
     {%- elif not page.title and not section.title %}
         <meta name="description" content="{{ config.description }}" />
-        <meta property="og:description" content="{{ config.description }}">
+        <meta property="og:description" content="{{ config.description }}" />
     {%- endif %}
 
     {% if is_404 %}
-        <meta name="robots" content="noindex, follow">
+        <meta name="robots" content="noindex, follow" />
     {% else %}
-        <meta name="robots" content="index, nofollow">
+        <meta name="robots" content="index, nofollow" />
     {% endif %}
 
     <!-- MOD: use page.title or section.title first instead of config.title -->
@@ -79,20 +88,43 @@
     {%- else %}
         <meta property="og:title" content="{{ config.title }}">
     {%- endif %}
-
     <meta property="og:type" content="article" />
+
+    {# Add og:locale and hreflang tags for multilingual sites #}
+    {%- if config.languages | length > 0 and current_url %}
+        {%- include "partials/multilingual_tags.html" -%}
+    {%- else -%}
+        <meta property="og:locale" content="{{ macros_translate::translate(key="date_locale", default="en_GB", language_strings=language_strings) }}" />
+    {%- endif %}
 
     <!-- MOD: use page.extra.thumbnail as image if it exist -->
     {% if page.extra.thumbnail %}
         <meta property="og:image" content="{{ page.extra.thumbnail }}">
-        <meta name="twitter:card" content="{{ page.extra.thumbnail }}">
-    {% elif config.extra.headerImage %}
-        <meta property="og:image" content="{{ config.extra.headerImage }}">
-        <meta name="twitter:card" content="{{ config.extra.headerImage }}">
+        {%- if meta -%}
+            <meta property="og:image:width" content="{{ meta.width }}" />
+            <meta property="og:image:height" content="{{ meta.height }}" />
+        {%- endif -%}
+        <meta name="twitter:image" content="{{ page.extra.thumbnail }}">
+        <meta name="twitter:card" content="summary_large_image" />
     {% endif %}
 
-    {% set current_url = current_url | default(value="/") %}
-    <meta property="og:url" content="{{ current_url }}">
+
+    {# Image for social media sharing #}
+    {%- set social_media_card = macros_settings::evaluate_setting_priority(setting="social_media_card", page=page | default(value=""), section=section | default(value=""), default_global_value="") -%}
+    {% if social_media_card %}
+        <meta property="og:image" content="{{ get_url(path=social_media_card, cachebust=true) }}" />
+        {%- set meta = get_image_metadata(path=social_media_card, allow_missing=true) -%}
+        {%- if meta -%}
+            <meta property="og:image:width" content="{{ meta.width }}" />
+            <meta property="og:image:height" content="{{ meta.height }}" />
+        {%- endif -%}
+        <meta name="twitter:image" content="{{ get_url(path=social_media_card, cachebust=true) }}" />
+        <meta name="twitter:card" content="summary_large_image" />
+    {% endif %}
+
+    {%- if current_url -%}
+        <meta property="og:url" content="{{ current_url }}">
+    {%- endif -%}
 
     <meta property="og:site_name" content="{{ config.title }}">
 
@@ -106,13 +138,28 @@
         {%- set hyvortalk_enabled = config.extra.hyvortalk.enabled_for_all_posts or page.extra.hyvortalk -%}
         {%- set isso_enabled = config.extra.isso.enabled_for_all_posts or page.extra.isso -%}
 
+        {#- Initialise a base connect-src directive -#}
+        {%- set connect_src = "connect-src 'self'" -%}
+
         {%- if hyvortalk_enabled -%}
-            connect-src talk.hyvor.com;
+            {%- set connect_src = connect_src ~ " talk.hyvor.com" -%}
         {%- elif isso_enabled -%}
-            connect-src {{ config.extra.isso.endpoint_url }};
+            {%- set connect_src = connect_src ~ " " ~ config.extra.isso.endpoint_url -%}
+        {%- endif -%}
+
+        {#- Append WebSocket for Zola serve mode -#}
+        {%- if config.mode == "serve" -%}
+            {%- set connect_src = connect_src ~ " ws:" -%}
         {%- endif -%}
 
         {%- for domain in config.extra.allowed_domains -%}
+            {%- if domain.directive == "connect-src" -%}
+                {%- set configured_connect_src = domain.domains | join(sep=' ') -%}
+                {%- set_global connect_src = connect_src ~ " " ~ configured_connect_src  -%}
+                {%- continue -%}
+            {%- endif -%}
+
+            {#- Handle directives that are not connect-src -#}
             {{ domain.directive }} {{ domain.domains | join(sep=' ') -}}
 
             {% if utterances_enabled or hyvortalk_enabled -%}
@@ -135,6 +182,10 @@
             ;
             {%- endif -%}
         {%- endfor -%}
+
+        {#- Insert the generated connect-src -#}
+        {{ ";" ~ connect_src }}
+
     {%- endif -%}">
 
     {%- if config.extra.theme_switcher and config.extra.theme_switcher == true -%}
