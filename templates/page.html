@@ -96,10 +96,10 @@
             </div>
         {% endif %}
 
-        <!-- MOD: add thumbnail if it exist -->
-        {% if page.extra.thumbnail %}
+        <!-- MOD: add social_media_card if it exist -->
+        {% if page.extra.social_media_card %}
             <p>
-                <img src="{{ current_url }}{{ page.extra.thumbnail }}" alt="Thumbnail" />
+                <img src="{{ current_url }}{{ page.extra.social_media_card }}" alt="Card" />
             </p>
         {% endif %}
 

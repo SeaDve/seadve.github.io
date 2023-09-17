@@ -7,7 +7,7 @@ updated = 2021-01-15T17:29:00.004+08:00
 tags = ["Software"]
 
 [extra]
-thumbnail = "thumbnail.png"
+social_media_card = "card.png"
 +++
 
 Choosing a Linux distro is not an easy task. New users might be overwhelmed with the hundreds of distros to choose from compared to Windows with just a few versions to choose from. I cannot really tell you which is the best for you as we come with different needs and motives, but here is a list of Linux distros that will help you determine what could be the best for you.<!-- more -->

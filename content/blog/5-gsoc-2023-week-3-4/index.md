@@ -7,7 +7,7 @@ updated = 2023-07-05T09:30:00.002+08:00
 tags = ["GSoC 2023"]
 
 [extra]
-thumbnail = "thumbnail.png"
+social_media_card = "card.png"
 +++
 
 ## Progress Made

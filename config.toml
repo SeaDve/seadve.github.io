@@ -24,6 +24,8 @@ remote_repository_url = "https://github.com/SeaDve/seadve.github.io"
 favicon = "/img/logo-circle.png"
 favicon_emoji = ""
 
+social_media_card = "/img/logo.png"
+
 custom_subset = false
 theme_switcher = false
 

@@ -7,7 +7,7 @@ updated = 2023-05-11T23:45:51.417+08:00
 tags = ["Benchmark"]
 
 [extra]
-thumbnail = "thumbnail.png"
+social_media_card = "card.png"
 +++
 
 We all know that Google is already dominating the search engine share. Meanwhile, in terms of the browser market share, it is no different. Many browsers nowadays such as Brave and even Microsoft Edge are based on Google's open-source project, Chromium.<!-- more -->

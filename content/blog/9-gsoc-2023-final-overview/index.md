@@ -7,7 +7,7 @@ updated = 2023-08-28T20:22:00.002+08:00
 tags = ["GSoC 2023"]
 
 [extra]
-thumbnail = "thumbnail.png"
+social_media_card = "card.png"
 +++
 
 Over the summer, for 12 weeks, I worked on rewriting Bustle in Rust and GTK 4 as part of the Google Summer of Code (GSoC) 2023 program. This post is an overview of the work done and the future plans for the project.<!-- more -->
