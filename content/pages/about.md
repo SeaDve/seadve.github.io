@@ -14,7 +14,7 @@ I have experience in:
 
 * Software development (Rust, Python, and C)
 * Desktop application development (GTK and Libadwaita)
-* Git and hosting platforms (GitHub and GitLab)
+* VCS and hosting platforms (Git, GitHub, and GitLab)
 * Multimedia (GStreamer)
 * Embedded Systems + IoT (Raspberry Pi and Arduino)
 * Linux (Bash)
@@ -33,7 +33,7 @@ I currently use vanilla Fedora Silverblue both on my PC and laptop.
 
 ## Donate
 
-If you would like to back my work and support me as a developer, you may [buy me a coffee](https://www.buymeacoffee.com/seadve).
+If you would like to back my work and support me as a developer, you may [buy me a coffee](https://www.buymeacoffee.com/seadve) or [sponsor me via GitHub Sponsors](https://github.com/sponsors/SeaDve).
 
 ## Contact
 
