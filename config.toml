@@ -33,6 +33,7 @@ menu = [
     { name = "Blog", url = "blog", trailing_slash = true },
     { name = "Tags", url = "tags", trailing_slash = true },
     { name = "Portfolio", url = "portfolio", trailing_slash = true },
+    { name = "Donate", url = "donate", trailing_slash = true },
     { name = "About", url = "about", trailing_slash = true },
 ]
 
