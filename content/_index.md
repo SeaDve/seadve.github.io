@@ -5,7 +5,7 @@ sort_by = "date"
 template = "section.html"
 
 [extra]
-header = { title = "Hi, I'm Dave Patrick.", img = "$BASE_URL/img/logo-circle.png" }
+header = { title = "Hi, I'm Dave Patrick.", img = "img/logo-circle.png" }
 section_path = "blog/_index.md"
 max_posts = 4
 +++
