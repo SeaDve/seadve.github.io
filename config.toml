@@ -31,10 +31,9 @@ theme_switcher = false
 
 menu = [
     { name = "Blog", url = "blog", trailing_slash = true },
+    { name = "Archive", url = "archive", trailing_slash = true },
     { name = "Tags", url = "tags", trailing_slash = true },
     { name = "Portfolio", url = "portfolio", trailing_slash = true },
-    { name = "Donate", url = "donate", trailing_slash = true },
-    { name = "About", url = "about", trailing_slash = true },
 ]
 
 feed_icon = true
@@ -46,5 +45,9 @@ socials = [
     { name = "gitlab", url = "https://gitlab.gnome.org/SeaDve", icon = "gitlab" },
     { name = "linkedin", url = "https://www.linkedin.com/in/dave-patrick-caberto", icon = "linkedin" },
     { name = "mastodon", url = "https://mastodon.social/@seadve", icon = "mastodon" },
+]
+footer_menu = [
+    { name = "Donate", url = "donate", trailing_slash = true },
+    { name = "About", url = "about", trailing_slash = true },
 ]
 copyright = "Copyright © 2023 Dave Patrick Caberto. All rights reserved."
