@@ -1,7 +1,7 @@
 +++
 title = "MPRIS Server"
 description = "Implement MPRIS D-Bus interface"
-weight = 4
+weight = 3
 
 [extra]
 local_image = "img/portfolio/mpris-server.svg"

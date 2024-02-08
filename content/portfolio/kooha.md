@@ -1,7 +1,7 @@
 +++
 title = "Kooha"
 description = "Elegantly record your screen"
-weight = 2
+weight = 1
 
 permalink = "https://flathub.org/apps/io.github.seadve.Mousai"
 

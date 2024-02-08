@@ -1,7 +1,7 @@
 +++
 title = "Breathing"
 description = "Relax and meditate"
-weight = 3
+weight = 2
 
 [extra]
 local_image = "img/portfolio/breathing.svg"

@@ -1,7 +1,7 @@
 +++
 title = "GSettings Macro"
 description = "Macro for typesafe GSettings key access"
-weight = 4
+weight = 3
 
 [extra]
 local_image = "img/portfolio/gsettings-macro.svg"
