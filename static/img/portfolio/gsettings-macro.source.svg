@@ -7,8 +7,8 @@
    height="152"
    id="svg11300"
    sodipodi:version="0.32"
-   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
-   sodipodi:docname="com.belmoussaoui.ashpd.demo.Source.svg"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+   sodipodi:docname="gsettings-macro.source.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    version="1.0"
    style="display:inline;enable-background:new"
@@ -35,7 +35,7 @@
          style="stop-color:#ffa348;stop-opacity:1"
          offset="0.43103448"
          id="stop1253" /><stop
-         style="stop-color:#ffbe6f;stop-opacity:1"
+         style="stop-color:#ffd5a5;stop-opacity:1;"
          offset="0.49999997"
          id="stop1257" /><stop
          style="stop-color:#ffa348;stop-opacity:1"
@@ -106,9 +106,9 @@
      borderopacity="0.25490196"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="4.0000001"
-     inkscape:cx="61.249998"
-     inkscape:cy="56.749999"
+     inkscape:zoom="2.8284272"
+     inkscape:cx="-0.35355338"
+     inkscape:cy="118.97071"
      inkscape:current-layer="layer9"
      showgrid="false"
      inkscape:grid-bbox="true"
@@ -153,10 +153,11 @@
        spacingx="2"
        spacingy="2"
        enabled="true"
-       visible="true"
+       visible="false"
        empspacing="4"
        originx="8"
-       originy="8" /><sodipodi:guide
+       originy="8"
+       units="px" /><sodipodi:guide
        position="72,16"
        orientation="0,1"
        id="guide1073"
@@ -216,7 +217,9 @@
        empopacity="0.08627451"
        dotted="true"
        originx="8"
-       originy="8" /><sodipodi:guide
+       originy="8"
+       units="px"
+       visible="false" /><sodipodi:guide
        position="32,72"
        orientation="1,0"
        id="guide877"
