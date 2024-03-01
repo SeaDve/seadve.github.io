@@ -16,11 +16,11 @@ I have experience in:
 * Desktop application development (GTK and Libadwaita)
 * VCS and hosting platforms (Git, GitHub, and GitLab)
 * Multimedia (GStreamer)
-* Embedded Systems + IoT (Raspberry Pi and Arduino)
 * Linux (Bash)
 * Web development (Typescript/Javascript, CSS, and HTML)
 * Database (SQLite and LMDB)
 * Graphics Design (Inkscape)
+* Embedded Systems + IoT (Raspberry Pi and Arduino)
 * 3D Design and Modeling (AutoCAD, SketchUp)
 * PCB design (EasyEDA)
 
