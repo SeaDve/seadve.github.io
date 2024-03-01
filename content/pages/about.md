@@ -21,6 +21,8 @@ I have experience in:
 * Web development (Typescript/Javascript, CSS, and HTML)
 * Database (SQLite and LMDB)
 * Graphics Design (Inkscape)
+* 3D Design and Modeling (AutoCAD, SketchUp)
+* PCB design (EasyEDA)
 
 I am currently pursuing:
 
