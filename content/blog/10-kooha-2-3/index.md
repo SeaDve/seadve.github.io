@@ -40,9 +40,11 @@ The area selection window is now resizable. You can now resize the window to fit
 
 ### More Informative Notifications
 
-Recording done notifications now show the duration and size of the recorded video. Moreover, the notification actions now work even when the application is closed.
+Record-done notifications now show the duration and size of the recorded video. This is inspired by GNOME Shell screencast notifications.
 
 ![Notification Screenshot](notification.png)
+
+Moreover, the notification actions now work even when the application is closed.
 
 ### Other Changes
 
