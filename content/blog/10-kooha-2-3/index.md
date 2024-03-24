@@ -12,7 +12,7 @@ social_media_card = "card.png"
 
 > [Kooha](https://github.com/SeaDve/Kooha) is a simple screen recorder for Linux with a minimal interface. You can simply click the record button without having to configure a bunch of settings.
 
-While we strive to keep Kooha simple, we also want to make it better. This release, composed of over 100 commits, is focused on quality-of-life improvements and bug fixes.<!-- more -->
+While we strive to keep Kooha simple, we also want to make it better. This release, composed of over [300 commits](https://github.com/SeaDve/Kooha/compare/v2.2.4...v2.3.0), is focused on quality-of-life improvements and bug fixes.<!-- more -->
 
 This release includes a refined interface, improved area selection, more informative notifications, and other changes. Read on to learn more about the new features and improvements.
 
