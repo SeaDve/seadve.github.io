@@ -23,19 +23,9 @@
 .card {
     flex-grow: 1;
     flex-shrink: 1;
-
-    padding: 24px;
-    box-shadow: 0 0 0 1px transparentize(black, 0.97),
-        0 1px 3px 1px transparentize(black, .93),
-        0 2px 6px 2px transparentize(black, .97);
-    border-radius: 12px;
-    text-align: center;
+    padding-top: 24px;
 }
 
 .card-image {
     max-width: 160px;
-}
-
-.card-info {
-    padding: 0;
 }
