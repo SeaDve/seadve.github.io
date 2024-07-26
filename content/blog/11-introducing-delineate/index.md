@@ -29,5 +29,7 @@ Delineate is available on [Flathub](https://flathub.org/apps/io.github.seadve.De
 
 ## Acknowledgment
 
+I would also like to thank Brage Fuglseth for the name and icon design.
+
 ## Closing Words
 
