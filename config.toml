@@ -3,7 +3,7 @@ title = "SeaDve"
 description = "Application developer based in the Philippines"
 author = "seadve"
 
-generate_feed = true
+generate_feeds = true
 compile_sass = true
 minify_html = true
 build_search_index = true
@@ -33,7 +33,7 @@ menu = [
     { name = "Blog", url = "blog", trailing_slash = true },
     { name = "Archive", url = "archive", trailing_slash = true },
     { name = "Tags", url = "tags", trailing_slash = true },
-    { name = "Portfolio", url = "portfolio", trailing_slash = true },
+    { name = "Projects", url = "projects", trailing_slash = true },
 ]
 
 feed_icon = true

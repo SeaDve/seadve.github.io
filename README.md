@@ -6,7 +6,7 @@
 flatpak run org.getzola.zola serve
 ```
 
-## Portfolio Weight
+## Projects Weight
 
 | Weight | Category   |
 | ------ | ---------- |
