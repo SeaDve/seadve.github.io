@@ -12,7 +12,8 @@ social_media_card = "card.png"
 
 ## Progress Made
 
-A lot of things happened these past few weeks. First, the [MR to add address and system DBus recording](https://gitlab.gnome.org/msandova/bustle/-/merge_requests/12) has already been merged. Though, before that was merged, a few revisions have been made: it now parses from messages bytes directly, instead of a PCAP stream, to prevent overhead. Additionally, it now properly propagates errors, such as when the `dbus-monitor` binary is not found.<!-- more -->
+A lot of things happened these past few weeks. First, the [MR to add address and system DBus recording](https://gitlab.gnome.org/msandova/bustle/-/merge_requests/12) has already been merged. Though, before that was merged, a few revisions have been made: it now parses from messages bytes directly, instead of a PCAP stream, to prevent overhead. Additionally, it now properly propagates errors, such as when the `dbus-monitor` binary is not found.
+<!-- more -->
 
 Second, when recording, the sequence diagram now [sticks at the bottom](https://gitlab.gnome.org/msandova/bustle/-/merge_requests/14) because, in common use cases, it is mostly wanted to observe the new messages as they come.
 

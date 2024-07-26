@@ -10,7 +10,8 @@ tags = ["Benchmark"]
 social_media_card = "card.png"
 +++
 
-We all know that Google is already dominating the search engine share. Meanwhile, in terms of the browser market share, it is no different. Many browsers nowadays such as Brave and even Microsoft Edge are based on Google's open-source project, Chromium.<!-- more -->
+We all know that Google is already dominating the search engine share. Meanwhile, in terms of the browser market share, it is no different. Many browsers nowadays such as Brave and even Microsoft Edge are based on Google's open-source project, Chromium.
+<!-- more -->
 
 In this article, I will compare various popular web browsers. Four of them use Blink/V8 as their engine while Firefox and GNOME Web (Epiphany) use Gecko and WebKitGTK respectively.
 

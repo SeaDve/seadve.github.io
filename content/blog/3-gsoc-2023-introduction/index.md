@@ -12,7 +12,8 @@ social_media_card = "card.png"
 
 Hello there!
 
-I am Dave Patrick Caberto, a first-year Electronics Engineering student from Bataan Peninsula State University, Philippines. This summer, I will be working on the Rust and GTK 4 rewrite of Bustle, a D-Bus activity visualizer, with the guidance of my mentors, Bilal Elmoussaoui and Maximiliano Sandoval.<!-- more -->
+I am Dave Patrick Caberto, a first-year Electronics Engineering student from Bataan Peninsula State University, Philippines. This summer, I will be working on the Rust and GTK 4 rewrite of Bustle, a D-Bus activity visualizer, with the guidance of my mentors, Bilal Elmoussaoui and Maximiliano Sandoval.
+<!-- more -->
 
 ## Me and my bizarre open-source journey
 

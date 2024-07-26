@@ -12,7 +12,8 @@ social_media_card = "card.png"
 
 ## Progress Made
 
-I am thrilled to announce that a lot of progress happened once again over the past few weeks! Starting with the most important thing, the diagram, a lot of bugs has been squashed and the rendering performance is now improved to a [usable and merge-able state](https://gitlab.gnome.org/msandova/bustle/-/merge_requests/34).<!-- more -->
+I am thrilled to announce that a lot of progress happened once again over the past few weeks! Starting with the most important thing, the diagram, a lot of bugs has been squashed and the rendering performance is now improved to a [usable and merge-able state](https://gitlab.gnome.org/msandova/bustle/-/merge_requests/34).
+<!-- more -->
 
 ![Diagram](diagram.gif)
 

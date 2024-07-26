@@ -12,7 +12,8 @@ social_media_card = "card.png"
 
 ## Progress Made
 
-There's unfortunately not a lot to talk about for the past two weeks as I have been really absorbed with finals at my university. However, while preparing for the finals, we got the [PR to add `from_bytes` constructor for `zbus::Message`](https://github.com/dbus2/zbus/pull/370) merged. This means that we can now construct `zbus::Message` from raw `GDBusMessage` bytes and vice versa, which is critical for porting Bustle from GDBus to zbus.<!-- more -->
+There's unfortunately not a lot to talk about for the past two weeks as I have been really absorbed with finals at my university. However, while preparing for the finals, we got the [PR to add `from_bytes` constructor for `zbus::Message`](https://github.com/dbus2/zbus/pull/370) merged. This means that we can now construct `zbus::Message` from raw `GDBusMessage` bytes and vice versa, which is critical for porting Bustle from GDBus to zbus.
+<!-- more -->
 
 On the other hand, the [PR to implement Display for Value, Array, Structure, Dict & Maybe](https://github.com/dbus2/zbus/pull/379) is, while the implementation for `zbus::Value::Str` and `zbus::Value::Array` is already fixed, still in the review stage as there are still things to polish, such as figuring out a way to simplify the implementation.
 

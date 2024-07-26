@@ -10,7 +10,8 @@ tags = ["Software"]
 social_media_card = "card.png"
 +++
 
-Choosing a Linux distro is not an easy task. New users might be overwhelmed with the hundreds of distros to choose from compared to Windows with just a few versions to choose from. I cannot really tell you which is the best for you as we come with different needs and motives, but here is a list of Linux distros that will help you determine what could be the best for you.<!-- more -->
+Choosing a Linux distro is not an easy task. New users might be overwhelmed with the hundreds of distros to choose from compared to Windows with just a few versions to choose from. I cannot really tell you which is the best for you as we come with different needs and motives, but here is a list of Linux distros that will help you determine what could be the best for you.
+<!-- more -->
 
 Note that this list may vary from user to user. The main criteria I use are ease of use, user experience, and software and hardware support.
 
