@@ -4,7 +4,7 @@ title = "About"
 template = "info-page.html"
 +++
 
-Hi! My name is **Dave Patrick Caberto**, sometimes known as **SeaDve** online. I am currently 19 years old and a student of BS Electronics Engineering in the Philippines.
+Hi! My name is **Dave Patrick Caberto**, sometimes known as **SeaDve** online. I am currently 20 years old and a student of BS Electronics Engineering in the Philippines.
 
 I contribute to various free and open-source software in my free time as I support the adoption of the Linux desktop.
 
