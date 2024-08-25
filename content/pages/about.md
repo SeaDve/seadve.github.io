@@ -27,7 +27,7 @@ I have experience in:
 I am currently pursuing:
 
 * Game development (Godot)
-* Computer Vision
+* Computer Vision (OpenCV)
 
 ## Setup
 
