@@ -21,6 +21,11 @@ social_media_card = "card.png"
 
 ## Features
 
+Show demonstration on:
+* GST Pipeline dumps
+* Bustle DOT Graphs
+* Pipewire dumps
+
 ## Getting Delineate
 
 Delineate is available on [Flathub](https://flathub.org/apps/io.github.seadve.Delineate). You can install it from there, and since all of our code is open-source and can be freely modified and distributed according to the license, you can also [download](https://github.com/SeaDve/Delineate/releases/tag/v0.1.0) and build it from source.
