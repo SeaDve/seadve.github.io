@@ -1,7 +1,7 @@
 +++
 title = "Introducing Delineate!"
-date = 2024-07-26T12:29:00.001+08:00
-updated = 2024-07-26T12:29:00.001+08:00
+date = 2024-09-23T12:29:00.001+08:00
+updated = 2024-09-23T12:29:00.001+08:00
 draft = true
 
 [taxonomies]
@@ -14,17 +14,33 @@ social_media_card = "card.png"
 > Delineate provides facilities to edit and draw graphs specified in the [DOT language](https://graphviz.org/doc/info/lang.html). It is designed to be a simple and intuitive tool for creating and editing graphs, with a focus on the user experience.
 <!-- more -->
 
-## Introduction
-
-* What is Delineate (brief description of what it does)
-* What it solves (why was it created)
+As mentioned above, Delineate, previously named Dagger, is a new app to view and edit DOT graphs. It is like [KGraphViewer](https://apps.kde.org/kgraphviewer/), but with the ability to edit the graph and is built with LibAdwaita, which makes it more at home on GNOME. There is also another app called [GraphUI](https://github.com/artemanufrij/graphui), but it is currently unmaintained and designed for Elementary OS.
 
 ## Features
 
-Show demonstration on:
-* GST Pipeline dumps
-* Bustle DOT Graphs
-* Pipewire dumps
+One of the main reasons I developed Delineate is for debugging GStreamer pipeline dumps. I use it extensively to visualize the pipeline, inspect the elements, and analyze the negotiations between them.
+
+![GStreamer Pipeline](gstreamer-pipeline.png)
+
+It is also useful for visualizing connections on the message bus, offering an alternative perspective to tools like Bustle.
+
+![Message Bus](message-bus.png)
+
+Another use case I discovered from Bilal is visualizing the Pipewire graph from the `pw-dot` command.
+
+![Pipewire DOT](pipewire-dot.png)
+
+The app also supports changing the layout engine on the fly, which is useful for tweaking the graph to make it more readable depending on the use case.
+
+![Layout Engines](layout-engines.gif)
+
+Also, thanks to the library behind the app, `d3-graphviz`, it supports animations, which can be less jarring when modifying the graph.
+
+![Animations](animations.gif)
+
+Finally, you can export the graph to a PNG, SVG, or JPG image.
+
+![Exporting](exporting.png)
 
 ## Getting Delineate
 
@@ -32,9 +48,17 @@ Delineate is available on [Flathub](https://flathub.org/apps/io.github.seadve.De
 
 ## Future Plans
 
-## Acknowledgment
+Since this is the first release, there are many features I would like to add in the future. Some of the features I am considering are:
 
-I would also like to thank Brage Fuglseth for the name and icon design.
+- More interactive editing and viewing features, such as selective highlighting of elements when searching.
+- Support for other graph formats, such as [Mermaid](https://mermaid.js.org/).
+- Bird's eye view for large graphs.
+- More useful text editing features, such as auto-completion, color picker, and more.
 
 ## Closing Words
 
+Before I end this post, I would like to thank Brage Fuglseth for the new name, Delineate, and the beautiful icon design.
+
+![Logo](logo.png)
+
+I hope you find Delineate as useful as I do. If you have any feedback or suggestions, feel free to open a discussion or issue on the [GitHub repository](https://github.com/SeaDve/Delineate). Enjoy the release!
