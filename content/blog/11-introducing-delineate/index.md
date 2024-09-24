@@ -2,7 +2,6 @@
 title = "Introducing Delineate!"
 date = 2024-09-23T12:29:00.001+08:00
 updated = 2024-09-23T12:29:00.001+08:00
-draft = true
 
 [taxonomies]
 tags = ["Software"]
