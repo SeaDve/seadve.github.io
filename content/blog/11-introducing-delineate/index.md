@@ -33,7 +33,7 @@ The app also supports changing the layout engine on the fly, which is useful for
 
 ![Layout Engines](layout-engines.gif)
 
-Also, thanks to the library behind the app, `d3-graphviz`, it supports animations, which can be less jarring when modifying the graph.
+Also, thanks to the library behind the app, [d3-graphviz](https://github.com/magjac/d3-graphviz), it supports animations, which can be less jarring when modifying the graph.
 
 ![Animations](animations.gif)
 
