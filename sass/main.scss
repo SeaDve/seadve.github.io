@@ -23,11 +23,12 @@
 .card {
     flex-grow: 1;
     flex-shrink: 1;
-    padding-top: 24px;
 }
 
 .card-image {
-    max-width: 160px;
+    max-height: 160px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 // other
