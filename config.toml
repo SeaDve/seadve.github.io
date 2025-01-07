@@ -52,4 +52,4 @@ footer_menu = [
     { name = "Donate", url = "donate", trailing_slash = true },
     { name = "About", url = "about", trailing_slash = true },
 ]
-copyright = "Copyright © 2024 Dave Patrick Caberto. All rights reserved."
+copyright = "Copyright © 2025 Dave Patrick Caberto. All rights reserved."
