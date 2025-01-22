@@ -38,6 +38,8 @@ menu = [
     { name = "Projects", url = "projects", trailing_slash = true },
 ]
 
+quick_navigation_buttons = true
+
 feed_icon = true
 full_content_in_feed = true
 
