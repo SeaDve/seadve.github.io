@@ -15,7 +15,7 @@ Choosing a Linux distro is not an easy task. New users might be overwhelmed with
 
 Note that this list may vary from user to user. The main criteria I use are ease of use, user experience, and software and hardware support.
 
-### 5. Linux Mint
+## 5. Linux Mint
 
 ![Linux Mint Screenshot](linux-mint.png)
 
@@ -33,7 +33,7 @@ Note that this list may vary from user to user. The main criteria I use are ease
 
 It comes with the traditional desktop experience, so it would work great for users who came from Windows. It is very customizable and there are a lot of themes to choose from.
 
-### 4. Elementary OS
+## 4. Elementary OS
 
 ![Elementary OS Screenshot](elementary-os.png)
 
@@ -51,7 +51,7 @@ It comes with the traditional desktop experience, so it would work great for use
 
 To be honest, it is one of the most beautiful Linux distros and its minimalistic look adds to the beauty. The thing I like the most about Elementary OS is its app store which makes it seamless to help hard-working developers.
 
-### 3. Pop!_OS
+## 3. Pop!_OS
 
 ![Pop!_OS Screenshot](pop-os.jpeg)
 
@@ -70,7 +70,7 @@ To be honest, it is one of the most beautiful Linux distros and its minimalistic
 
 It provides a snappy and polished experience with the help of a slightly-modified GNOME desktop environment. It also comes with an auto-tiling extension which could be handy for power users.
 
-### 2. Ubuntu
+## 2. Ubuntu
 
 ![Ubuntu Screenshot](ubuntu.png)
 
@@ -113,7 +113,7 @@ It is one of the oldest and most stable Linux distros out there. However, for de
 
 <br>
 
-### 1. Fedora
+## 1. Fedora
 
 ![Fedora Screenshot](fedora.png)
 
