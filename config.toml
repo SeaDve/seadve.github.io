@@ -55,3 +55,19 @@ footer_menu = [
     { name = "About", url = "about", trailing_slash = true },
 ]
 copyright = "Copyright © 2025 Dave Patrick Caberto. All rights reserved."
+
+[extra.giscus]
+enabled_for_all_posts = true
+automatic_loading = true
+repo = "SeaDve/seadve.github.io"
+repo_id = "MDEwOlJlcG9zaXRvcnkzNDAyMTk0NzU"
+category = "Announcements"
+category_id = "DIC_kwDOFEdWU84CmO-D"
+mapping = "slug"
+strict_title_matching = 1
+enable_reactions = 1
+comment_box_above_comments = true
+light_theme = "noborder_light"
+dark_theme = "noborder_dark"
+lang = ""
+lazy_loading = true
