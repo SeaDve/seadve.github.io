@@ -30,7 +30,7 @@ custom_subset = false
 theme_switcher = false
 
 menu = [
-    { name = "Posts", url = "posts", trailing_slash = true },
+    { name = "Posts", url = "blog", trailing_slash = true },
     { name = "Designs", url = "designs", trailing_slash = true },
     { name = "Photographs", url = "photographs", trailing_slash = true },
     { name = "Projects", url = "projects", trailing_slash = true },

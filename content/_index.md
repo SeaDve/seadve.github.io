@@ -5,7 +5,7 @@ template = "section.html"
 
 [extra]
 header = { title = "Hi, I'm Dave Patrick.", img = "img/logo-circle.png" }
-section_path = "posts/_index.md"
+section_path = "blog/_index.md"
 max_posts = 4
 projects_path = "projects/_index.md"
 max_projects = 3
