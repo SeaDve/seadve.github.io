@@ -38,6 +38,7 @@ menu = [
 ]
 
 quick_navigation_buttons = true
+show_previous_next_article_links = true
 
 feed_icon = true
 full_content_in_feed = true
