@@ -31,11 +31,10 @@ theme_switcher = false
 
 menu = [
     { name = "Blog", url = "blog", trailing_slash = true },
-    { name = "Archive", url = "archive", trailing_slash = true },
-    { name = "Tags", url = "tags", trailing_slash = true },
     { name = "Designs", url = "designs", trailing_slash = true },
     { name = "Photographs", url = "photographs", trailing_slash = true },
     { name = "Projects", url = "projects", trailing_slash = true },
+    { name = "About", url = "about", trailing_slash = true },
 ]
 
 quick_navigation_buttons = true
@@ -51,8 +50,9 @@ socials = [
     { name = "mastodon", url = "https://mastodon.social/@seadve", icon = "mastodon" },
 ]
 footer_menu = [
+    { name = "Archive", url = "archive", trailing_slash = true },
+    { name = "Tags", url = "tags", trailing_slash = true },
     { name = "Donate", url = "donate", trailing_slash = true },
-    { name = "About", url = "about", trailing_slash = true },
 ]
 copyright = "Copyright © 2025 Dave Patrick Caberto. All rights reserved."
 
