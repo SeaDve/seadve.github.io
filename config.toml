@@ -51,11 +51,17 @@ socials = [
     { name = "mastodon", url = "https://mastodon.social/@seadve", icon = "mastodon" },
 ]
 footer_menu = [
-    { name = "Archive", url = "archive", trailing_slash = true },
-    { name = "Tags", url = "tags", trailing_slash = true },
+    { name = "Posts Archive", url = "archive", trailing_slash = true },
+    { name = "Posts Tags", url = "tags", trailing_slash = true },
+    { name = "Site Statistics", url = "https://seadve.goatcounter.com/", trailing_slash = true },
     { name = "Donate", url = "donate", trailing_slash = true },
 ]
 copyright = "Copyright © 2025 Dave Patrick Caberto. All rights reserved."
+
+[extra.analytics]
+service = "goatcounter"
+id = "seadve"
+self_hosted_url = ""
 
 [extra.giscus]
 enabled_for_all_posts = true
