@@ -172,6 +172,6 @@ This DC power supply project was a fantastic learning experience—it brought cl
 
 Overall, we learned a lot about troubleshooting, design limitations, and real-world performance. With a bit more fine-tuning, this could even inspire more advanced builds down the line. For now, it’s a win for learning and the satisfaction of making something work (mostly) as planned!
 
-Special thanks to our professor for guiding us and to my amazing groupmates—Roneline, Rhaniel, Peejay, Aaron, and Rhon—for making this experience enjoyable and productive (ask them?). Cheers to teamwork and lessons learned!
+Special thanks to our professor for guiding us and to my amazing groupmates—Roneline, Rhaniel, Peejay, Aaron, and Rohn—for making this experience enjoyable and productive (ask them?). Cheers to teamwork and lessons learned!
 
 If you have any questions or feedback, feel free to leave a comment below. We’d love to hear your thoughts or critiques. Until next time, happy tinkering!
