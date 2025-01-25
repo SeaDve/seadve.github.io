@@ -56,7 +56,7 @@ footer_menu = [
     { name = "Site Statistics", url = "https://seadve.goatcounter.com/", trailing_slash = true },
     { name = "Donate", url = "donate", trailing_slash = true },
 ]
-copyright = "Copyright © 2025 Dave Patrick Caberto. All rights reserved."
+copyright = "Copyright © $CURRENT_YEAR Dave Patrick Caberto. All rights reserved."
 
 [extra.analytics]
 service = "goatcounter"
