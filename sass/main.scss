@@ -31,6 +31,19 @@
     margin-right: auto;
 }
 
+// templates/page.html
+
+article {
+    section.body img {
+        border-radius: 5px;
+    }
+
+    div.social-media-card img {
+        border-radius: 5px;
+        margin-bottom: 24px;
+    }
+}
+
 // other
 
 .gallery {

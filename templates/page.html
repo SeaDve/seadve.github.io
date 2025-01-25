@@ -107,6 +107,13 @@ Current section extra: {% if current_section %}{{ current_section.extra | json_e
 
 <main>
     <article>
+        <!-- MOD: add social_media_card if it exist -->
+        {% if page.extra.social_media_card %}
+            <div class="social-media-card">
+                <img src="{{ current_url }}{{ page.extra.social_media_card }}" alt="Card"/>
+            </div>
+        {% endif %}
+
         <h1 class="article-title">
             {{ page.title }}
         </h1>
@@ -209,13 +216,6 @@ Current section extra: {% if current_section %}{{ current_section.extra | json_e
                 {%- endif -%}
             {%- endif -%}
         {%- endfor -%}
-
-        <!-- MOD: add social_media_card if it exist -->
-        {% if page.extra.social_media_card %}
-            <p>
-                <img src="{{ current_url }}{{ page.extra.social_media_card }}" alt="Card" />
-            </p>
-        {% endif %}
 
         {% if page.extra.tldr %}
             <div class="admonition note">
