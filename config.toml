@@ -43,7 +43,7 @@ show_previous_next_article_links = true
 feed_icon = true
 full_content_in_feed = true
 
-email = ""
+email = "ZGF2ZWNydXo0OEBnbWFpbC5jb20="
 socials = [
     { name = "github", url = "https://github.com/SeaDve/", icon = "github" },
     { name = "gitlab", url = "https://gitlab.gnome.org/SeaDve", icon = "gitlab" },
