@@ -14,6 +14,7 @@ I have experience in:
 
 * Software development (Rust, Python, and C)
 * Desktop application development (GTK and Libadwaita)
+* Cross-platform application development (Flutter)
 * VCS and hosting platforms (Git, GitHub, and GitLab)
 * Multimedia (GStreamer)
 * Linux (Bash)
