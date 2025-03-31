@@ -49,6 +49,7 @@ socials = [
     { name = "gitlab", url = "https://gitlab.gnome.org/SeaDve", icon = "gitlab" },
     { name = "linkedin", url = "https://www.linkedin.com/in/dave-patrick-caberto", icon = "linkedin" },
     { name = "mastodon", url = "https://mastodon.social/@seadve", icon = "mastodon" },
+    { name = "strava", url = "https://www.strava.com/athletes/161009319", icon = "strava" },
 ]
 footer_menu = [
     { name = "Posts Archive", url = "archive", trailing_slash = true },
