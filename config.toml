@@ -53,10 +53,10 @@ socials = [
     { name = "strava", url = "https://www.strava.com/athletes/161009319", icon = "strava" },
 ]
 footer_menu = [
-    { name = "Posts Archive", url = "archive", trailing_slash = true },
-    { name = "Posts Tags", url = "tags", trailing_slash = true },
-    { name = "Site Statistics", url = "https://seadve.goatcounter.com/", trailing_slash = true },
     { name = "Donate", url = "donate", trailing_slash = true },
+    { name = "Archive", url = "archive", trailing_slash = true },
+    { name = "Tags", url = "tags", trailing_slash = true },
+    { name = "Site Statistics", url = "https://seadve.goatcounter.com/", trailing_slash = true },
 ]
 copyright = "Copyright © $CURRENT_YEAR Dave Patrick Caberto. All rights reserved."
 
