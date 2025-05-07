@@ -21,7 +21,7 @@ I have experience in:
 * Web development (Typescript/Javascript, CSS, and HTML)
 * Database (SQLite and LMDB)
 * Graphics design (Inkscape)
-* Embedded systems + IoT (Raspberry Pi and Arduino)
+* Embedded systems + IoT (Arduino, ESP, and Raspberry Pi)
 * 3D design and modeling (AutoCAD, SketchUp)
 * PCB design (EasyEDA)
 

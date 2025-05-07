@@ -7,5 +7,5 @@ weight = 5
 link_to = "https://github.com/SeaDve/uets"
 
 [taxonomies]
-tags = ["Rust", "GTK", "Libadwaita", "GStreamer", "LMDB", "Arduino", "Raspberry Pi"]
+tags = ["Rust", "GTK", "Libadwaita", "GStreamer", "LMDB", "ESP8266", "Raspberry Pi"]
 +++
