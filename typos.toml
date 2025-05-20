@@ -1,2 +1,3 @@
 [default.extend-words]
-ND = "ND" # repo_id on config.toml
+ND = "ND"     # repo_id on config.toml
+hevy = "hevy"
