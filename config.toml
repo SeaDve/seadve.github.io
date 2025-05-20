@@ -51,6 +51,7 @@ socials = [
     { name = "linkedin", url = "https://www.linkedin.com/in/dave-patrick-caberto", icon = "linkedin" },
     { name = "mastodon", url = "https://mastodon.social/@seadve", icon = "mastodon" },
     { name = "strava", url = "https://www.strava.com/athletes/161009319", icon = "strava" },
+    { name = "hevy", url = "https://hevy.com/user/seadve", icon = "hevy" },
 ]
 footer_menu = [
     { name = "Donate", url = "donate", trailing_slash = true },
