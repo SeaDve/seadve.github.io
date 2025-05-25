@@ -7,5 +7,5 @@ weight = 5
 link_to = "https://github.com/SeaDve/dalisay"
 
 [taxonomies]
-tags = ["Rust", "Flutter", "ESP32"]
+tags = ["C++", "Flutter", "ESP32"]
 +++
