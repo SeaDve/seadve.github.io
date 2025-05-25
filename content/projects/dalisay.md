@@ -1,6 +1,6 @@
 +++
 title = "DALISAY"
-description = "Device for Advanced Liquid Inspection, Sensing, Analytics, and Yield"
+description = "Water Dispensing System with RFID Container Detection and Quality Monitoring"
 weight = 5
 
 [extra]
