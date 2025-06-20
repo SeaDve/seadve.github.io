@@ -12,16 +12,17 @@ I contribute to various free and open-source software in my free time, as well a
 
 I have experience in:
 
-* Software development (Rust, Python, and C)
+* Software development (Rust, Python, C, and C++)
 * Desktop application development (GTK and Libadwaita)
 * Cross-platform application development (Flutter)
 * VCS and hosting platforms (Git, GitHub, and GitLab)
 * Multimedia (GStreamer)
 * Linux (Bash)
 * Web development (Typescript/Javascript, CSS, and HTML)
+* Networking (WebSocket, HTTP, MQTT, and libp2p)
 * Database (SQLite and LMDB)
 * Graphics design (Inkscape)
-* Embedded systems + IoT (Arduino, ESP, and Raspberry Pi)
+* Embedded systems + IoT (Arduino, ESP, Raspberry Pi, and PlatformIO)
 * 3D design and modeling (AutoCAD, SketchUp)
 * PCB design (EasyEDA)
 
