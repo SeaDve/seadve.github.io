@@ -22,9 +22,9 @@ I have experience in:
 * Networking (WebSocket, HTTP, MQTT, and libp2p)
 * Database (SQLite and LMDB)
 * Graphics design (Inkscape)
-* Embedded systems + IoT (Arduino, ESP, Raspberry Pi, and PlatformIO)
-* 3D design and modeling (AutoCAD, SketchUp)
-* PCB design (EasyEDA)
+* Embedded systems + IoT (Arduino, ESP, Raspberry Pi, PlatformIO, and FreeRTOS)
+* 3D design and modeling (SketchUp, AutoCAD, and Autodesk Inventor)
+* PCB design (EasyEDA and KiCAD)
 
 I am currently pursuing:
 
