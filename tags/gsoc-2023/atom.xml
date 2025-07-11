@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://seadve.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;seadve.github.io</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>GSoC 2023</tabi:current_section>
+    </tabi:metadata><title>SeaDve - GSoC 2023</title>
+        <subtitle>Application developer based in the Philippines</subtitle>
+    <link href="https://seadve.github.io/tags/gsoc-2023/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://seadve.github.io/tags/gsoc-2023/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2023-08-28T20:22:00.002+08:00</updated>
+    <id>https://seadve.github.io/tags/gsoc-2023/atom.xml</id><entry xml:lang="en">
+        <title>GSoC 2023: Rust and GTK 4 Bustle Rewrite (Final Overview)</title>
+        <published>2023-08-28T12:29:00.001+08:00</published>
+        <updated>2023-08-28T20:22:00.002+08:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/9-gsoc-2023-final-overview/" type="text/html"/>
+        <id>https://seadve.github.io/blog/9-gsoc-2023-final-overview/</id>
+        
+            <content type="html">&lt;p&gt;Over the summer, for 12 weeks, I worked on rewriting Bustle in Rust and GTK 4 as part of the Google Summer of Code (GSoC) 2023 program. This post is an overview of the work done and the future plans for the project.&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;about-bustle&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#about-bustle&quot; aria-label=&quot;Anchor link for: about-bustle&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+About Bustle&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.freedesktop.org&#x2F;bustle&#x2F;bustle&quot;&gt;Bustle&lt;&#x2F;a&gt; is a graphical application used to analyze &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.freedesktop.org&#x2F;wiki&#x2F;Software&#x2F;dbus&#x2F;&quot;&gt;D-Bus&lt;&#x2F;a&gt; activities. It uses sequence diagrams to present signal emissions and method calls messages.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;9-gsoc-2023-final-overview&#x2F;old-bustle.png&quot; alt=&quot;Old Bustle&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Bustle represents these messages using a row-based layout. Each row is dedicated to displaying the following information: the elapsed time since the first message, the message path, and the member, which could be the name of the emitted signal or invoked method. On the other hand, individual columns correspond to distinct D-Bus services. Bustle draws arrows that transverse these columns to visualize the communication between services, while arcs represent method invocations and returns. This visual paradigm is valuable as, for instance, it can be used to see which services a D-Bus application talks to and how often, which can be handy in debugging, enhancing security, and optimizing performance within the application.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;project-goal&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#project-goal&quot; aria-label=&quot;Anchor link for: project-goal&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Project Goal&lt;&#x2F;h2&gt;
+&lt;p&gt;The ultimate goal of this project is to port Bustle to GTK 4 and rewrite it in Rust. Although the current implementation of Bustle in Haskell and GTK 3 is functional, there are compelling reasons to consider a rewrite in Rust. This includes enabling the tool to take advantage of a range of ergonomic libraries, including &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dbus2&#x2F;zbus&quot;&gt;zbus&lt;&#x2F;a&gt;, &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;gtk-rs&#x2F;gtk4-rs&quot;&gt;gtk4-rs&lt;&#x2F;a&gt;, and &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;courvoif&#x2F;pcap-file&quot;&gt;pcap-file&lt;&#x2F;a&gt;, that would ease the burden in maintenance. Furthermore, the growing Rust community and the availability of the Rust SDK in &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;flathub.org&#x2F;&quot;&gt;Flathub&lt;&#x2F;a&gt; would make the tool more accessible to potential contributors and simpler to distribute to users.&lt;&#x2F;p&gt;
+&lt;p&gt;Porting the tool to &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.gtk.org&#x2F;&quot;&gt;GTK 4&lt;&#x2F;a&gt;, on the other hand, would offer several benefits, such as access to newer and more performant widgets and drawing APIs like &lt;code&gt;GtkListView&lt;&#x2F;code&gt; and &lt;code&gt;GskPath&lt;&#x2F;code&gt;. This would allow Bustle to benefit from the latest developments in the platform and remain current with evolving standards.&lt;&#x2F;p&gt;
+&lt;p&gt;Altogether, a rewrite of Bustle in Rust and GTK 4 would provide advantages that can enhance the tool&#x27;s functionality, maintainability, longevity, accessibility, and possibly efficiency.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;work-done&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#work-done&quot; aria-label=&quot;Anchor link for: work-done&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Work Done&lt;&#x2F;h2&gt;
+&lt;p&gt;Most of the tasks in the original proposal have been completed. This includes having an initial MVP, porting GDBus usage to zbus, implementing file loading and saving, completing the recording functionality, and porting the UI, which comprises the diagram, details view, and services filter, to GTK 4.&lt;&#x2F;p&gt;
+&lt;p&gt;For more details on the work done, there are also &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;tags&#x2F;gsoc-2023&#x2F;&quot;&gt;bi-weekly updates&lt;&#x2F;a&gt; on my blog.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;snapshots&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#snapshots&quot; aria-label=&quot;Anchor link for: snapshots&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Snapshots&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;diagram-and-details-view&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#diagram-and-details-view&quot; aria-label=&quot;Anchor link for: diagram-and-details-view&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Diagram and Details View&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;9-gsoc-2023-final-overview&#x2F;diagram-and-details-view.gif&quot; alt=&quot;Diagram and Details View&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;recording-and-services-filter&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#recording-and-services-filter&quot; aria-label=&quot;Anchor link for: recording-and-services-filter&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Recording and Services Filter&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;9-gsoc-2023-final-overview&#x2F;recording-and-services-filter.gif&quot; alt=&quot;Recording and Services Filter&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;code-merged&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#code-merged&quot; aria-label=&quot;Anchor link for: code-merged&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Code Merged&lt;&#x2F;h2&gt;
+&lt;p&gt;These are the summary of code that has been merged during the GSoC period.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;bustle&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#bustle&quot; aria-label=&quot;Anchor link for: bustle&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Bustle&lt;&#x2F;h3&gt;
+&lt;p&gt;Most of the work done is in the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&quot;&gt;Bustle GNOME GitLab repository&lt;&#x2F;a&gt;, where the following pull requests have been merged:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;1&quot;&gt;Basic parsing and diagram implementation&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;2&quot;&gt;Port to zbus&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;3&quot;&gt;Drop explicit cargo protocol setting&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;10&quot;&gt;Decouple recording monitor from DiagramModel&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;12&quot;&gt;Implement system and address monitoring and recording&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;13&quot;&gt;Load DiagramModel from file asynchronously&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;14&quot;&gt;Stick at the bottom when an item is added to the diagram&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;15&quot;&gt;Bump gtk4-rs version&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;18&quot;&gt;Improve timestamp accuracy&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;19&quot;&gt;Focus on the entry row when dialog presents&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;21&quot;&gt;Save DiagramModel to file asynchronously&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;22&quot;&gt;Further improve timestamp accuracy&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;23&quot;&gt;Handle undefined behavior&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;26&quot;&gt;Enable link-time optimization and various cleanups&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;30&quot;&gt;Add loading and waiting pages on the window&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;33&quot;&gt;Show a toast when clicking copy and other fixes&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;34&quot;&gt;Implement diagram columns, arrows, and arcs&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;35&quot;&gt;Improve loading performance and code organization&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;36&quot;&gt;Implement API to get well-known names from bus names&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;37&quot;&gt;Refactor name owner changed signal handling&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;39&quot;&gt;Organize diagram files&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;40&quot;&gt;Improve file naming&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;41&quot;&gt;Monitor code cleanups&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;42&quot;&gt;Add support for targeted signals&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;43&quot;&gt;Port from libpcap to pcap-file&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;44&quot;&gt;Use a more proper column width&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;46&quot;&gt;Improving diagram tag styling&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;47&quot;&gt;Properly update the color and label of RowTag&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;48&quot;&gt;Improving diagram styling&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;50&quot;&gt;Propagate errors to the user&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;51&quot;&gt;Only show errors when necessary&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;52&quot;&gt;Prevent copy when packet data is owned&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;54&quot;&gt;Fix DiagramHeader labels UI glitch&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;55&quot;&gt;ColorWidget and DiagramView cleanups&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;zbus-and-gtk4-rs&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#zbus-and-gtk4-rs&quot; aria-label=&quot;Anchor link for: zbus-and-gtk4-rs&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+zbus and gtk4-rs&lt;&#x2F;h3&gt;
+&lt;p&gt;While the project is focused on Bustle, some changes are necessary to be upstreamed to other projects. This includes changes to zbus and gtk4-rs, where the following pull requests have been merged:&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;zbus&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#zbus&quot; aria-label=&quot;Anchor link for: zbus&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+zbus&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dbus2&#x2F;zbus&#x2F;pull&#x2F;370&quot;&gt;zb: Add a from_bytes constructor for Message&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dbus2&#x2F;zbus&#x2F;pull&#x2F;379&quot;&gt;zv: Implement Display for Value, Array, Structure, Dict &amp;amp; Maybe&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dbus2&#x2F;zbus&#x2F;pull&#x2F;450&quot;&gt;zv, zn: Improve Str, Owned*Name, BusName Debug implementations&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;gtk4-rs&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#gtk4-rs&quot; aria-label=&quot;Anchor link for: gtk4-rs&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+gtk4-rs&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;gtk-rs&#x2F;gtk4-rs&#x2F;pull&#x2F;1468&quot;&gt;gdk: Make RGBA::new const and add with_* constructors&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;code-to-be-merged&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#code-to-be-merged&quot; aria-label=&quot;Anchor link for: code-to-be-merged&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Code to be Merged&lt;&#x2F;h2&gt;
+&lt;p&gt;Due to time constraints and unexpected issues, some of the pull requests are still pending review:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;49&quot;&gt;Implement services filter&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;53&quot;&gt;Port to GskPath APIs&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;56&quot;&gt;Make use of GtkMapListModel for layouts&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;57&quot;&gt;Implement BusNameList and FilteredBusNameModel&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;58&quot;&gt;Fix header expanded height computation&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;future-plans&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#future-plans&quot; aria-label=&quot;Anchor link for: future-plans&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Future Plans&lt;&#x2F;h2&gt;
+&lt;p&gt;While most of the tasks in the proposal have been completed, there are still a few things that need to be done, including the following:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Optimizing performance&lt;&#x2F;li&gt;
+&lt;li&gt;Hunting and squashing bugs:
+&lt;ul&gt;
+&lt;li&gt;Improving name owner changed signal handling&lt;&#x2F;li&gt;
+&lt;li&gt;Drawing method call arc regardless if the row is not drawable&lt;&#x2F;li&gt;
+&lt;li&gt;Properly killing the &lt;code&gt;dbus-monitor&lt;&#x2F;code&gt; process&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;Adding more features:
+&lt;ul&gt;
+&lt;li&gt;Adding a button that scrolls to the method call message of a method return message or vice-versa&lt;&#x2F;li&gt;
+&lt;li&gt;Adding a way to open multiple diagrams at once via tabs and multiple windows&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;Fixing regressions and releasing the application on Flathub&lt;&#x2F;li&gt;
+&lt;li&gt;Continuous involvement and contribution to open-source&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;final-words&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#final-words&quot; aria-label=&quot;Anchor link for: final-words&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Final Words&lt;&#x2F;h2&gt;
+&lt;p&gt;I have to say this is, so far, the most challenging part of my software development journey. It felt like a hackathon since I had to understand things and create something that works quickly. While it was challenging, it was also rewarding as I was able to learn a lot of things and create something that I am proud of. There were moments of time pressure and frustration, but with experimentation, collaboration, and a lot of reading, I was able to overcome these challenges and make meaningful progress. The complexity of the project pushed me out of my comfort zone, forcing me to delve into unfamiliar areas of programming and technology.&lt;&#x2F;p&gt;
+&lt;p&gt;Lastly, I would like to express my gratitude to my mentors, &lt;strong&gt;Bilal Elmoussaoui&lt;&#x2F;strong&gt; and &lt;strong&gt;Maximiliano Sandoval&lt;&#x2F;strong&gt;, for tirelessly reviewing my pull requests and guiding me. I would also like to thank the GNOME Foundation and the community, especially the GNOME GSoC admin, &lt;strong&gt;Felipe Borges&lt;&#x2F;strong&gt;, for giving me the opportunity to work on this project. I would also like to extend my appreciation to zbus maintainer, &lt;strong&gt;Zeeshan Ali Khan&lt;&#x2F;strong&gt;, for their help in getting my pull requests merged against zbus and to the original Bustle developer, &lt;strong&gt;Will Thompson&lt;&#x2F;strong&gt;, for their guidance. Finally, I would like to thank my family and friends for their support and encouragement.&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Over the summer, for 12 weeks, I worked on rewriting Bustle in Rust and GTK 4 as part of the Google Summer of Code (GSoC) 2023 program. This post is an overview of the work done and the future plans for the project.
+…</summary>
+        </entry><entry xml:lang="en">
+        <title>GSoC 2023: Rust and GTK 4 Bustle Rewrite (Week 9 &amp; 10)</title>
+        <published>2023-08-19T20:29:00.001+08:00</published>
+        <updated>2023-08-19T21:34:00.002+08:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/8-gsoc-2023-week-9-10/" type="text/html"/>
+        <id>https://seadve.github.io/blog/8-gsoc-2023-week-9-10/</id>
+        
+            <content type="html">&lt;h2 id=&quot;progress-made&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#progress-made&quot; aria-label=&quot;Anchor link for: progress-made&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Progress Made&lt;&#x2F;h2&gt;
+&lt;p&gt;I am thrilled to announce that a lot of progress happened once again over the past few weeks! Starting with the most important thing, the diagram, a lot of bugs has been squashed and the rendering performance is now improved to a &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;34&quot;&gt;usable and merge-able state&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;8-gsoc-2023-week-9-10&#x2F;diagram.gif&quot; alt=&quot;Diagram&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Aside from that, it now has a header that doesn&#x27;t overlay on the diagram, the drawings now properly adjust to text scale factor changes, the signal arrows are now drawn, and the rows are no longer clipped into the row titles.&lt;&#x2F;p&gt;
+&lt;p&gt;My mentor, Bilal, also worked on &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;45&quot;&gt;adding tags&lt;&#x2F;a&gt;, the colored circles in the diagram, so it is easier to determine the category of a message.&lt;&#x2F;p&gt;
+&lt;p&gt;On the general UI side, there is now a &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;30&quot;&gt;proper loading page&lt;&#x2F;a&gt; that is shown while waiting for the PCAP files to show.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;8-gsoc-2023-week-9-10&#x2F;loading-page.png&quot; alt=&quot;Loading Page&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;However, that may not be as useful as we also landed a &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;commit&#x2F;d3d29c4c7becb42c33e789287ce467cf0e02ae32&quot;&gt;patch&lt;&#x2F;a&gt; that speeds up loading by up to 32 times; that&#x27;s from 16 seconds on average to 500 milliseconds, when loading a 2.2 MB file.&lt;&#x2F;p&gt;
+&lt;p&gt;There is also now a waiting page that shows before the first message arrives while recording.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;8-gsoc-2023-week-9-10&#x2F;waiting-page.png&quot; alt=&quot;Waiting Page&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;We also landed &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;20&quot;&gt;statistics window&lt;&#x2F;a&gt; which shows frequencies of messages, durations of method calls, and sizes information of each message.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;8-gsoc-2023-week-9-10&#x2F;statistics-frequencies-page.png&quot; alt=&quot;Statistics Frequencies Page&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;8-gsoc-2023-week-9-10&#x2F;statistics-durations-page.png&quot; alt=&quot;Statistics Durations Page&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;8-gsoc-2023-week-9-10&#x2F;statistics-sizes-page.png&quot; alt=&quot;Statistics Sizes Page&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;My mentor, Bilal, also worked on adding information on the details view including the body size and signature, and the response time from method return to its call.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;8-gsoc-2023-week-9-10&#x2F;details-view.png&quot; alt=&quot;Details View&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;There is also now a way to &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;28&quot;&gt;save the PCAP file as a DOT graph file&lt;&#x2F;a&gt;, which can be used to generate a graph using Graphviz to visualize interactions between bus names like the following:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;8-gsoc-2023-week-9-10&#x2F;dot-graph.png&quot; alt=&quot;DOT Graph&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;On the plumbing side, &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;commit&#x2F;ba0c05b2a10a5d48f245a61176242a1f2d8175ce&quot;&gt;saving to PCAP file is now asynchronous&lt;&#x2F;a&gt;, avoiding blocking the UI. We also ported from using &lt;code&gt;libpcap&lt;&#x2F;code&gt; to a pure Rust library, &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;commit&#x2F;a43a8f481d7dc8bd7d430eba50bfdf04a11efccb&quot;&gt;removing unsafe code and simplifying the codebase&lt;&#x2F;a&gt;. Furthermore, the timestamp computation is now &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;commit&#x2F;d603ecbc151dfa341a9d500ed7cd37b7292a13c3&quot;&gt;more accurate&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;As part of making debugging in Bustle easier, I have also submitted a &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dbus2&#x2F;zbus&#x2F;pull&#x2F;450&quot;&gt;patch&lt;&#x2F;a&gt; to &lt;code&gt;zbus&lt;&#x2F;code&gt; to simplify the printing of bus names.&lt;&#x2F;p&gt;
+&lt;p&gt;Finally, I started prototyping services filtering. It is still a proof of concept and does not look great, but it already functions and is a good starting point for next week.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;8-gsoc-2023-week-9-10&#x2F;services-filtering.png&quot; alt=&quot;Services Filtering&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;plans-for-the-following-weeks&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#plans-for-the-following-weeks&quot; aria-label=&quot;Anchor link for: plans-for-the-following-weeks&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Plans for the Following Weeks&lt;&#x2F;h2&gt;
+&lt;p&gt;The following weeks will be the last days of GSoC and I will be focusing on finishing up the remaining tasks. With the most difficult part of this GSoC project done, most of the tasks left, aside from services filtering, are optimizing performance and cleaning up the codebase.&lt;&#x2F;p&gt;
+&lt;p&gt;There are also a few more things to fix such as a proper name owner changed signal handling, drawing method call arc regardless if the row is not drawable, properly killing the &lt;code&gt;dbus-monitor&lt;&#x2F;code&gt; process, and propagating user-facing errors.&lt;&#x2F;p&gt;
+&lt;p&gt;I would also like to add features such as adding a button that scroll to the method call message of a method return message or vice-versa, porting to use the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;docs.gtk.org&#x2F;gsk4&#x2F;struct.Path.html&quot;&gt;new &lt;code&gt;GskPath&lt;&#x2F;code&gt; APIs&lt;&#x2F;a&gt;, and adding a way to open multiple diagrams at once via tabs and multiple windows.&lt;&#x2F;p&gt;
+&lt;br&gt;
+&lt;p&gt;That&#x27;s all for this week. Thanks for reading!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">
+Progress Made
+I am thrilled to announce that a lot of progress happened once again over the past few weeks! Starting with the most important thing, the diagram, a lot of bugs has been squashed and the rendering performance is now improved to a usable and merge-able state.
+…</summary>
+        </entry><entry xml:lang="en">
+        <title>GSoC 2023: Rust and GTK 4 Bustle Rewrite (Week 7 &amp; 8)</title>
+        <published>2023-08-02T18:29:00.001+08:00</published>
+        <updated>2023-08-04T21:34:00.002+08:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/7-gsoc-2023-week-7-8/" type="text/html"/>
+        <id>https://seadve.github.io/blog/7-gsoc-2023-week-7-8/</id>
+        
+            <content type="html">&lt;h2 id=&quot;progress-made&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#progress-made&quot; aria-label=&quot;Anchor link for: progress-made&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Progress Made&lt;&#x2F;h2&gt;
+&lt;p&gt;A lot of things happened these past few weeks. First, the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;12&quot;&gt;MR to add address and system DBus recording&lt;&#x2F;a&gt; has already been merged. Though, before that was merged, a few revisions have been made: it now parses from messages bytes directly, instead of a PCAP stream, to prevent overhead. Additionally, it now properly propagates errors, such as when the &lt;code&gt;dbus-monitor&lt;&#x2F;code&gt; binary is not found.&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;Second, when recording, the sequence diagram now &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;14&quot;&gt;sticks at the bottom&lt;&#x2F;a&gt; because, in common use cases, it is mostly wanted to observe the new messages as they come.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;7-gsoc-2023-week-7-8&#x2F;sticky-scroll.gif&quot; alt=&quot;Sticky Scroll Screencast&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Moreover, on the smaller changes, &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;13&quot;&gt;PCAP file loading is now synchronous&lt;&#x2F;a&gt;, the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;15&quot;&gt;gtk4-rs dependency has now been updated to the recently released 0.17 version&lt;&#x2F;a&gt;, the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;18&quot;&gt;accuracy of timestamp calculations has been improved&lt;&#x2F;a&gt;, and the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;19&quot;&gt;focus issue on the address dialog has been fixed&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Lastly, the signals and method call arrows and arcs are now (finally!) drawn in the diagram. While it looks simple, it took me days to get it right. However, there is no merge request yet since it requires more bug fixing and code cleanup.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;7-gsoc-2023-week-7-8&#x2F;diagram.png&quot; alt=&quot;Diagram With Arrows and Arcs&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;guadec&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#guadec&quot; aria-label=&quot;Anchor link for: guadec&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+GUADEC&lt;&#x2F;h2&gt;
+&lt;p&gt;Aside from working on the code, I also attended GUADEC remotely. I had a lightning talk about a bit about myself and an overview of this project.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;plans-for-the-following-weeks&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#plans-for-the-following-weeks&quot; aria-label=&quot;Anchor link for: plans-for-the-following-weeks&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Plans for the Following Weeks&lt;&#x2F;h2&gt;
+&lt;p&gt;For the next weeks, the diagram still needs bug fixing and polishing, as mentioned. For instance, it currently does not draw arcs on method calls when either the call or return row is not visible. The header is also only visible when scrolled all the way to the top, and it only shows the unique name instead of the well-known name.&lt;&#x2F;p&gt;
+&lt;p&gt;After the diagram is completed, we will go on with the implementation of service filtering and adding a more convenient way to have multiple instances of recording or opened files via tabs.&lt;&#x2F;p&gt;
+&lt;br&gt;
+&lt;p&gt;That&#x27;s all for this week. Thanks for reading!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">
+Progress Made
+A lot of things happened these past few weeks. First, the MR to add address and system DBus recording has already been merged. Though, before that was merged, a few revisions have been made: it now parses from messages bytes directly, instead of a PCAP stream, to prevent overhead. Additionally, it now properly propagates errors, such as when the dbus-monitor binary is not found.
+…</summary>
+        </entry><entry xml:lang="en">
+        <title>GSoC 2023: Rust and GTK 4 Bustle Rewrite (Week 5 &amp; 6)</title>
+        <published>2023-07-19T11:51:00.002+08:00</published>
+        <updated>2023-07-19T11:51:00.002+08:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/6-gsoc-2023-week-5-6/" type="text/html"/>
+        <id>https://seadve.github.io/blog/6-gsoc-2023-week-5-6/</id>
+        
+            <content type="html">&lt;h2 id=&quot;progress-made&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#progress-made&quot; aria-label=&quot;Anchor link for: progress-made&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Progress Made&lt;&#x2F;h2&gt;
+&lt;p&gt;This week, the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dbus2&#x2F;zbus&#x2F;pull&#x2F;379&quot;&gt;PR to implement Display for Value, Array, Structure, Dict, and Maybe&lt;&#x2F;a&gt; has been merged. Thus, there is a much nicer way now upstream to display &lt;code&gt;zbus::Value&lt;&#x2F;code&gt;, similar to &lt;code&gt;GVariant&lt;&#x2F;code&gt;. With this blocker cleared out, the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;2&quot;&gt;zbus port MR&lt;&#x2F;a&gt; has also been merged, fully porting the Bustle rewrite to zbus.&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;Furthermore, my mentor, Bilal, started implementing session monitoring and saving to a PCAP file while I continued their work and &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;12&quot;&gt;implemented system and address recording&lt;&#x2F;a&gt;. However, it is not yet merged as there are some things to be figured out and more work to do. Specifically, it currently requires a &lt;code&gt;dbus-monitor&lt;&#x2F;code&gt; binary installed on the host, which is not great for distributions that do not package it.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;6-gsoc-2023-week-5-6&#x2F;address-dialog.png&quot; alt=&quot;Address Dialog Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Aside from those mentioned above, I have also been working on drawing the diagram. I am still studying the older Haskell codebase to prevent reinventing the wheel on some implementations. Unfortunately, the current implementation is still not ready enough for a screenshot.&lt;&#x2F;p&gt;
+&lt;p&gt;To easily track the missing features, we also set up an &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;boards&quot;&gt;issue board&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;plans-for-the-following-weeks&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#plans-for-the-following-weeks&quot; aria-label=&quot;Anchor link for: plans-for-the-following-weeks&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Plans for the Following Weeks&lt;&#x2F;h2&gt;
+&lt;p&gt;In the following weeks, I will get the PR to implement and address recording merged and work on more parts of the diagram drawing.&lt;&#x2F;p&gt;
+&lt;br&gt;
+&lt;p&gt;That&#x27;s all for this week. Thanks for reading!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">
+Progress Made
+This week, the PR to implement Display for Value, Array, Structure, Dict, and Maybe has been merged. Thus, there is a much nicer way now upstream to display zbus::Value, similar to GVariant. With this blocker cleared out, the zbus port MR has also been merged, fully porting the Bustle rewrite to zbus.
+…</summary>
+        </entry><entry xml:lang="en">
+        <title>GSoC 2023: Rust and GTK 4 Bustle Rewrite (Week 3 &amp; 4)</title>
+        <published>2023-07-05T09:30:00.002+08:00</published>
+        <updated>2023-07-05T09:30:00.002+08:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/5-gsoc-2023-week-3-4/" type="text/html"/>
+        <id>https://seadve.github.io/blog/5-gsoc-2023-week-3-4/</id>
+        
+            <content type="html">&lt;h2 id=&quot;progress-made&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#progress-made&quot; aria-label=&quot;Anchor link for: progress-made&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Progress Made&lt;&#x2F;h2&gt;
+&lt;p&gt;There&#x27;s unfortunately not a lot to talk about for the past two weeks as I have been really absorbed with finals at my university. However, while preparing for the finals, we got the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dbus2&#x2F;zbus&#x2F;pull&#x2F;370&quot;&gt;PR to add &lt;code&gt;from_bytes&lt;&#x2F;code&gt; constructor for &lt;code&gt;zbus::Message&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; merged. This means that we can now construct &lt;code&gt;zbus::Message&lt;&#x2F;code&gt; from raw &lt;code&gt;GDBusMessage&lt;&#x2F;code&gt; bytes and vice versa, which is critical for porting Bustle from GDBus to zbus.&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;On the other hand, the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dbus2&#x2F;zbus&#x2F;pull&#x2F;379&quot;&gt;PR to implement Display for Value, Array, Structure, Dict &amp;amp; Maybe&lt;&#x2F;a&gt; is, while the implementation for &lt;code&gt;zbus::Value::Str&lt;&#x2F;code&gt; and &lt;code&gt;zbus::Value::Array&lt;&#x2F;code&gt; is already fixed, still in the review stage as there are still things to polish, such as figuring out a way to simplify the implementation.&lt;&#x2F;p&gt;
+&lt;p&gt;Meanwhile, I have also been experimenting with drawing on the diagram using GTK transform functions such as &lt;code&gt;translate_coordinates&lt;&#x2F;code&gt; and &lt;code&gt;compute_point&lt;&#x2F;code&gt;, but nothing is ready enough yet for a screenshot.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;plans-for-the-following-weeks&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#plans-for-the-following-weeks&quot; aria-label=&quot;Anchor link for: plans-for-the-following-weeks&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Plans for the Following Weeks&lt;&#x2F;h2&gt;
+&lt;p&gt;With my finals out of the equation, I could focus more on finishing up drawing the signals and methods arrow on the diagram during the last days of the GSoC midterm period.&lt;&#x2F;p&gt;
+&lt;p&gt;I will also push &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dbus2&#x2F;zbus&#x2F;pull&#x2F;379&quot;&gt;PR to implement Display for Value, Array, Structure, Dict &amp;amp; Maybe&lt;&#x2F;a&gt; to be merged so that the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;2&quot;&gt;zbus port MR&lt;&#x2F;a&gt; can also be merged.&lt;&#x2F;p&gt;
+&lt;br&gt;
+&lt;p&gt;That&#x27;s all for this week. I&#x27;m looking forward to writing more in the next weeks. Thanks for reading!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">
+Progress Made
+There's unfortunately not a lot to talk about for the past two weeks as I have been really absorbed with finals at my university. However, while preparing for the finals, we got the PR to add from_bytes constructor for zbus::Message merged. This means that we can now construct zbus::Message from raw GDBusMessage bytes and vice versa, which is critical for porting Bustle from GDBus to zbus.
+…</summary>
+        </entry><entry xml:lang="en">
+        <title>GSoC 2023: Rust and GTK 4 Bustle Rewrite (Week 1 &amp; 2)</title>
+        <published>2023-06-11T19:09:00.005+08:00</published>
+        <updated>2023-06-11T19:25:18.353+08:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/4-gsoc-2023-week-1-2/" type="text/html"/>
+        <id>https://seadve.github.io/blog/4-gsoc-2023-week-1-2/</id>
+        
+            <content type="html">&lt;h2 id=&quot;progress-made&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#progress-made&quot; aria-label=&quot;Anchor link for: progress-made&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Progress Made&lt;&#x2F;h2&gt;
+&lt;p&gt;Before the GSoC coding period started, I started implementing the diagram used to display DBus activity with the help of the template repository made by my mentor, Maximiliano. One of the first challenges is figuring out how to load the PCAP files, which is the format Bustle uses to store the DBus messages. Without implementing that first, it would be difficult to test how the diagram will look like.&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;The Rust PCAP library was used to load the packets from the PCAP file, which contains the bytes of a DBus Message. It is nice to use, though it is missing an async API for loading files. That could be fixed in the future, but this week mainly focused on a basic diagram implementation. The bytes can then be parsed through GDBus into a &lt;code&gt;GDBusMessage&lt;&#x2F;code&gt;, which contains the information to implement the diagram.&lt;&#x2F;p&gt;
+&lt;p&gt;Through the parsed message, the diagram can be implemented. It uses &lt;code&gt;GtkListView&lt;&#x2F;code&gt; to display the rows as, aside from having a nice separation of view and model, it is more efficient because it recycles widgets, especially since PCAP files could possibly contain thousands of messages. Each row contains the elapsed time, path, destination, interface, and member of the message.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;4-gsoc-2023-week-1-2&#x2F;diagram-with-list-view-screenshot.png&quot; alt=&quot;Diagram With ListView Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Aside from the diagram, a &lt;code&gt;DetailsView&lt;&#x2F;code&gt; was also implemented. It shows the sender and the body, and also the destination, path, and member of the message. For more information about it, you can check out the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;1&quot;&gt;merge request&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;4-gsoc-2023-week-1-2&#x2F;details-view-screenshot.png&quot; alt=&quot;DetailsView Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;GDBus was used initially as zbus is missing the necessary APIs for parsing messages from bytes. However, the merge requests are already on the way to implement those upstream, including a nicer way to print &lt;code&gt;zbus::Value&lt;&#x2F;code&gt; that would match how &lt;code&gt;GVariant&lt;&#x2F;code&gt;s are printed.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dbus2&#x2F;zbus&#x2F;pull&#x2F;379&quot;&gt;zv: impl Display for Value, Array, Structure, Dict &amp;amp; Maybe&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dbus2&#x2F;zbus&#x2F;pull&#x2F;370&quot;&gt;zb: Add a from_bytes constructor for Message&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;plans-for-the-following-weeks&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#plans-for-the-following-weeks&quot; aria-label=&quot;Anchor link for: plans-for-the-following-weeks&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Plans for the Following Weeks&lt;&#x2F;h2&gt;
+&lt;p&gt;While the merge requests are in place, there is still some work to do, such as fixing up the Display implementation for &lt;code&gt;zbus::Value::Str&lt;&#x2F;code&gt; and &lt;code&gt;zbus::Value::Array&lt;&#x2F;code&gt;. Once the mentioned merge requests are merged, we could finish up the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;2&quot;&gt;zbus port&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;After the application is fully ported to zbus, we could start working on the more complicated part of the Diagram implementation, like showing signals and the method call and return arrows.&lt;&#x2F;p&gt;
+&lt;br&gt;
+&lt;p&gt;That&#x27;s all for this week. See you again in the next weeks. Thanks for reading!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">
+Progress Made
+Before the GSoC coding period started, I started implementing the diagram used to display DBus activity with the help of the template repository made by my mentor, Maximiliano. One of the first challenges is figuring out how to load the PCAP files, which is the format Bustle uses to store the DBus messages. Without implementing that first, it would be difficult to test how the diagram will look like.
+…</summary>
+        </entry><entry xml:lang="en">
+        <title>GSoC 2023: Rust and GTK 4 Bustle Rewrite (Introduction)</title>
+        <published>2023-05-11T23:17:00.003+08:00</published>
+        <updated>2023-06-11T19:19:30.970+08:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/3-gsoc-2023-introduction/" type="text/html"/>
+        <id>https://seadve.github.io/blog/3-gsoc-2023-introduction/</id>
+        
+            <content type="html">&lt;p&gt;Hello there!&lt;&#x2F;p&gt;
+&lt;p&gt;I am Dave Patrick Caberto, a first-year Electronics Engineering student from Bataan Peninsula State University, Philippines. This summer, I will be working on the Rust and GTK 4 rewrite of Bustle, a D-Bus activity visualizer, with the guidance of my mentors, Bilal Elmoussaoui and Maximiliano Sandoval.&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;me-and-my-bizarre-open-source-journey&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#me-and-my-bizarre-open-source-journey&quot; aria-label=&quot;Anchor link for: me-and-my-bizarre-open-source-journey&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Me and my bizarre open-source journey&lt;&#x2F;h2&gt;
+&lt;p&gt;Weirdly enough, I first discovered Linux five years ago on a failed attempt to do Hackintosh. I got bored with Windows that I decided to try something new and different, and that&#x27;s when I eventually stumbled upon Linux, specifically Elementary OS. It did not last for me since I still depend a lot on applications that are only available with Windows.&lt;&#x2F;p&gt;
+&lt;p&gt;Fast-forward two years later, I decided to give Linux another try with KDE Neon and migrate my workflows to open-source applications such as LibreOffice, Inkscape, and Kdenlive. I remember feeling adventurous and breaking my system numerous times, though I considered it as part of the learning process. I was intrigued by the idea of being a part of a community of passionate developers and enthusiastic users. I also liked the customization it had. However, as I grew with it, I started to realize that I had spent way too much time configuring things and forgetting to focus on what was really important, and that is when I discovered GNOME.&lt;&#x2F;p&gt;
+&lt;p&gt;When I first used GNOME, it was a totally different workflow, and I liked it. It was simple; the UI made sense. At that time, there was some software I was missing, particularly a screen recording application that works nicely on Wayland. That was the time I discovered RecApp. It worked well; however, it looked not at home, even for a GTK application. One of my first contributions was creating a mockup for the redesign, and I also took that opportunity to learn Python and GTK and implement my mockup. I was not necessarily proud of my code, but I was proud and happy about having the chance to contribute to the software I use and the community.&lt;&#x2F;p&gt;
+&lt;p&gt;A few months later, as I learned more about programming and the GNOME developer ecosystem, there were many more things I&#x27;d like to improve and change in RecApp, some of which other contributors did not agree with. That&#x27;s when Kooha was born, with a total in-and-out redesign of RecApp and a different focus and ideology. Almost a month later was also the birth of Mousai, a song recognizer application. Since then, I have been maintaining these two applications.&lt;&#x2F;p&gt;
+&lt;p&gt;There are definitely a lot of things I missed, but that was a quick summary of my journey with open-source.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;more-about-bustle-and-the-project&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#more-about-bustle-and-the-project&quot; aria-label=&quot;Anchor link for: more-about-bustle-and-the-project&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+More about Bustle and the project&lt;&#x2F;h2&gt;
+&lt;p&gt;For those who have not heard of Bustle, it is an application used to visualize D-Bus activities. It shows signal emissions, method calls, method returns, and errors, which are useful in observing traffic, debugging, and optimizing performance in D-Bus applications.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;3-gsoc-2023-introduction&#x2F;old-bustle-screenshot.png&quot; alt=&quot;Bustle Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Although the current implementation of Bustle in Haskell and GTK 3 is functional, there are noteworthy reasons to consider a rewrite in Rust. Some of these advantages include having access to a range of libraries, such as zbus, gtk4-rs, and LibPCAP bindings. Aside from this, the growing Rust community and the availability of the Rust SDK in Flathub would make the tool more accessible to contributors and simpler to distribute to the users. On the other hand, porting Bustle to GTK 4 would over benefits such as the newer and more modern LibAdwaita widgets and ListView API, which would make it easier for the tool to comply with the HIG and benefit from the latest developments in the platform.&lt;&#x2F;p&gt;
+&lt;p&gt;Altogether, this rewrite and port will contribute to the maintainability, accessibility, and future-proofing of Bustle through the use of newer technologies and arguably more ergonomic technologies.&lt;&#x2F;p&gt;
+&lt;br&gt;
+&lt;p&gt;I will be posting updates about the project every few weeks for the next few months, including more details about the plans for this GSoC project. If you&#x27;d like to talk about something, feel free to contact me at Matrix &lt;code&gt;@sedve:matrix.org&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Thanks for reading!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Hello there!
+I am Dave Patrick Caberto, a first-year Electronics Engineering student from Bataan Peninsula State University, Philippines. This summer, I will be working on the Rust and GTK 4 rewrite of Bustle, a D-Bus activity visualizer, with the guidance of my mentors, Bilal Elmoussaoui and Maximiliano Sandoval.
+…</summary>
+        </entry>
+</feed>
