@@ -106,10 +106,6 @@
     <meta property="og:title" content="{{ page.title | default(value=config.title) | safe }}" />
     <meta property="og:type" content="article" />
 
-    {% if page.extra.show_ads %}
-        <meta name="google-adsense-account" content="ca-pub-1987107241415366">
-    {% endif %}
-
     {# Image for social media sharing #}
     {%- include "partials/social_media_images.html" -%}
 
@@ -154,6 +150,9 @@
     {%- if config.extra.fediverse_creator -%}
         <meta name="fediverse:creator" content="@{{ config.extra.fediverse_creator["handle"] }}@{{ config.extra.fediverse_creator["domain"]}}" />
     {%- endif -%}
+
+    {# AdSense #}
+    <meta name="google-adsense-account" content="ca-pub-1987107241415366">
 
     {# Search #}
     {%- if config.build_search_index -%}
