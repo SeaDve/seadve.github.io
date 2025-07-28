@@ -1,7 +1,7 @@
 +++
 title = "DIY 12V DC Power Supply"
-date = 2025-01-23T12:29:00.001+08:00
-updated = 2025-01-23T12:29:00.001+08:00
+date = 2025-01-23
+updated = 2025-07-28
 
 [taxonomies]
 tags = ["Electronics", "3D Design"]
