@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://seadve.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;seadve.github.io</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>3D Design</tabi:current_section>
+    </tabi:metadata><title>SeaDve - 3D Design</title>
+        <subtitle>Application developer based in the Philippines</subtitle>
+    <link href="https://seadve.github.io/tags/3d-design/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://seadve.github.io/tags/3d-design/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-07-28T00:00:00+00:00</updated>
+    <id>https://seadve.github.io/tags/3d-design/atom.xml</id><entry xml:lang="en">
+        <title>DIY 12V DC Power Supply</title>
+        <published>2025-01-23T00:00:00+00:00</published>
+        <updated>2025-07-28T00:00:00+00:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/12-diy-12v-dc-power-supply/" type="text/html"/>
+        <id>https://seadve.github.io/blog/12-diy-12v-dc-power-supply/</id>
+        
+            <content type="html">&lt;p&gt;Let’s talk about our journey of creating something from scratch (almost?) for our &lt;strong&gt;Electronics I&lt;&#x2F;strong&gt; final project. It wasn’t groundbreaking like a full-blown multi-featured DC power supply, but it was a fulfilling learning experience.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Spoiler alert: mistakes were made, lessons were learned, and yes, we had fun.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;design-and-calculations&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#design-and-calculations&quot; aria-label=&quot;Anchor link for: design-and-calculations&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Design and Calculations&lt;&#x2F;h2&gt;
+&lt;p&gt;It began with brainstorming and sketching out ideas. This was our chance to put all the knowledge from our lectures to the test, from diode operating regions to voltage regulation. It was exciting but also a bit daunting.&lt;&#x2F;p&gt;
+&lt;p&gt;The first decision was our power supply&#x27;s specifications. We aimed for a &lt;strong&gt;12V output&lt;&#x2F;strong&gt;, a solid middle ground between complexity and functionality. Plus, the 5V option was already claimed by another group. For rectification, we chose a &lt;strong&gt;full-wave bridge rectifier&lt;&#x2F;strong&gt; due to its efficiency compared to the half-wave alternative.&lt;&#x2F;p&gt;
+&lt;p&gt;Calculations? Oh yes, there were plenty! Every components had to line up on paper before moving to reality.&lt;&#x2F;p&gt;
+&lt;p&gt;We started at the output, aiming for a stable 12V. To achieve this, we selected the &lt;strong&gt;LM7812 voltage regulator&lt;&#x2F;strong&gt;. It was an obvious choice: simple, reliable, and readily available. With an input range of 14.5 to 27V, it could easily provide the 12V we needed.&lt;&#x2F;p&gt;
+&lt;p&gt;Since the LM7812 can handle a maximum input voltage of 27V, a 12-0-12V transformer would be perfect. However, only a &lt;strong&gt;6-0-6V transformer&lt;&#x2F;strong&gt; was available, so we had to make do with that. Regarding with the diode, we used &lt;strong&gt;1N4007&lt;&#x2F;strong&gt; diodes as it is readily available and can handle our desired specifications.&lt;&#x2F;p&gt;
+&lt;p&gt;Assuming the provided input voltage for the regulator is 15.5V, which is also the output of the rectifier $ V_{\text{p(rec)}} $, the output voltage of the secondary side of the transformer $ V_{\text{p(sec)}} $ must be:&lt;&#x2F;p&gt;
+&lt;p&gt;$$ V_{\text{p(sec)}} = V_{\text{p(rec)}} + 1.4V = 15.5V + 1.4V = 16.9V_{\text{pk}} $$&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Note: The 1.4V was to account for the voltage drop across the diodes.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;or in RMS,&lt;&#x2F;p&gt;
+&lt;p&gt;$$ \frac{16.9V_{\text{pk}}}{\sqrt{2}} = 11.95V_{\text{rms}} $$&lt;&#x2F;p&gt;
+&lt;p&gt;This is perfect four our 6-0-6V transformer maximum output voltage of 12V in RMS.&lt;&#x2F;p&gt;
+&lt;p&gt;Using the formula for ripple factor,&lt;&#x2F;p&gt;
+&lt;p&gt;$$ r = \frac{V_{\text{r(pp)}}}{V_{\text{dc}}} $$&lt;&#x2F;p&gt;
+&lt;p&gt;$$ V_{\text{r(pp)}} = r \times V_{\text{dc}} $$&lt;&#x2F;p&gt;
+&lt;p&gt;we can determine the value of the filter capacitor, given a ripple factor $ r $ of 3% or 0.03, and output DC voltage $ V_{\text{dc}} $ of 12V.&lt;&#x2F;p&gt;
+&lt;p&gt;$$ V_{\text{r(pp)}} = \frac{V_{\text{p(rect)}}}{f \times R_\text{L} \times C} $$&lt;&#x2F;p&gt;
+&lt;p&gt;$$ C = \frac{V_{\text{p(rect)}}}{f \times R_\text{L} \times V_{\text{r(pp)}}} = \frac{V_{\text{p(rect)}}}{f \times R_\text{L} \times r \times V_{\text{dc}}} $$&lt;&#x2F;p&gt;
+&lt;p&gt;We also know that a typical frequency of the AC input is 60Hz and we have to multiply it by 2 to get the frequency of the full-wave rectified output.&lt;&#x2F;p&gt;
+&lt;p&gt;$$ f = 2 \times 60Hz = 120Hz $$&lt;&#x2F;p&gt;
+&lt;p&gt;Also, given the maximum load current of 50mA, we can calculate the assumed load resistance.&lt;&#x2F;p&gt;
+&lt;p&gt;$$ R_{\text{L}} = \frac{V_{\text{dc}}}{I_{\text{L}}} = \frac{12V}{50mA} = 240\Omega $$&lt;&#x2F;p&gt;
+&lt;p&gt;Substituting the values,&lt;&#x2F;p&gt;
+&lt;p&gt;$$ C = \frac{15.5V}{120Hz \times 240\Omega \times 0.03 \times 12V} = 1495 \mu F \approx 1.5 mF $$&lt;&#x2F;p&gt;
+&lt;p&gt;Here is the final schematic diagram of our design based on the calculations:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;schematic-diagram.png&quot; alt=&quot;Schematic Diagram&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;construction&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#construction&quot; aria-label=&quot;Anchor link for: construction&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Construction&lt;&#x2F;h2&gt;
+&lt;p&gt;Moving on, we had to put our design into action. This was where the real fun began. We had to source the components, breadboard the circuit, design the PCB, and 3D-print the enclosure.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;breadboarding&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#breadboarding&quot; aria-label=&quot;Anchor link for: breadboarding&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Breadboarding&lt;&#x2F;h3&gt;
+&lt;p&gt;The breadboarding phase was a mix of excitement and confusion. We had to double-check every connection and component.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;circuit-overview.png&quot; alt=&quot;Circuit Overview&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;breadboard-closeup.png&quot; alt=&quot;Breadboard Close-up&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;It was a tedious process, but the feeling when the 12V LED lit up? Priceless.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;initial-testing.png&quot; alt=&quot;Initial Testing&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;pcb-design-etching-and-soldering&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#pcb-design-etching-and-soldering&quot; aria-label=&quot;Anchor link for: pcb-design-etching-and-soldering&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+PCB Design, Etching and Soldering&lt;&#x2F;h3&gt;
+&lt;p&gt;For the PCB design, we used EasyEDA. It was our first time using it, but it was surprisingly intuitive. We just had first to recreate the schematic diagram, then layout the components and traces.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;easy-eda-schematic.png&quot; alt=&quot;EasyEDA Schematic&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Tracing the components on the PCB was a bit tricky, but we managed to get it done. It is like playing connect-the-dots, except no overlapping lines are allowed since we only had a single-layer PCB.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;pcb-tracing.png&quot; alt=&quot;PCB Tracing&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;At the end, it was satisfying to see the final design.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;pcb-layout.png&quot; alt=&quot;PCB Layout&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;We had to print it on a sticker paper, transfer it to the copper board, cut it, drill it, etch it, and solder the components.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;pcb-soldered.png&quot; alt=&quot;PCB Soldered&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Did we also mention that we soldered the regulator in reverse for the first time? Oops.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;custom-enclosure&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#custom-enclosure&quot; aria-label=&quot;Anchor link for: custom-enclosure&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Custom Enclosure&lt;&#x2F;h3&gt;
+&lt;p&gt;To make our project stand out, we decided to 3D-print a custom enclosure. Designing it on SketchUp was surprisingly fun.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;3d-model.gif&quot; alt=&quot;3D Model&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;It was also satisfying to see the once a software model come to life as a physical object.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;3d-printed.jpg&quot; alt=&quot;3D Printed&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;testing&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#testing&quot; aria-label=&quot;Anchor link for: testing&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Testing&lt;&#x2F;h2&gt;
+&lt;p&gt;Testing day was a rollercoaster. Smoke-free? Check. Output voltage stable? Mostly.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;line-regulation-via-varying-input-voltage&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#line-regulation-via-varying-input-voltage&quot; aria-label=&quot;Anchor link for: line-regulation-via-varying-input-voltage&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Line Regulation Via Varying Input Voltage&lt;&#x2F;h3&gt;
+&lt;p&gt;For the first table, we vary the input voltage, and we measured the input voltage, the transformer output, the filter output, the regulator output, and the percent voltage regulation.&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Trial No.&lt;&#x2F;th&gt;&lt;th&gt;Input Voltage ($ V_{\text{rms}} $)&lt;&#x2F;th&gt;&lt;th&gt;Transformer Output ($ V_{\text{rms}} $)&lt;&#x2F;th&gt;&lt;th&gt;Filter Output ($ V_{\text{DC}} $)&lt;&#x2F;th&gt;&lt;th&gt;Regulator Output ($ V_{\text{DC}} $)&lt;&#x2F;th&gt;&lt;th&gt;% Voltage Regulation&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;213&lt;&#x2F;td&gt;&lt;td&gt;12.1&lt;&#x2F;td&gt;&lt;td&gt;13.58&lt;&#x2F;td&gt;&lt;td&gt;11.97&lt;&#x2F;td&gt;&lt;td&gt;5&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;2&lt;&#x2F;td&gt;&lt;td&gt;214&lt;&#x2F;td&gt;&lt;td&gt;11.2&lt;&#x2F;td&gt;&lt;td&gt;13.82&lt;&#x2F;td&gt;&lt;td&gt;11.92&lt;&#x2F;td&gt;&lt;td&gt;5&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;3&lt;&#x2F;td&gt;&lt;td&gt;215&lt;&#x2F;td&gt;&lt;td&gt;10.7&lt;&#x2F;td&gt;&lt;td&gt;13.73&lt;&#x2F;td&gt;&lt;td&gt;12.03&lt;&#x2F;td&gt;&lt;td&gt;10&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;4&lt;&#x2F;td&gt;&lt;td&gt;216&lt;&#x2F;td&gt;&lt;td&gt;11.5&lt;&#x2F;td&gt;&lt;td&gt;13.80&lt;&#x2F;td&gt;&lt;td&gt;11.93&lt;&#x2F;td&gt;&lt;td&gt;10&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;5&lt;&#x2F;td&gt;&lt;td&gt;217&lt;&#x2F;td&gt;&lt;td&gt;10.8&lt;&#x2F;td&gt;&lt;td&gt;13.26&lt;&#x2F;td&gt;&lt;td&gt;12.01&lt;&#x2F;td&gt;&lt;td&gt;9&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;6&lt;&#x2F;td&gt;&lt;td&gt;218&lt;&#x2F;td&gt;&lt;td&gt;11.0&lt;&#x2F;td&gt;&lt;td&gt;13.59&lt;&#x2F;td&gt;&lt;td&gt;11.92&lt;&#x2F;td&gt;&lt;td&gt;9&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;7&lt;&#x2F;td&gt;&lt;td&gt;220&lt;&#x2F;td&gt;&lt;td&gt;11.3&lt;&#x2F;td&gt;&lt;td&gt;13.74&lt;&#x2F;td&gt;&lt;td&gt;11.92&lt;&#x2F;td&gt;&lt;td&gt;2&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;8&lt;&#x2F;td&gt;&lt;td&gt;222&lt;&#x2F;td&gt;&lt;td&gt;12.5&lt;&#x2F;td&gt;&lt;td&gt;13.61&lt;&#x2F;td&gt;&lt;td&gt;11.96&lt;&#x2F;td&gt;&lt;td&gt;2&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;9&lt;&#x2F;td&gt;&lt;td&gt;224&lt;&#x2F;td&gt;&lt;td&gt;12.3&lt;&#x2F;td&gt;&lt;td&gt;13.57&lt;&#x2F;td&gt;&lt;td&gt;11.93&lt;&#x2F;td&gt;&lt;td&gt;10&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;10&lt;&#x2F;td&gt;&lt;td&gt;226&lt;&#x2F;td&gt;&lt;td&gt;11.9&lt;&#x2F;td&gt;&lt;td&gt;13.88&lt;&#x2F;td&gt;&lt;td&gt;11.94&lt;&#x2F;td&gt;&lt;td&gt;10&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Average&lt;&#x2F;td&gt;&lt;td&gt;-&lt;&#x2F;td&gt;&lt;td&gt;11.53&lt;&#x2F;td&gt;&lt;td&gt;13.67&lt;&#x2F;td&gt;&lt;td&gt;11.953&lt;&#x2F;td&gt;&lt;td&gt;5.5&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;p&gt;&lt;em&gt;Note: The load resistor is a 22Ω resistor.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;table-1-graph.png&quot; alt=&quot;Table 1 Graph&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;load-regulation-via-varying-load-resistance&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#load-regulation-via-varying-load-resistance&quot; aria-label=&quot;Anchor link for: load-regulation-via-varying-load-resistance&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Load Regulation Via Varying Load Resistance&lt;&#x2F;h3&gt;
+&lt;p&gt;For the second table, we vary the load resistance, and we measured the input voltage, the transformer output, the filter output, the regulator output, and the percent voltage regulation.&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Trial No.&lt;&#x2F;th&gt;&lt;th&gt;Load Resistance ($ \Omega $)&lt;&#x2F;th&gt;&lt;th&gt;Transformer Output ($ V_{\text{rms}} $)&lt;&#x2F;th&gt;&lt;th&gt;Filter Output ($ V_{\text{DC}} $)&lt;&#x2F;th&gt;&lt;th&gt;Regulator Output ($ V_{\text{FL(DC)}} $)&lt;&#x2F;th&gt;&lt;th&gt;% Voltage Regulation&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;220&lt;&#x2F;td&gt;&lt;td&gt;10.6&lt;&#x2F;td&gt;&lt;td&gt;11.96&lt;&#x2F;td&gt;&lt;td&gt;10.22&lt;&#x2F;td&gt;&lt;td&gt;16.4385&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;2&lt;&#x2F;td&gt;&lt;td&gt;500&lt;&#x2F;td&gt;&lt;td&gt;10.7&lt;&#x2F;td&gt;&lt;td&gt;12.83&lt;&#x2F;td&gt;&lt;td&gt;11.43&lt;&#x2F;td&gt;&lt;td&gt;4.1120&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;3&lt;&#x2F;td&gt;&lt;td&gt;1k&lt;&#x2F;td&gt;&lt;td&gt;11.1&lt;&#x2F;td&gt;&lt;td&gt;13.05&lt;&#x2F;td&gt;&lt;td&gt;11.46&lt;&#x2F;td&gt;&lt;td&gt;3.8394&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;4&lt;&#x2F;td&gt;&lt;td&gt;2k&lt;&#x2F;td&gt;&lt;td&gt;11.1&lt;&#x2F;td&gt;&lt;td&gt;13.06&lt;&#x2F;td&gt;&lt;td&gt;11.48&lt;&#x2F;td&gt;&lt;td&gt;3.6585&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;5&lt;&#x2F;td&gt;&lt;td&gt;5k&lt;&#x2F;td&gt;&lt;td&gt;10.6&lt;&#x2F;td&gt;&lt;td&gt;13.20&lt;&#x2F;td&gt;&lt;td&gt;11.49&lt;&#x2F;td&gt;&lt;td&gt;3.5683&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;6&lt;&#x2F;td&gt;&lt;td&gt;6k&lt;&#x2F;td&gt;&lt;td&gt;10.9&lt;&#x2F;td&gt;&lt;td&gt;13.26&lt;&#x2F;td&gt;&lt;td&gt;11.78&lt;&#x2F;td&gt;&lt;td&gt;1.0187&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;7&lt;&#x2F;td&gt;&lt;td&gt;10k&lt;&#x2F;td&gt;&lt;td&gt;11.2&lt;&#x2F;td&gt;&lt;td&gt;13.39&lt;&#x2F;td&gt;&lt;td&gt;11.85&lt;&#x2F;td&gt;&lt;td&gt;0.4219&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;8&lt;&#x2F;td&gt;&lt;td&gt;11k&lt;&#x2F;td&gt;&lt;td&gt;11.3&lt;&#x2F;td&gt;&lt;td&gt;13.91&lt;&#x2F;td&gt;&lt;td&gt;11.87&lt;&#x2F;td&gt;&lt;td&gt;0.2527&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;9&lt;&#x2F;td&gt;&lt;td&gt;20k&lt;&#x2F;td&gt;&lt;td&gt;11.3&lt;&#x2F;td&gt;&lt;td&gt;13.53&lt;&#x2F;td&gt;&lt;td&gt;11.89&lt;&#x2F;td&gt;&lt;td&gt;0.0841&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;10&lt;&#x2F;td&gt;&lt;td&gt;22k&lt;&#x2F;td&gt;&lt;td&gt;11.1&lt;&#x2F;td&gt;&lt;td&gt;13.27&lt;&#x2F;td&gt;&lt;td&gt;11.90&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Average&lt;&#x2F;td&gt;&lt;td&gt;-&lt;&#x2F;td&gt;&lt;td&gt;10.99&lt;&#x2F;td&gt;&lt;td&gt;13.15&lt;&#x2F;td&gt;&lt;td&gt;11.54&lt;&#x2F;td&gt;&lt;td&gt;3.3394&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;p&gt;&lt;em&gt;Note: The primary voltage applied to the transformer was 220V in RMS. The $ V_{\text{NL(DC)}} $ used in computing the % voltage regulation is 11.9 V.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;table-2-graph.png&quot; alt=&quot;Table 2 Graph&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;data-interpretation&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#data-interpretation&quot; aria-label=&quot;Anchor link for: data-interpretation&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Data Interpretation&lt;&#x2F;h3&gt;
+&lt;p&gt;Looking at the tables, the LM7812 did a great job keeping the output mostly steady at 12V, even when we threw in some wild input voltage swings. That said, when the load resistance became too low, it struggled a bit, showing the limits of our trusty (but modest) 6-0-6V transformer. On the other hand, our filtering capacitors kept the ripples under control and gave us a smooth DC output.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;closing-words&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#closing-words&quot; aria-label=&quot;Anchor link for: closing-words&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Closing Words&lt;&#x2F;h2&gt;
+&lt;p&gt;This DC power supply project was a fantastic learning experience; it brought classroom concepts to life and gave us hands-on insight into circuit design and testing. While it performed well for what it is, it’s important to note that this design isn’t meant for serious, high-stakes applications. Think of it more as a stepping stone than a professional-grade project.&lt;&#x2F;p&gt;
+&lt;p&gt;Overall, we learned a lot about troubleshooting, design limitations, and real-world performance. With a bit more fine-tuning, this could even inspire more advanced builds down the line. For now, it’s a win for learning and the satisfaction of making something work (mostly) as planned!&lt;&#x2F;p&gt;
+&lt;p&gt;Special thanks to our professor for guiding us and to my amazing groupmates—Roneline, Rhaniel, Peejay, Aaron, and Rohn—for making this experience enjoyable and productive (ask them?).&lt;&#x2F;p&gt;
+&lt;p&gt;If you have any questions or feedback, feel free to leave a comment below. We’d love to hear your thoughts or critiques. Until next time, happy tinkering!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Let’s talk about our journey of creating something from scratch (almost?) for our Electronics I final project. It wasn’t groundbreaking like a full-blown multi-featured DC power supply, but it was a fulfilling learning experience.
+Spoiler alert: mistakes were made, lessons were learned, and yes, we had fun.
+…</summary>
+        </entry>
+</feed>

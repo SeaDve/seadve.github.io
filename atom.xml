@@ -1,0 +1,806 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://seadve.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;seadve.github.io</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>SeaDve</tabi:current_section>
+    </tabi:metadata><title>SeaDve</title>
+        <subtitle>Application developer based in the Philippines</subtitle>
+    <link href="https://seadve.github.io/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://seadve.github.io" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-07-28T00:00:00+00:00</updated>
+    <id>https://seadve.github.io/atom.xml</id><entry xml:lang="en">
+        <title>DIY 12V DC Power Supply</title>
+        <published>2025-01-23T00:00:00+00:00</published>
+        <updated>2025-07-28T00:00:00+00:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/12-diy-12v-dc-power-supply/" type="text/html"/>
+        <id>https://seadve.github.io/blog/12-diy-12v-dc-power-supply/</id>
+        
+            <content type="html">&lt;p&gt;Let’s talk about our journey of creating something from scratch (almost?) for our &lt;strong&gt;Electronics I&lt;&#x2F;strong&gt; final project. It wasn’t groundbreaking like a full-blown multi-featured DC power supply, but it was a fulfilling learning experience.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Spoiler alert: mistakes were made, lessons were learned, and yes, we had fun.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;design-and-calculations&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#design-and-calculations&quot; aria-label=&quot;Anchor link for: design-and-calculations&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Design and Calculations&lt;&#x2F;h2&gt;
+&lt;p&gt;It began with brainstorming and sketching out ideas. This was our chance to put all the knowledge from our lectures to the test, from diode operating regions to voltage regulation. It was exciting but also a bit daunting.&lt;&#x2F;p&gt;
+&lt;p&gt;The first decision was our power supply&#x27;s specifications. We aimed for a &lt;strong&gt;12V output&lt;&#x2F;strong&gt;, a solid middle ground between complexity and functionality. Plus, the 5V option was already claimed by another group. For rectification, we chose a &lt;strong&gt;full-wave bridge rectifier&lt;&#x2F;strong&gt; due to its efficiency compared to the half-wave alternative.&lt;&#x2F;p&gt;
+&lt;p&gt;Calculations? Oh yes, there were plenty! Every components had to line up on paper before moving to reality.&lt;&#x2F;p&gt;
+&lt;p&gt;We started at the output, aiming for a stable 12V. To achieve this, we selected the &lt;strong&gt;LM7812 voltage regulator&lt;&#x2F;strong&gt;. It was an obvious choice: simple, reliable, and readily available. With an input range of 14.5 to 27V, it could easily provide the 12V we needed.&lt;&#x2F;p&gt;
+&lt;p&gt;Since the LM7812 can handle a maximum input voltage of 27V, a 12-0-12V transformer would be perfect. However, only a &lt;strong&gt;6-0-6V transformer&lt;&#x2F;strong&gt; was available, so we had to make do with that. Regarding with the diode, we used &lt;strong&gt;1N4007&lt;&#x2F;strong&gt; diodes as it is readily available and can handle our desired specifications.&lt;&#x2F;p&gt;
+&lt;p&gt;Assuming the provided input voltage for the regulator is 15.5V, which is also the output of the rectifier $ V_{\text{p(rec)}} $, the output voltage of the secondary side of the transformer $ V_{\text{p(sec)}} $ must be:&lt;&#x2F;p&gt;
+&lt;p&gt;$$ V_{\text{p(sec)}} = V_{\text{p(rec)}} + 1.4V = 15.5V + 1.4V = 16.9V_{\text{pk}} $$&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Note: The 1.4V was to account for the voltage drop across the diodes.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;or in RMS,&lt;&#x2F;p&gt;
+&lt;p&gt;$$ \frac{16.9V_{\text{pk}}}{\sqrt{2}} = 11.95V_{\text{rms}} $$&lt;&#x2F;p&gt;
+&lt;p&gt;This is perfect four our 6-0-6V transformer maximum output voltage of 12V in RMS.&lt;&#x2F;p&gt;
+&lt;p&gt;Using the formula for ripple factor,&lt;&#x2F;p&gt;
+&lt;p&gt;$$ r = \frac{V_{\text{r(pp)}}}{V_{\text{dc}}} $$&lt;&#x2F;p&gt;
+&lt;p&gt;$$ V_{\text{r(pp)}} = r \times V_{\text{dc}} $$&lt;&#x2F;p&gt;
+&lt;p&gt;we can determine the value of the filter capacitor, given a ripple factor $ r $ of 3% or 0.03, and output DC voltage $ V_{\text{dc}} $ of 12V.&lt;&#x2F;p&gt;
+&lt;p&gt;$$ V_{\text{r(pp)}} = \frac{V_{\text{p(rect)}}}{f \times R_\text{L} \times C} $$&lt;&#x2F;p&gt;
+&lt;p&gt;$$ C = \frac{V_{\text{p(rect)}}}{f \times R_\text{L} \times V_{\text{r(pp)}}} = \frac{V_{\text{p(rect)}}}{f \times R_\text{L} \times r \times V_{\text{dc}}} $$&lt;&#x2F;p&gt;
+&lt;p&gt;We also know that a typical frequency of the AC input is 60Hz and we have to multiply it by 2 to get the frequency of the full-wave rectified output.&lt;&#x2F;p&gt;
+&lt;p&gt;$$ f = 2 \times 60Hz = 120Hz $$&lt;&#x2F;p&gt;
+&lt;p&gt;Also, given the maximum load current of 50mA, we can calculate the assumed load resistance.&lt;&#x2F;p&gt;
+&lt;p&gt;$$ R_{\text{L}} = \frac{V_{\text{dc}}}{I_{\text{L}}} = \frac{12V}{50mA} = 240\Omega $$&lt;&#x2F;p&gt;
+&lt;p&gt;Substituting the values,&lt;&#x2F;p&gt;
+&lt;p&gt;$$ C = \frac{15.5V}{120Hz \times 240\Omega \times 0.03 \times 12V} = 1495 \mu F \approx 1.5 mF $$&lt;&#x2F;p&gt;
+&lt;p&gt;Here is the final schematic diagram of our design based on the calculations:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;schematic-diagram.png&quot; alt=&quot;Schematic Diagram&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;construction&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#construction&quot; aria-label=&quot;Anchor link for: construction&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Construction&lt;&#x2F;h2&gt;
+&lt;p&gt;Moving on, we had to put our design into action. This was where the real fun began. We had to source the components, breadboard the circuit, design the PCB, and 3D-print the enclosure.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;breadboarding&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#breadboarding&quot; aria-label=&quot;Anchor link for: breadboarding&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Breadboarding&lt;&#x2F;h3&gt;
+&lt;p&gt;The breadboarding phase was a mix of excitement and confusion. We had to double-check every connection and component.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;circuit-overview.png&quot; alt=&quot;Circuit Overview&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;breadboard-closeup.png&quot; alt=&quot;Breadboard Close-up&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;It was a tedious process, but the feeling when the 12V LED lit up? Priceless.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;initial-testing.png&quot; alt=&quot;Initial Testing&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;pcb-design-etching-and-soldering&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#pcb-design-etching-and-soldering&quot; aria-label=&quot;Anchor link for: pcb-design-etching-and-soldering&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+PCB Design, Etching and Soldering&lt;&#x2F;h3&gt;
+&lt;p&gt;For the PCB design, we used EasyEDA. It was our first time using it, but it was surprisingly intuitive. We just had first to recreate the schematic diagram, then layout the components and traces.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;easy-eda-schematic.png&quot; alt=&quot;EasyEDA Schematic&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Tracing the components on the PCB was a bit tricky, but we managed to get it done. It is like playing connect-the-dots, except no overlapping lines are allowed since we only had a single-layer PCB.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;pcb-tracing.png&quot; alt=&quot;PCB Tracing&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;At the end, it was satisfying to see the final design.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;pcb-layout.png&quot; alt=&quot;PCB Layout&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;We had to print it on a sticker paper, transfer it to the copper board, cut it, drill it, etch it, and solder the components.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;pcb-soldered.png&quot; alt=&quot;PCB Soldered&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Did we also mention that we soldered the regulator in reverse for the first time? Oops.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;custom-enclosure&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#custom-enclosure&quot; aria-label=&quot;Anchor link for: custom-enclosure&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Custom Enclosure&lt;&#x2F;h3&gt;
+&lt;p&gt;To make our project stand out, we decided to 3D-print a custom enclosure. Designing it on SketchUp was surprisingly fun.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;3d-model.gif&quot; alt=&quot;3D Model&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;It was also satisfying to see the once a software model come to life as a physical object.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;3d-printed.jpg&quot; alt=&quot;3D Printed&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;testing&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#testing&quot; aria-label=&quot;Anchor link for: testing&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Testing&lt;&#x2F;h2&gt;
+&lt;p&gt;Testing day was a rollercoaster. Smoke-free? Check. Output voltage stable? Mostly.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;line-regulation-via-varying-input-voltage&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#line-regulation-via-varying-input-voltage&quot; aria-label=&quot;Anchor link for: line-regulation-via-varying-input-voltage&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Line Regulation Via Varying Input Voltage&lt;&#x2F;h3&gt;
+&lt;p&gt;For the first table, we vary the input voltage, and we measured the input voltage, the transformer output, the filter output, the regulator output, and the percent voltage regulation.&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Trial No.&lt;&#x2F;th&gt;&lt;th&gt;Input Voltage ($ V_{\text{rms}} $)&lt;&#x2F;th&gt;&lt;th&gt;Transformer Output ($ V_{\text{rms}} $)&lt;&#x2F;th&gt;&lt;th&gt;Filter Output ($ V_{\text{DC}} $)&lt;&#x2F;th&gt;&lt;th&gt;Regulator Output ($ V_{\text{DC}} $)&lt;&#x2F;th&gt;&lt;th&gt;% Voltage Regulation&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;213&lt;&#x2F;td&gt;&lt;td&gt;12.1&lt;&#x2F;td&gt;&lt;td&gt;13.58&lt;&#x2F;td&gt;&lt;td&gt;11.97&lt;&#x2F;td&gt;&lt;td&gt;5&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;2&lt;&#x2F;td&gt;&lt;td&gt;214&lt;&#x2F;td&gt;&lt;td&gt;11.2&lt;&#x2F;td&gt;&lt;td&gt;13.82&lt;&#x2F;td&gt;&lt;td&gt;11.92&lt;&#x2F;td&gt;&lt;td&gt;5&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;3&lt;&#x2F;td&gt;&lt;td&gt;215&lt;&#x2F;td&gt;&lt;td&gt;10.7&lt;&#x2F;td&gt;&lt;td&gt;13.73&lt;&#x2F;td&gt;&lt;td&gt;12.03&lt;&#x2F;td&gt;&lt;td&gt;10&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;4&lt;&#x2F;td&gt;&lt;td&gt;216&lt;&#x2F;td&gt;&lt;td&gt;11.5&lt;&#x2F;td&gt;&lt;td&gt;13.80&lt;&#x2F;td&gt;&lt;td&gt;11.93&lt;&#x2F;td&gt;&lt;td&gt;10&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;5&lt;&#x2F;td&gt;&lt;td&gt;217&lt;&#x2F;td&gt;&lt;td&gt;10.8&lt;&#x2F;td&gt;&lt;td&gt;13.26&lt;&#x2F;td&gt;&lt;td&gt;12.01&lt;&#x2F;td&gt;&lt;td&gt;9&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;6&lt;&#x2F;td&gt;&lt;td&gt;218&lt;&#x2F;td&gt;&lt;td&gt;11.0&lt;&#x2F;td&gt;&lt;td&gt;13.59&lt;&#x2F;td&gt;&lt;td&gt;11.92&lt;&#x2F;td&gt;&lt;td&gt;9&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;7&lt;&#x2F;td&gt;&lt;td&gt;220&lt;&#x2F;td&gt;&lt;td&gt;11.3&lt;&#x2F;td&gt;&lt;td&gt;13.74&lt;&#x2F;td&gt;&lt;td&gt;11.92&lt;&#x2F;td&gt;&lt;td&gt;2&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;8&lt;&#x2F;td&gt;&lt;td&gt;222&lt;&#x2F;td&gt;&lt;td&gt;12.5&lt;&#x2F;td&gt;&lt;td&gt;13.61&lt;&#x2F;td&gt;&lt;td&gt;11.96&lt;&#x2F;td&gt;&lt;td&gt;2&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;9&lt;&#x2F;td&gt;&lt;td&gt;224&lt;&#x2F;td&gt;&lt;td&gt;12.3&lt;&#x2F;td&gt;&lt;td&gt;13.57&lt;&#x2F;td&gt;&lt;td&gt;11.93&lt;&#x2F;td&gt;&lt;td&gt;10&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;10&lt;&#x2F;td&gt;&lt;td&gt;226&lt;&#x2F;td&gt;&lt;td&gt;11.9&lt;&#x2F;td&gt;&lt;td&gt;13.88&lt;&#x2F;td&gt;&lt;td&gt;11.94&lt;&#x2F;td&gt;&lt;td&gt;10&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Average&lt;&#x2F;td&gt;&lt;td&gt;-&lt;&#x2F;td&gt;&lt;td&gt;11.53&lt;&#x2F;td&gt;&lt;td&gt;13.67&lt;&#x2F;td&gt;&lt;td&gt;11.953&lt;&#x2F;td&gt;&lt;td&gt;5.5&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;p&gt;&lt;em&gt;Note: The load resistor is a 22Ω resistor.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;table-1-graph.png&quot; alt=&quot;Table 1 Graph&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;load-regulation-via-varying-load-resistance&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#load-regulation-via-varying-load-resistance&quot; aria-label=&quot;Anchor link for: load-regulation-via-varying-load-resistance&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Load Regulation Via Varying Load Resistance&lt;&#x2F;h3&gt;
+&lt;p&gt;For the second table, we vary the load resistance, and we measured the input voltage, the transformer output, the filter output, the regulator output, and the percent voltage regulation.&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Trial No.&lt;&#x2F;th&gt;&lt;th&gt;Load Resistance ($ \Omega $)&lt;&#x2F;th&gt;&lt;th&gt;Transformer Output ($ V_{\text{rms}} $)&lt;&#x2F;th&gt;&lt;th&gt;Filter Output ($ V_{\text{DC}} $)&lt;&#x2F;th&gt;&lt;th&gt;Regulator Output ($ V_{\text{FL(DC)}} $)&lt;&#x2F;th&gt;&lt;th&gt;% Voltage Regulation&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;220&lt;&#x2F;td&gt;&lt;td&gt;10.6&lt;&#x2F;td&gt;&lt;td&gt;11.96&lt;&#x2F;td&gt;&lt;td&gt;10.22&lt;&#x2F;td&gt;&lt;td&gt;16.4385&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;2&lt;&#x2F;td&gt;&lt;td&gt;500&lt;&#x2F;td&gt;&lt;td&gt;10.7&lt;&#x2F;td&gt;&lt;td&gt;12.83&lt;&#x2F;td&gt;&lt;td&gt;11.43&lt;&#x2F;td&gt;&lt;td&gt;4.1120&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;3&lt;&#x2F;td&gt;&lt;td&gt;1k&lt;&#x2F;td&gt;&lt;td&gt;11.1&lt;&#x2F;td&gt;&lt;td&gt;13.05&lt;&#x2F;td&gt;&lt;td&gt;11.46&lt;&#x2F;td&gt;&lt;td&gt;3.8394&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;4&lt;&#x2F;td&gt;&lt;td&gt;2k&lt;&#x2F;td&gt;&lt;td&gt;11.1&lt;&#x2F;td&gt;&lt;td&gt;13.06&lt;&#x2F;td&gt;&lt;td&gt;11.48&lt;&#x2F;td&gt;&lt;td&gt;3.6585&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;5&lt;&#x2F;td&gt;&lt;td&gt;5k&lt;&#x2F;td&gt;&lt;td&gt;10.6&lt;&#x2F;td&gt;&lt;td&gt;13.20&lt;&#x2F;td&gt;&lt;td&gt;11.49&lt;&#x2F;td&gt;&lt;td&gt;3.5683&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;6&lt;&#x2F;td&gt;&lt;td&gt;6k&lt;&#x2F;td&gt;&lt;td&gt;10.9&lt;&#x2F;td&gt;&lt;td&gt;13.26&lt;&#x2F;td&gt;&lt;td&gt;11.78&lt;&#x2F;td&gt;&lt;td&gt;1.0187&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;7&lt;&#x2F;td&gt;&lt;td&gt;10k&lt;&#x2F;td&gt;&lt;td&gt;11.2&lt;&#x2F;td&gt;&lt;td&gt;13.39&lt;&#x2F;td&gt;&lt;td&gt;11.85&lt;&#x2F;td&gt;&lt;td&gt;0.4219&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;8&lt;&#x2F;td&gt;&lt;td&gt;11k&lt;&#x2F;td&gt;&lt;td&gt;11.3&lt;&#x2F;td&gt;&lt;td&gt;13.91&lt;&#x2F;td&gt;&lt;td&gt;11.87&lt;&#x2F;td&gt;&lt;td&gt;0.2527&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;9&lt;&#x2F;td&gt;&lt;td&gt;20k&lt;&#x2F;td&gt;&lt;td&gt;11.3&lt;&#x2F;td&gt;&lt;td&gt;13.53&lt;&#x2F;td&gt;&lt;td&gt;11.89&lt;&#x2F;td&gt;&lt;td&gt;0.0841&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;10&lt;&#x2F;td&gt;&lt;td&gt;22k&lt;&#x2F;td&gt;&lt;td&gt;11.1&lt;&#x2F;td&gt;&lt;td&gt;13.27&lt;&#x2F;td&gt;&lt;td&gt;11.90&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Average&lt;&#x2F;td&gt;&lt;td&gt;-&lt;&#x2F;td&gt;&lt;td&gt;10.99&lt;&#x2F;td&gt;&lt;td&gt;13.15&lt;&#x2F;td&gt;&lt;td&gt;11.54&lt;&#x2F;td&gt;&lt;td&gt;3.3394&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;p&gt;&lt;em&gt;Note: The primary voltage applied to the transformer was 220V in RMS. The $ V_{\text{NL(DC)}} $ used in computing the % voltage regulation is 11.9 V.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;12-diy-12v-dc-power-supply&#x2F;table-2-graph.png&quot; alt=&quot;Table 2 Graph&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;data-interpretation&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#data-interpretation&quot; aria-label=&quot;Anchor link for: data-interpretation&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Data Interpretation&lt;&#x2F;h3&gt;
+&lt;p&gt;Looking at the tables, the LM7812 did a great job keeping the output mostly steady at 12V, even when we threw in some wild input voltage swings. That said, when the load resistance became too low, it struggled a bit, showing the limits of our trusty (but modest) 6-0-6V transformer. On the other hand, our filtering capacitors kept the ripples under control and gave us a smooth DC output.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;closing-words&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#closing-words&quot; aria-label=&quot;Anchor link for: closing-words&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Closing Words&lt;&#x2F;h2&gt;
+&lt;p&gt;This DC power supply project was a fantastic learning experience; it brought classroom concepts to life and gave us hands-on insight into circuit design and testing. While it performed well for what it is, it’s important to note that this design isn’t meant for serious, high-stakes applications. Think of it more as a stepping stone than a professional-grade project.&lt;&#x2F;p&gt;
+&lt;p&gt;Overall, we learned a lot about troubleshooting, design limitations, and real-world performance. With a bit more fine-tuning, this could even inspire more advanced builds down the line. For now, it’s a win for learning and the satisfaction of making something work (mostly) as planned!&lt;&#x2F;p&gt;
+&lt;p&gt;Special thanks to our professor for guiding us and to my amazing groupmates—Roneline, Rhaniel, Peejay, Aaron, and Rohn—for making this experience enjoyable and productive (ask them?).&lt;&#x2F;p&gt;
+&lt;p&gt;If you have any questions or feedback, feel free to leave a comment below. We’d love to hear your thoughts or critiques. Until next time, happy tinkering!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Let’s talk about our journey of creating something from scratch (almost?) for our Electronics I final project. It wasn’t groundbreaking like a full-blown multi-featured DC power supply, but it was a fulfilling learning experience.
+Spoiler alert: mistakes were made, lessons were learned, and yes, we had fun.
+…</summary>
+        </entry><entry xml:lang="en">
+        <title>Introducing Delineate!</title>
+        <published>2024-09-23T12:29:00.001+08:00</published>
+        <updated>2024-09-23T12:29:00.001+08:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/11-introducing-delineate/" type="text/html"/>
+        <id>https://seadve.github.io/blog/11-introducing-delineate/</id>
+        
+            <content type="html">&lt;blockquote&gt;
+&lt;p&gt;Delineate provides facilities to edit and draw graphs specified in the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;graphviz.org&#x2F;doc&#x2F;info&#x2F;lang.html&quot;&gt;DOT language&lt;&#x2F;a&gt;. It is designed to be a simple and intuitive tool for creating and editing graphs, with a focus on the user experience.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;As mentioned above, Delineate, previously named Dagger, is a new app to view and edit DOT graphs. It is like &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;apps.kde.org&#x2F;kgraphviewer&#x2F;&quot;&gt;KGraphViewer&lt;&#x2F;a&gt;, but with the ability to edit the graph and is built with LibAdwaita, which makes it more at home on GNOME. There is also another app called &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;artemanufrij&#x2F;graphui&quot;&gt;GraphUI&lt;&#x2F;a&gt;, but it is currently unmaintained and designed for Elementary OS.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;features&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#features&quot; aria-label=&quot;Anchor link for: features&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Features&lt;&#x2F;h2&gt;
+&lt;p&gt;One of the main reasons I developed Delineate is for debugging GStreamer pipeline dumps. I use it extensively to visualize the pipeline, inspect the elements, and analyze the negotiations between them.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;11-introducing-delineate&#x2F;gstreamer-pipeline.png&quot; alt=&quot;GStreamer Pipeline&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;It is also useful for visualizing connections on the message bus, offering an alternative perspective to tools like Bustle.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;11-introducing-delineate&#x2F;message-bus.png&quot; alt=&quot;Message Bus&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Another use case I discovered from Bilal is visualizing the Pipewire graph from the &lt;code&gt;pw-dot&lt;&#x2F;code&gt; command.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;11-introducing-delineate&#x2F;pipewire-dot.png&quot; alt=&quot;Pipewire DOT&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The app also supports changing the layout engine on the fly, which is useful for tweaking the graph to make it more readable depending on the use case.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;11-introducing-delineate&#x2F;layout-engines.gif&quot; alt=&quot;Layout Engines&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Also, thanks to the library behind the app, &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;magjac&#x2F;d3-graphviz&quot;&gt;d3-graphviz&lt;&#x2F;a&gt;, it supports animations, which can be less jarring when modifying the graph.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;11-introducing-delineate&#x2F;animations.gif&quot; alt=&quot;Animations&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Finally, you can export the graph to a PNG, SVG, or JPG image.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;11-introducing-delineate&#x2F;exporting.png&quot; alt=&quot;Exporting&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;getting-delineate&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#getting-delineate&quot; aria-label=&quot;Anchor link for: getting-delineate&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Getting Delineate&lt;&#x2F;h2&gt;
+&lt;p&gt;Delineate is available on &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;flathub.org&#x2F;apps&#x2F;io.github.seadve.Delineate&quot;&gt;Flathub&lt;&#x2F;a&gt;. You can install it from there, and since all of our code is open-source and can be freely modified and distributed according to the license, you can also &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;SeaDve&#x2F;Delineate&#x2F;releases&#x2F;tag&#x2F;v0.1.0&quot;&gt;download&lt;&#x2F;a&gt; and build it from source.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;future-plans&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#future-plans&quot; aria-label=&quot;Anchor link for: future-plans&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Future Plans&lt;&#x2F;h2&gt;
+&lt;p&gt;Since this is the first release, there are many features I would like to add in the future. Some of the features I am considering are:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;More interactive editing and viewing features, such as selective highlighting of elements when searching.&lt;&#x2F;li&gt;
+&lt;li&gt;Support for other graph formats, such as &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;mermaid.js.org&#x2F;&quot;&gt;Mermaid&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;Bird&#x27;s eye view for large graphs.&lt;&#x2F;li&gt;
+&lt;li&gt;More useful text editing features, such as auto-completion, color picker, and more.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;closing-words&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#closing-words&quot; aria-label=&quot;Anchor link for: closing-words&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Closing Words&lt;&#x2F;h2&gt;
+&lt;p&gt;Before I end this post, I would like to thank Brage Fuglseth for the new name, Delineate, and the beautiful icon design.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;11-introducing-delineate&#x2F;logo.png&quot; alt=&quot;Logo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I hope you find Delineate as useful as I do. If you have any feedback or suggestions, feel free to open a discussion or issue on the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;SeaDve&#x2F;Delineate&quot;&gt;GitHub repository&lt;&#x2F;a&gt;. Enjoy the release!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">
+Delineate provides facilities to edit and draw graphs specified in the DOT language. It is designed to be a simple and intuitive tool for creating and editing graphs, with a focus on the user experience.
+
+…</summary>
+        </entry><entry xml:lang="en">
+        <title>Kooha 2.3 Released!</title>
+        <published>2024-03-24T12:29:00.001+08:00</published>
+        <updated>2024-03-24T12:29:00.001+08:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/10-kooha-2-3/" type="text/html"/>
+        <id>https://seadve.github.io/blog/10-kooha-2-3/</id>
+        
+            <content type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;SeaDve&#x2F;Kooha&quot;&gt;Kooha&lt;&#x2F;a&gt; is a simple screen recorder for Linux with a minimal interface. You can simply click the record button without having to configure a bunch of settings.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;While we strive to keep Kooha simple, we also want to make it better. This release, composed of over &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;SeaDve&#x2F;Kooha&#x2F;compare&#x2F;v2.2.4...v2.3.0&quot;&gt;300 commits&lt;&#x2F;a&gt;, is focused on quality-of-life improvements and bug fixes.&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;This release includes a refined interface, improved area selection, more informative notifications, and other changes. Read on to learn more about the new features and improvements.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;new-features-and-improvements&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#new-features-and-improvements&quot; aria-label=&quot;Anchor link for: new-features-and-improvements&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+New Features and Improvements&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;refined-interface&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#refined-interface&quot; aria-label=&quot;Anchor link for: refined-interface&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Refined Interface&lt;&#x2F;h3&gt;
+&lt;p&gt;The main screen now has a more polished look. It now shows the selected format and FPS. This makes it easier to see the current settings at a glance, without having to open the settings window.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;10-kooha-2-3&#x2F;main-screen.png&quot; alt=&quot;Main Screen Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Other than that, progress is now shown when flushing the recording. This gives a better indication when encoding or saving is taking longer than expected.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;10-kooha-2-3&#x2F;flushing.png&quot; alt=&quot;Flushing Page Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Furthermore, the preferences window is also improved. It is now more descriptive and selecting FPS is now easier with a dropdown menu.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;10-kooha-2-3&#x2F;preferences-window.png&quot; alt=&quot;Preferences Window Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;improved-area-selection&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#improved-area-selection&quot; aria-label=&quot;Anchor link for: improved-area-selection&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Improved Area Selection&lt;&#x2F;h3&gt;
+&lt;p&gt;The area selection window is now resizable. You can now resize the window to fit your screen better. Additionally, the previously selected area is now remembered across sessions. This means that if you close Kooha and open it again, the area you selected will be remembered. Other improvements include improved focus handling, sizing fixes, better performance, and a new style.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;10-kooha-2-3&#x2F;area-selection-window.png&quot; alt=&quot;Area Selection Window Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;more-informative-notifications&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#more-informative-notifications&quot; aria-label=&quot;Anchor link for: more-informative-notifications&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+More Informative Notifications&lt;&#x2F;h3&gt;
+&lt;p&gt;Record-done notifications now show the duration and size of the recorded video. This is inspired by GNOME Shell screencast notifications.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;10-kooha-2-3&#x2F;notification.png&quot; alt=&quot;Notification Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Moreover, the notification actions now work even when the application is closed.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;other-changes&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#other-changes&quot; aria-label=&quot;Anchor link for: other-changes&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Other Changes&lt;&#x2F;h3&gt;
+&lt;p&gt;Besides the mentioned features, this release also includes:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Logout and idle are now inhibited while recording.&lt;&#x2F;li&gt;
+&lt;li&gt;The audio no longer stutters and gets corrupted when recording for a long time.&lt;&#x2F;li&gt;
+&lt;li&gt;The audio is now recorded in stereo instead of mono when possible.&lt;&#x2F;li&gt;
+&lt;li&gt;The recordings are no longer deleted when flushing is canceled.&lt;&#x2F;li&gt;
+&lt;li&gt;Incorrect output video orientation on certain compositors is now fixed.&lt;&#x2F;li&gt;
+&lt;li&gt;Performance and stability are improved.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;getting-kooha-2-3&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#getting-kooha-2-3&quot; aria-label=&quot;Anchor link for: getting-kooha-2-3&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Getting Kooha 2.3&lt;&#x2F;h2&gt;
+&lt;p&gt;Kooha is available on &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;flathub.org&#x2F;apps&#x2F;io.github.seadve.Kooha&quot;&gt;Flathub&lt;&#x2F;a&gt;. You can install it from there, and since all of our code is open-source and can be freely modified and distributed according to the license, you can also &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;SeaDve&#x2F;Kooha&#x2F;releases&#x2F;tag&#x2F;v2.3.0&quot;&gt;download&lt;&#x2F;a&gt; and build it from source.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;closing-words&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#closing-words&quot; aria-label=&quot;Anchor link for: closing-words&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Closing Words&lt;&#x2F;h2&gt;
+&lt;p&gt;Thanks to everyone who has supported Kooha, be it through donations, bug reports, translations, or just using it. Your support is what keeps this project going. Enjoy the new release!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">
+Kooha is a simple screen recorder for Linux with a minimal interface. You can simply click the record button without having to configure a bunch of settings.
+
+While we strive to keep Kooha simple, we also want to make it better. This release, composed of over 300 commits, is focused on quality-of-life improvements and bug fixes.
+…</summary>
+        </entry><entry xml:lang="en">
+        <title>GSoC 2023: Rust and GTK 4 Bustle Rewrite (Final Overview)</title>
+        <published>2023-08-28T12:29:00.001+08:00</published>
+        <updated>2023-08-28T20:22:00.002+08:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/9-gsoc-2023-final-overview/" type="text/html"/>
+        <id>https://seadve.github.io/blog/9-gsoc-2023-final-overview/</id>
+        
+            <content type="html">&lt;p&gt;Over the summer, for 12 weeks, I worked on rewriting Bustle in Rust and GTK 4 as part of the Google Summer of Code (GSoC) 2023 program. This post is an overview of the work done and the future plans for the project.&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;about-bustle&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#about-bustle&quot; aria-label=&quot;Anchor link for: about-bustle&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+About Bustle&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.freedesktop.org&#x2F;bustle&#x2F;bustle&quot;&gt;Bustle&lt;&#x2F;a&gt; is a graphical application used to analyze &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.freedesktop.org&#x2F;wiki&#x2F;Software&#x2F;dbus&#x2F;&quot;&gt;D-Bus&lt;&#x2F;a&gt; activities. It uses sequence diagrams to present signal emissions and method calls messages.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;9-gsoc-2023-final-overview&#x2F;old-bustle.png&quot; alt=&quot;Old Bustle&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Bustle represents these messages using a row-based layout. Each row is dedicated to displaying the following information: the elapsed time since the first message, the message path, and the member, which could be the name of the emitted signal or invoked method. On the other hand, individual columns correspond to distinct D-Bus services. Bustle draws arrows that transverse these columns to visualize the communication between services, while arcs represent method invocations and returns. This visual paradigm is valuable as, for instance, it can be used to see which services a D-Bus application talks to and how often, which can be handy in debugging, enhancing security, and optimizing performance within the application.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;project-goal&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#project-goal&quot; aria-label=&quot;Anchor link for: project-goal&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Project Goal&lt;&#x2F;h2&gt;
+&lt;p&gt;The ultimate goal of this project is to port Bustle to GTK 4 and rewrite it in Rust. Although the current implementation of Bustle in Haskell and GTK 3 is functional, there are compelling reasons to consider a rewrite in Rust. This includes enabling the tool to take advantage of a range of ergonomic libraries, including &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dbus2&#x2F;zbus&quot;&gt;zbus&lt;&#x2F;a&gt;, &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;gtk-rs&#x2F;gtk4-rs&quot;&gt;gtk4-rs&lt;&#x2F;a&gt;, and &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;courvoif&#x2F;pcap-file&quot;&gt;pcap-file&lt;&#x2F;a&gt;, that would ease the burden in maintenance. Furthermore, the growing Rust community and the availability of the Rust SDK in &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;flathub.org&#x2F;&quot;&gt;Flathub&lt;&#x2F;a&gt; would make the tool more accessible to potential contributors and simpler to distribute to users.&lt;&#x2F;p&gt;
+&lt;p&gt;Porting the tool to &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.gtk.org&#x2F;&quot;&gt;GTK 4&lt;&#x2F;a&gt;, on the other hand, would offer several benefits, such as access to newer and more performant widgets and drawing APIs like &lt;code&gt;GtkListView&lt;&#x2F;code&gt; and &lt;code&gt;GskPath&lt;&#x2F;code&gt;. This would allow Bustle to benefit from the latest developments in the platform and remain current with evolving standards.&lt;&#x2F;p&gt;
+&lt;p&gt;Altogether, a rewrite of Bustle in Rust and GTK 4 would provide advantages that can enhance the tool&#x27;s functionality, maintainability, longevity, accessibility, and possibly efficiency.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;work-done&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#work-done&quot; aria-label=&quot;Anchor link for: work-done&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Work Done&lt;&#x2F;h2&gt;
+&lt;p&gt;Most of the tasks in the original proposal have been completed. This includes having an initial MVP, porting GDBus usage to zbus, implementing file loading and saving, completing the recording functionality, and porting the UI, which comprises the diagram, details view, and services filter, to GTK 4.&lt;&#x2F;p&gt;
+&lt;p&gt;For more details on the work done, there are also &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;tags&#x2F;gsoc-2023&#x2F;&quot;&gt;bi-weekly updates&lt;&#x2F;a&gt; on my blog.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;snapshots&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#snapshots&quot; aria-label=&quot;Anchor link for: snapshots&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Snapshots&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;diagram-and-details-view&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#diagram-and-details-view&quot; aria-label=&quot;Anchor link for: diagram-and-details-view&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Diagram and Details View&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;9-gsoc-2023-final-overview&#x2F;diagram-and-details-view.gif&quot; alt=&quot;Diagram and Details View&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;recording-and-services-filter&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#recording-and-services-filter&quot; aria-label=&quot;Anchor link for: recording-and-services-filter&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Recording and Services Filter&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;9-gsoc-2023-final-overview&#x2F;recording-and-services-filter.gif&quot; alt=&quot;Recording and Services Filter&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;code-merged&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#code-merged&quot; aria-label=&quot;Anchor link for: code-merged&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Code Merged&lt;&#x2F;h2&gt;
+&lt;p&gt;These are the summary of code that has been merged during the GSoC period.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;bustle&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#bustle&quot; aria-label=&quot;Anchor link for: bustle&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Bustle&lt;&#x2F;h3&gt;
+&lt;p&gt;Most of the work done is in the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&quot;&gt;Bustle GNOME GitLab repository&lt;&#x2F;a&gt;, where the following pull requests have been merged:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;1&quot;&gt;Basic parsing and diagram implementation&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;2&quot;&gt;Port to zbus&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;3&quot;&gt;Drop explicit cargo protocol setting&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;10&quot;&gt;Decouple recording monitor from DiagramModel&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;12&quot;&gt;Implement system and address monitoring and recording&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;13&quot;&gt;Load DiagramModel from file asynchronously&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;14&quot;&gt;Stick at the bottom when an item is added to the diagram&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;15&quot;&gt;Bump gtk4-rs version&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;18&quot;&gt;Improve timestamp accuracy&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;19&quot;&gt;Focus on the entry row when dialog presents&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;21&quot;&gt;Save DiagramModel to file asynchronously&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;22&quot;&gt;Further improve timestamp accuracy&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;23&quot;&gt;Handle undefined behavior&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;26&quot;&gt;Enable link-time optimization and various cleanups&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;30&quot;&gt;Add loading and waiting pages on the window&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;33&quot;&gt;Show a toast when clicking copy and other fixes&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;34&quot;&gt;Implement diagram columns, arrows, and arcs&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;35&quot;&gt;Improve loading performance and code organization&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;36&quot;&gt;Implement API to get well-known names from bus names&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;37&quot;&gt;Refactor name owner changed signal handling&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;39&quot;&gt;Organize diagram files&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;40&quot;&gt;Improve file naming&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;41&quot;&gt;Monitor code cleanups&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;42&quot;&gt;Add support for targeted signals&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;43&quot;&gt;Port from libpcap to pcap-file&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;44&quot;&gt;Use a more proper column width&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;46&quot;&gt;Improving diagram tag styling&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;47&quot;&gt;Properly update the color and label of RowTag&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;48&quot;&gt;Improving diagram styling&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;50&quot;&gt;Propagate errors to the user&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;51&quot;&gt;Only show errors when necessary&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;52&quot;&gt;Prevent copy when packet data is owned&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;54&quot;&gt;Fix DiagramHeader labels UI glitch&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;55&quot;&gt;ColorWidget and DiagramView cleanups&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;zbus-and-gtk4-rs&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#zbus-and-gtk4-rs&quot; aria-label=&quot;Anchor link for: zbus-and-gtk4-rs&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+zbus and gtk4-rs&lt;&#x2F;h3&gt;
+&lt;p&gt;While the project is focused on Bustle, some changes are necessary to be upstreamed to other projects. This includes changes to zbus and gtk4-rs, where the following pull requests have been merged:&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;zbus&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#zbus&quot; aria-label=&quot;Anchor link for: zbus&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+zbus&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dbus2&#x2F;zbus&#x2F;pull&#x2F;370&quot;&gt;zb: Add a from_bytes constructor for Message&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dbus2&#x2F;zbus&#x2F;pull&#x2F;379&quot;&gt;zv: Implement Display for Value, Array, Structure, Dict &amp;amp; Maybe&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dbus2&#x2F;zbus&#x2F;pull&#x2F;450&quot;&gt;zv, zn: Improve Str, Owned*Name, BusName Debug implementations&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;gtk4-rs&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#gtk4-rs&quot; aria-label=&quot;Anchor link for: gtk4-rs&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+gtk4-rs&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;gtk-rs&#x2F;gtk4-rs&#x2F;pull&#x2F;1468&quot;&gt;gdk: Make RGBA::new const and add with_* constructors&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;code-to-be-merged&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#code-to-be-merged&quot; aria-label=&quot;Anchor link for: code-to-be-merged&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Code to be Merged&lt;&#x2F;h2&gt;
+&lt;p&gt;Due to time constraints and unexpected issues, some of the pull requests are still pending review:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;49&quot;&gt;Implement services filter&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;53&quot;&gt;Port to GskPath APIs&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;56&quot;&gt;Make use of GtkMapListModel for layouts&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;57&quot;&gt;Implement BusNameList and FilteredBusNameModel&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;58&quot;&gt;Fix header expanded height computation&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;future-plans&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#future-plans&quot; aria-label=&quot;Anchor link for: future-plans&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Future Plans&lt;&#x2F;h2&gt;
+&lt;p&gt;While most of the tasks in the proposal have been completed, there are still a few things that need to be done, including the following:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Optimizing performance&lt;&#x2F;li&gt;
+&lt;li&gt;Hunting and squashing bugs:
+&lt;ul&gt;
+&lt;li&gt;Improving name owner changed signal handling&lt;&#x2F;li&gt;
+&lt;li&gt;Drawing method call arc regardless if the row is not drawable&lt;&#x2F;li&gt;
+&lt;li&gt;Properly killing the &lt;code&gt;dbus-monitor&lt;&#x2F;code&gt; process&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;Adding more features:
+&lt;ul&gt;
+&lt;li&gt;Adding a button that scrolls to the method call message of a method return message or vice-versa&lt;&#x2F;li&gt;
+&lt;li&gt;Adding a way to open multiple diagrams at once via tabs and multiple windows&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;Fixing regressions and releasing the application on Flathub&lt;&#x2F;li&gt;
+&lt;li&gt;Continuous involvement and contribution to open-source&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;final-words&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#final-words&quot; aria-label=&quot;Anchor link for: final-words&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Final Words&lt;&#x2F;h2&gt;
+&lt;p&gt;I have to say this is, so far, the most challenging part of my software development journey. It felt like a hackathon since I had to understand things and create something that works quickly. While it was challenging, it was also rewarding as I was able to learn a lot of things and create something that I am proud of. There were moments of time pressure and frustration, but with experimentation, collaboration, and a lot of reading, I was able to overcome these challenges and make meaningful progress. The complexity of the project pushed me out of my comfort zone, forcing me to delve into unfamiliar areas of programming and technology.&lt;&#x2F;p&gt;
+&lt;p&gt;Lastly, I would like to express my gratitude to my mentors, &lt;strong&gt;Bilal Elmoussaoui&lt;&#x2F;strong&gt; and &lt;strong&gt;Maximiliano Sandoval&lt;&#x2F;strong&gt;, for tirelessly reviewing my pull requests and guiding me. I would also like to thank the GNOME Foundation and the community, especially the GNOME GSoC admin, &lt;strong&gt;Felipe Borges&lt;&#x2F;strong&gt;, for giving me the opportunity to work on this project. I would also like to extend my appreciation to zbus maintainer, &lt;strong&gt;Zeeshan Ali Khan&lt;&#x2F;strong&gt;, for their help in getting my pull requests merged against zbus and to the original Bustle developer, &lt;strong&gt;Will Thompson&lt;&#x2F;strong&gt;, for their guidance. Finally, I would like to thank my family and friends for their support and encouragement.&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Over the summer, for 12 weeks, I worked on rewriting Bustle in Rust and GTK 4 as part of the Google Summer of Code (GSoC) 2023 program. This post is an overview of the work done and the future plans for the project.
+…</summary>
+        </entry><entry xml:lang="en">
+        <title>GSoC 2023: Rust and GTK 4 Bustle Rewrite (Week 9 &amp; 10)</title>
+        <published>2023-08-19T20:29:00.001+08:00</published>
+        <updated>2023-08-19T21:34:00.002+08:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/8-gsoc-2023-week-9-10/" type="text/html"/>
+        <id>https://seadve.github.io/blog/8-gsoc-2023-week-9-10/</id>
+        
+            <content type="html">&lt;h2 id=&quot;progress-made&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#progress-made&quot; aria-label=&quot;Anchor link for: progress-made&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Progress Made&lt;&#x2F;h2&gt;
+&lt;p&gt;I am thrilled to announce that a lot of progress happened once again over the past few weeks! Starting with the most important thing, the diagram, a lot of bugs has been squashed and the rendering performance is now improved to a &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;34&quot;&gt;usable and merge-able state&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;8-gsoc-2023-week-9-10&#x2F;diagram.gif&quot; alt=&quot;Diagram&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Aside from that, it now has a header that doesn&#x27;t overlay on the diagram, the drawings now properly adjust to text scale factor changes, the signal arrows are now drawn, and the rows are no longer clipped into the row titles.&lt;&#x2F;p&gt;
+&lt;p&gt;My mentor, Bilal, also worked on &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;45&quot;&gt;adding tags&lt;&#x2F;a&gt;, the colored circles in the diagram, so it is easier to determine the category of a message.&lt;&#x2F;p&gt;
+&lt;p&gt;On the general UI side, there is now a &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;30&quot;&gt;proper loading page&lt;&#x2F;a&gt; that is shown while waiting for the PCAP files to show.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;8-gsoc-2023-week-9-10&#x2F;loading-page.png&quot; alt=&quot;Loading Page&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;However, that may not be as useful as we also landed a &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;commit&#x2F;d3d29c4c7becb42c33e789287ce467cf0e02ae32&quot;&gt;patch&lt;&#x2F;a&gt; that speeds up loading by up to 32 times; that&#x27;s from 16 seconds on average to 500 milliseconds, when loading a 2.2 MB file.&lt;&#x2F;p&gt;
+&lt;p&gt;There is also now a waiting page that shows before the first message arrives while recording.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;8-gsoc-2023-week-9-10&#x2F;waiting-page.png&quot; alt=&quot;Waiting Page&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;We also landed &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;20&quot;&gt;statistics window&lt;&#x2F;a&gt; which shows frequencies of messages, durations of method calls, and sizes information of each message.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;8-gsoc-2023-week-9-10&#x2F;statistics-frequencies-page.png&quot; alt=&quot;Statistics Frequencies Page&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;8-gsoc-2023-week-9-10&#x2F;statistics-durations-page.png&quot; alt=&quot;Statistics Durations Page&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;8-gsoc-2023-week-9-10&#x2F;statistics-sizes-page.png&quot; alt=&quot;Statistics Sizes Page&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;My mentor, Bilal, also worked on adding information on the details view including the body size and signature, and the response time from method return to its call.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;8-gsoc-2023-week-9-10&#x2F;details-view.png&quot; alt=&quot;Details View&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;There is also now a way to &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;28&quot;&gt;save the PCAP file as a DOT graph file&lt;&#x2F;a&gt;, which can be used to generate a graph using Graphviz to visualize interactions between bus names like the following:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;8-gsoc-2023-week-9-10&#x2F;dot-graph.png&quot; alt=&quot;DOT Graph&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;On the plumbing side, &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;commit&#x2F;ba0c05b2a10a5d48f245a61176242a1f2d8175ce&quot;&gt;saving to PCAP file is now asynchronous&lt;&#x2F;a&gt;, avoiding blocking the UI. We also ported from using &lt;code&gt;libpcap&lt;&#x2F;code&gt; to a pure Rust library, &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;commit&#x2F;a43a8f481d7dc8bd7d430eba50bfdf04a11efccb&quot;&gt;removing unsafe code and simplifying the codebase&lt;&#x2F;a&gt;. Furthermore, the timestamp computation is now &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;commit&#x2F;d603ecbc151dfa341a9d500ed7cd37b7292a13c3&quot;&gt;more accurate&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;As part of making debugging in Bustle easier, I have also submitted a &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dbus2&#x2F;zbus&#x2F;pull&#x2F;450&quot;&gt;patch&lt;&#x2F;a&gt; to &lt;code&gt;zbus&lt;&#x2F;code&gt; to simplify the printing of bus names.&lt;&#x2F;p&gt;
+&lt;p&gt;Finally, I started prototyping services filtering. It is still a proof of concept and does not look great, but it already functions and is a good starting point for next week.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;8-gsoc-2023-week-9-10&#x2F;services-filtering.png&quot; alt=&quot;Services Filtering&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;plans-for-the-following-weeks&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#plans-for-the-following-weeks&quot; aria-label=&quot;Anchor link for: plans-for-the-following-weeks&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Plans for the Following Weeks&lt;&#x2F;h2&gt;
+&lt;p&gt;The following weeks will be the last days of GSoC and I will be focusing on finishing up the remaining tasks. With the most difficult part of this GSoC project done, most of the tasks left, aside from services filtering, are optimizing performance and cleaning up the codebase.&lt;&#x2F;p&gt;
+&lt;p&gt;There are also a few more things to fix such as a proper name owner changed signal handling, drawing method call arc regardless if the row is not drawable, properly killing the &lt;code&gt;dbus-monitor&lt;&#x2F;code&gt; process, and propagating user-facing errors.&lt;&#x2F;p&gt;
+&lt;p&gt;I would also like to add features such as adding a button that scroll to the method call message of a method return message or vice-versa, porting to use the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;docs.gtk.org&#x2F;gsk4&#x2F;struct.Path.html&quot;&gt;new &lt;code&gt;GskPath&lt;&#x2F;code&gt; APIs&lt;&#x2F;a&gt;, and adding a way to open multiple diagrams at once via tabs and multiple windows.&lt;&#x2F;p&gt;
+&lt;br&gt;
+&lt;p&gt;That&#x27;s all for this week. Thanks for reading!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">
+Progress Made
+I am thrilled to announce that a lot of progress happened once again over the past few weeks! Starting with the most important thing, the diagram, a lot of bugs has been squashed and the rendering performance is now improved to a usable and merge-able state.
+…</summary>
+        </entry><entry xml:lang="en">
+        <title>GSoC 2023: Rust and GTK 4 Bustle Rewrite (Week 7 &amp; 8)</title>
+        <published>2023-08-02T18:29:00.001+08:00</published>
+        <updated>2023-08-04T21:34:00.002+08:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/7-gsoc-2023-week-7-8/" type="text/html"/>
+        <id>https://seadve.github.io/blog/7-gsoc-2023-week-7-8/</id>
+        
+            <content type="html">&lt;h2 id=&quot;progress-made&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#progress-made&quot; aria-label=&quot;Anchor link for: progress-made&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Progress Made&lt;&#x2F;h2&gt;
+&lt;p&gt;A lot of things happened these past few weeks. First, the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;12&quot;&gt;MR to add address and system DBus recording&lt;&#x2F;a&gt; has already been merged. Though, before that was merged, a few revisions have been made: it now parses from messages bytes directly, instead of a PCAP stream, to prevent overhead. Additionally, it now properly propagates errors, such as when the &lt;code&gt;dbus-monitor&lt;&#x2F;code&gt; binary is not found.&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;Second, when recording, the sequence diagram now &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;14&quot;&gt;sticks at the bottom&lt;&#x2F;a&gt; because, in common use cases, it is mostly wanted to observe the new messages as they come.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;7-gsoc-2023-week-7-8&#x2F;sticky-scroll.gif&quot; alt=&quot;Sticky Scroll Screencast&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Moreover, on the smaller changes, &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;13&quot;&gt;PCAP file loading is now synchronous&lt;&#x2F;a&gt;, the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;15&quot;&gt;gtk4-rs dependency has now been updated to the recently released 0.17 version&lt;&#x2F;a&gt;, the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;18&quot;&gt;accuracy of timestamp calculations has been improved&lt;&#x2F;a&gt;, and the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;19&quot;&gt;focus issue on the address dialog has been fixed&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Lastly, the signals and method call arrows and arcs are now (finally!) drawn in the diagram. While it looks simple, it took me days to get it right. However, there is no merge request yet since it requires more bug fixing and code cleanup.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;7-gsoc-2023-week-7-8&#x2F;diagram.png&quot; alt=&quot;Diagram With Arrows and Arcs&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;guadec&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#guadec&quot; aria-label=&quot;Anchor link for: guadec&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+GUADEC&lt;&#x2F;h2&gt;
+&lt;p&gt;Aside from working on the code, I also attended GUADEC remotely. I had a lightning talk about a bit about myself and an overview of this project.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;plans-for-the-following-weeks&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#plans-for-the-following-weeks&quot; aria-label=&quot;Anchor link for: plans-for-the-following-weeks&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Plans for the Following Weeks&lt;&#x2F;h2&gt;
+&lt;p&gt;For the next weeks, the diagram still needs bug fixing and polishing, as mentioned. For instance, it currently does not draw arcs on method calls when either the call or return row is not visible. The header is also only visible when scrolled all the way to the top, and it only shows the unique name instead of the well-known name.&lt;&#x2F;p&gt;
+&lt;p&gt;After the diagram is completed, we will go on with the implementation of service filtering and adding a more convenient way to have multiple instances of recording or opened files via tabs.&lt;&#x2F;p&gt;
+&lt;br&gt;
+&lt;p&gt;That&#x27;s all for this week. Thanks for reading!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">
+Progress Made
+A lot of things happened these past few weeks. First, the MR to add address and system DBus recording has already been merged. Though, before that was merged, a few revisions have been made: it now parses from messages bytes directly, instead of a PCAP stream, to prevent overhead. Additionally, it now properly propagates errors, such as when the dbus-monitor binary is not found.
+…</summary>
+        </entry><entry xml:lang="en">
+        <title>GSoC 2023: Rust and GTK 4 Bustle Rewrite (Week 5 &amp; 6)</title>
+        <published>2023-07-19T11:51:00.002+08:00</published>
+        <updated>2023-07-19T11:51:00.002+08:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/6-gsoc-2023-week-5-6/" type="text/html"/>
+        <id>https://seadve.github.io/blog/6-gsoc-2023-week-5-6/</id>
+        
+            <content type="html">&lt;h2 id=&quot;progress-made&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#progress-made&quot; aria-label=&quot;Anchor link for: progress-made&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Progress Made&lt;&#x2F;h2&gt;
+&lt;p&gt;This week, the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dbus2&#x2F;zbus&#x2F;pull&#x2F;379&quot;&gt;PR to implement Display for Value, Array, Structure, Dict, and Maybe&lt;&#x2F;a&gt; has been merged. Thus, there is a much nicer way now upstream to display &lt;code&gt;zbus::Value&lt;&#x2F;code&gt;, similar to &lt;code&gt;GVariant&lt;&#x2F;code&gt;. With this blocker cleared out, the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;2&quot;&gt;zbus port MR&lt;&#x2F;a&gt; has also been merged, fully porting the Bustle rewrite to zbus.&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;Furthermore, my mentor, Bilal, started implementing session monitoring and saving to a PCAP file while I continued their work and &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;12&quot;&gt;implemented system and address recording&lt;&#x2F;a&gt;. However, it is not yet merged as there are some things to be figured out and more work to do. Specifically, it currently requires a &lt;code&gt;dbus-monitor&lt;&#x2F;code&gt; binary installed on the host, which is not great for distributions that do not package it.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;6-gsoc-2023-week-5-6&#x2F;address-dialog.png&quot; alt=&quot;Address Dialog Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Aside from those mentioned above, I have also been working on drawing the diagram. I am still studying the older Haskell codebase to prevent reinventing the wheel on some implementations. Unfortunately, the current implementation is still not ready enough for a screenshot.&lt;&#x2F;p&gt;
+&lt;p&gt;To easily track the missing features, we also set up an &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;boards&quot;&gt;issue board&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;plans-for-the-following-weeks&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#plans-for-the-following-weeks&quot; aria-label=&quot;Anchor link for: plans-for-the-following-weeks&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Plans for the Following Weeks&lt;&#x2F;h2&gt;
+&lt;p&gt;In the following weeks, I will get the PR to implement and address recording merged and work on more parts of the diagram drawing.&lt;&#x2F;p&gt;
+&lt;br&gt;
+&lt;p&gt;That&#x27;s all for this week. Thanks for reading!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">
+Progress Made
+This week, the PR to implement Display for Value, Array, Structure, Dict, and Maybe has been merged. Thus, there is a much nicer way now upstream to display zbus::Value, similar to GVariant. With this blocker cleared out, the zbus port MR has also been merged, fully porting the Bustle rewrite to zbus.
+…</summary>
+        </entry><entry xml:lang="en">
+        <title>GSoC 2023: Rust and GTK 4 Bustle Rewrite (Week 3 &amp; 4)</title>
+        <published>2023-07-05T09:30:00.002+08:00</published>
+        <updated>2023-07-05T09:30:00.002+08:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/5-gsoc-2023-week-3-4/" type="text/html"/>
+        <id>https://seadve.github.io/blog/5-gsoc-2023-week-3-4/</id>
+        
+            <content type="html">&lt;h2 id=&quot;progress-made&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#progress-made&quot; aria-label=&quot;Anchor link for: progress-made&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Progress Made&lt;&#x2F;h2&gt;
+&lt;p&gt;There&#x27;s unfortunately not a lot to talk about for the past two weeks as I have been really absorbed with finals at my university. However, while preparing for the finals, we got the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dbus2&#x2F;zbus&#x2F;pull&#x2F;370&quot;&gt;PR to add &lt;code&gt;from_bytes&lt;&#x2F;code&gt; constructor for &lt;code&gt;zbus::Message&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; merged. This means that we can now construct &lt;code&gt;zbus::Message&lt;&#x2F;code&gt; from raw &lt;code&gt;GDBusMessage&lt;&#x2F;code&gt; bytes and vice versa, which is critical for porting Bustle from GDBus to zbus.&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;On the other hand, the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dbus2&#x2F;zbus&#x2F;pull&#x2F;379&quot;&gt;PR to implement Display for Value, Array, Structure, Dict &amp;amp; Maybe&lt;&#x2F;a&gt; is, while the implementation for &lt;code&gt;zbus::Value::Str&lt;&#x2F;code&gt; and &lt;code&gt;zbus::Value::Array&lt;&#x2F;code&gt; is already fixed, still in the review stage as there are still things to polish, such as figuring out a way to simplify the implementation.&lt;&#x2F;p&gt;
+&lt;p&gt;Meanwhile, I have also been experimenting with drawing on the diagram using GTK transform functions such as &lt;code&gt;translate_coordinates&lt;&#x2F;code&gt; and &lt;code&gt;compute_point&lt;&#x2F;code&gt;, but nothing is ready enough yet for a screenshot.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;plans-for-the-following-weeks&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#plans-for-the-following-weeks&quot; aria-label=&quot;Anchor link for: plans-for-the-following-weeks&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Plans for the Following Weeks&lt;&#x2F;h2&gt;
+&lt;p&gt;With my finals out of the equation, I could focus more on finishing up drawing the signals and methods arrow on the diagram during the last days of the GSoC midterm period.&lt;&#x2F;p&gt;
+&lt;p&gt;I will also push &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dbus2&#x2F;zbus&#x2F;pull&#x2F;379&quot;&gt;PR to implement Display for Value, Array, Structure, Dict &amp;amp; Maybe&lt;&#x2F;a&gt; to be merged so that the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;2&quot;&gt;zbus port MR&lt;&#x2F;a&gt; can also be merged.&lt;&#x2F;p&gt;
+&lt;br&gt;
+&lt;p&gt;That&#x27;s all for this week. I&#x27;m looking forward to writing more in the next weeks. Thanks for reading!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">
+Progress Made
+There's unfortunately not a lot to talk about for the past two weeks as I have been really absorbed with finals at my university. However, while preparing for the finals, we got the PR to add from_bytes constructor for zbus::Message merged. This means that we can now construct zbus::Message from raw GDBusMessage bytes and vice versa, which is critical for porting Bustle from GDBus to zbus.
+…</summary>
+        </entry><entry xml:lang="en">
+        <title>GSoC 2023: Rust and GTK 4 Bustle Rewrite (Week 1 &amp; 2)</title>
+        <published>2023-06-11T19:09:00.005+08:00</published>
+        <updated>2023-06-11T19:25:18.353+08:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/4-gsoc-2023-week-1-2/" type="text/html"/>
+        <id>https://seadve.github.io/blog/4-gsoc-2023-week-1-2/</id>
+        
+            <content type="html">&lt;h2 id=&quot;progress-made&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#progress-made&quot; aria-label=&quot;Anchor link for: progress-made&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Progress Made&lt;&#x2F;h2&gt;
+&lt;p&gt;Before the GSoC coding period started, I started implementing the diagram used to display DBus activity with the help of the template repository made by my mentor, Maximiliano. One of the first challenges is figuring out how to load the PCAP files, which is the format Bustle uses to store the DBus messages. Without implementing that first, it would be difficult to test how the diagram will look like.&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;The Rust PCAP library was used to load the packets from the PCAP file, which contains the bytes of a DBus Message. It is nice to use, though it is missing an async API for loading files. That could be fixed in the future, but this week mainly focused on a basic diagram implementation. The bytes can then be parsed through GDBus into a &lt;code&gt;GDBusMessage&lt;&#x2F;code&gt;, which contains the information to implement the diagram.&lt;&#x2F;p&gt;
+&lt;p&gt;Through the parsed message, the diagram can be implemented. It uses &lt;code&gt;GtkListView&lt;&#x2F;code&gt; to display the rows as, aside from having a nice separation of view and model, it is more efficient because it recycles widgets, especially since PCAP files could possibly contain thousands of messages. Each row contains the elapsed time, path, destination, interface, and member of the message.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;4-gsoc-2023-week-1-2&#x2F;diagram-with-list-view-screenshot.png&quot; alt=&quot;Diagram With ListView Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Aside from the diagram, a &lt;code&gt;DetailsView&lt;&#x2F;code&gt; was also implemented. It shows the sender and the body, and also the destination, path, and member of the message. For more information about it, you can check out the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;1&quot;&gt;merge request&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;4-gsoc-2023-week-1-2&#x2F;details-view-screenshot.png&quot; alt=&quot;DetailsView Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;GDBus was used initially as zbus is missing the necessary APIs for parsing messages from bytes. However, the merge requests are already on the way to implement those upstream, including a nicer way to print &lt;code&gt;zbus::Value&lt;&#x2F;code&gt; that would match how &lt;code&gt;GVariant&lt;&#x2F;code&gt;s are printed.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dbus2&#x2F;zbus&#x2F;pull&#x2F;379&quot;&gt;zv: impl Display for Value, Array, Structure, Dict &amp;amp; Maybe&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dbus2&#x2F;zbus&#x2F;pull&#x2F;370&quot;&gt;zb: Add a from_bytes constructor for Message&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;plans-for-the-following-weeks&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#plans-for-the-following-weeks&quot; aria-label=&quot;Anchor link for: plans-for-the-following-weeks&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Plans for the Following Weeks&lt;&#x2F;h2&gt;
+&lt;p&gt;While the merge requests are in place, there is still some work to do, such as fixing up the Display implementation for &lt;code&gt;zbus::Value::Str&lt;&#x2F;code&gt; and &lt;code&gt;zbus::Value::Array&lt;&#x2F;code&gt;. Once the mentioned merge requests are merged, we could finish up the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;msandova&#x2F;bustle&#x2F;-&#x2F;merge_requests&#x2F;2&quot;&gt;zbus port&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;After the application is fully ported to zbus, we could start working on the more complicated part of the Diagram implementation, like showing signals and the method call and return arrows.&lt;&#x2F;p&gt;
+&lt;br&gt;
+&lt;p&gt;That&#x27;s all for this week. See you again in the next weeks. Thanks for reading!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">
+Progress Made
+Before the GSoC coding period started, I started implementing the diagram used to display DBus activity with the help of the template repository made by my mentor, Maximiliano. One of the first challenges is figuring out how to load the PCAP files, which is the format Bustle uses to store the DBus messages. Without implementing that first, it would be difficult to test how the diagram will look like.
+…</summary>
+        </entry><entry xml:lang="en">
+        <title>GSoC 2023: Rust and GTK 4 Bustle Rewrite (Introduction)</title>
+        <published>2023-05-11T23:17:00.003+08:00</published>
+        <updated>2023-06-11T19:19:30.970+08:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/3-gsoc-2023-introduction/" type="text/html"/>
+        <id>https://seadve.github.io/blog/3-gsoc-2023-introduction/</id>
+        
+            <content type="html">&lt;p&gt;Hello there!&lt;&#x2F;p&gt;
+&lt;p&gt;I am Dave Patrick Caberto, a first-year Electronics Engineering student from Bataan Peninsula State University, Philippines. This summer, I will be working on the Rust and GTK 4 rewrite of Bustle, a D-Bus activity visualizer, with the guidance of my mentors, Bilal Elmoussaoui and Maximiliano Sandoval.&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;me-and-my-bizarre-open-source-journey&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#me-and-my-bizarre-open-source-journey&quot; aria-label=&quot;Anchor link for: me-and-my-bizarre-open-source-journey&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Me and my bizarre open-source journey&lt;&#x2F;h2&gt;
+&lt;p&gt;Weirdly enough, I first discovered Linux five years ago on a failed attempt to do Hackintosh. I got bored with Windows that I decided to try something new and different, and that&#x27;s when I eventually stumbled upon Linux, specifically Elementary OS. It did not last for me since I still depend a lot on applications that are only available with Windows.&lt;&#x2F;p&gt;
+&lt;p&gt;Fast-forward two years later, I decided to give Linux another try with KDE Neon and migrate my workflows to open-source applications such as LibreOffice, Inkscape, and Kdenlive. I remember feeling adventurous and breaking my system numerous times, though I considered it as part of the learning process. I was intrigued by the idea of being a part of a community of passionate developers and enthusiastic users. I also liked the customization it had. However, as I grew with it, I started to realize that I had spent way too much time configuring things and forgetting to focus on what was really important, and that is when I discovered GNOME.&lt;&#x2F;p&gt;
+&lt;p&gt;When I first used GNOME, it was a totally different workflow, and I liked it. It was simple; the UI made sense. At that time, there was some software I was missing, particularly a screen recording application that works nicely on Wayland. That was the time I discovered RecApp. It worked well; however, it looked not at home, even for a GTK application. One of my first contributions was creating a mockup for the redesign, and I also took that opportunity to learn Python and GTK and implement my mockup. I was not necessarily proud of my code, but I was proud and happy about having the chance to contribute to the software I use and the community.&lt;&#x2F;p&gt;
+&lt;p&gt;A few months later, as I learned more about programming and the GNOME developer ecosystem, there were many more things I&#x27;d like to improve and change in RecApp, some of which other contributors did not agree with. That&#x27;s when Kooha was born, with a total in-and-out redesign of RecApp and a different focus and ideology. Almost a month later was also the birth of Mousai, a song recognizer application. Since then, I have been maintaining these two applications.&lt;&#x2F;p&gt;
+&lt;p&gt;There are definitely a lot of things I missed, but that was a quick summary of my journey with open-source.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;more-about-bustle-and-the-project&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#more-about-bustle-and-the-project&quot; aria-label=&quot;Anchor link for: more-about-bustle-and-the-project&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+More about Bustle and the project&lt;&#x2F;h2&gt;
+&lt;p&gt;For those who have not heard of Bustle, it is an application used to visualize D-Bus activities. It shows signal emissions, method calls, method returns, and errors, which are useful in observing traffic, debugging, and optimizing performance in D-Bus applications.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;3-gsoc-2023-introduction&#x2F;old-bustle-screenshot.png&quot; alt=&quot;Bustle Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Although the current implementation of Bustle in Haskell and GTK 3 is functional, there are noteworthy reasons to consider a rewrite in Rust. Some of these advantages include having access to a range of libraries, such as zbus, gtk4-rs, and LibPCAP bindings. Aside from this, the growing Rust community and the availability of the Rust SDK in Flathub would make the tool more accessible to contributors and simpler to distribute to the users. On the other hand, porting Bustle to GTK 4 would over benefits such as the newer and more modern LibAdwaita widgets and ListView API, which would make it easier for the tool to comply with the HIG and benefit from the latest developments in the platform.&lt;&#x2F;p&gt;
+&lt;p&gt;Altogether, this rewrite and port will contribute to the maintainability, accessibility, and future-proofing of Bustle through the use of newer technologies and arguably more ergonomic technologies.&lt;&#x2F;p&gt;
+&lt;br&gt;
+&lt;p&gt;I will be posting updates about the project every few weeks for the next few months, including more details about the plans for this GSoC project. If you&#x27;d like to talk about something, feel free to contact me at Matrix &lt;code&gt;@sedve:matrix.org&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Thanks for reading!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Hello there!
+I am Dave Patrick Caberto, a first-year Electronics Engineering student from Bataan Peninsula State University, Philippines. This summer, I will be working on the Rust and GTK 4 rewrite of Bustle, a D-Bus activity visualizer, with the guidance of my mentors, Bilal Elmoussaoui and Maximiliano Sandoval.
+…</summary>
+        </entry><entry xml:lang="en">
+        <title>Browser Benchmark Comparison 2021: Chrome vs. Edge vs. Firefox vs. Brave vs. Chromium vs. Epiphany</title>
+        <published>2021-01-16T15:46:00.004+08:00</published>
+        <updated>2023-05-11T23:45:51.417+08:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/2-browser-benchmark-comparison-2021/" type="text/html"/>
+        <id>https://seadve.github.io/blog/2-browser-benchmark-comparison-2021/</id>
+        
+            <content type="html">&lt;p&gt;We all know that Google is already dominating the search engine share. Meanwhile, in terms of the browser market share, it is no different. Many browsers nowadays such as Brave and even Microsoft Edge are based on Google&#x27;s open-source project, Chromium.&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;In this article, I will compare various popular web browsers. Four of them use Blink&#x2F;V8 as their engine while Firefox and GNOME Web (Epiphany) use Gecko and WebKitGTK respectively.&lt;&#x2F;p&gt;
+&lt;p&gt;I ran eight benchmarks to test the performance of these browsers. I also measured the RAM usage of each browser manually using GNOME System Monitor. Note that if you replicate this test, your results may differ because you are probably using a different computer.&lt;&#x2F;p&gt;
+&lt;p&gt;Spoiler alert... &lt;strong&gt;Chrome wins!&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;setup&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#setup&quot; aria-label=&quot;Anchor link for: setup&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Setup&lt;&#x2F;h2&gt;
+&lt;p&gt;I used a Laptop that is connected to a wall socket to do this comparison.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Intel i3-2310M&lt;&#x2F;li&gt;
+&lt;li&gt;3 GB DDR3&lt;&#x2F;li&gt;
+&lt;li&gt;Fedora 33 Workstation Edition&lt;&#x2F;li&gt;
+&lt;li&gt;Linux 5.10.6&lt;&#x2F;li&gt;
+&lt;li&gt;GNOME Shell 40.0 on Wayland&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;browser-used&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#browser-used&quot; aria-label=&quot;Anchor link for: browser-used&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Browser used&lt;&#x2F;h3&gt;
+&lt;p&gt;All are set in their default configurations. No additional extensions are installed. I tested two variants of Firefox, one with WebRender enabled.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Firefox 84.0.2&lt;&#x2F;li&gt;
+&lt;li&gt;Firefox  84.0.2 (gfx.webrender.all set to true)&lt;&#x2F;li&gt;
+&lt;li&gt;Chrome 87.0.4280.141&lt;&#x2F;li&gt;
+&lt;li&gt;GNOME Web 3.38.2&lt;&#x2F;li&gt;
+&lt;li&gt;Chromium 87.0.4280.88&lt;&#x2F;li&gt;
+&lt;li&gt;Brave 1.18.78&lt;&#x2F;li&gt;
+&lt;li&gt;Edge Dev 89.0.760.0&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;results&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#results&quot; aria-label=&quot;Anchor link for: results&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Results&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;motionmark-1-0&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#motionmark-1-0&quot; aria-label=&quot;Anchor link for: motionmark-1-0&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+MotionMark 1.0&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;browserbench.org&#x2F;MotionMark&#x2F;&quot;&gt;MotionMark&lt;&#x2F;a&gt; is used to measure a browser&#x27;s capability to animate complex scenes at a target frame rate.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;brave-wins&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#brave-wins&quot; aria-label=&quot;Anchor link for: brave-wins&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Brave wins!&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;2-browser-benchmark-comparison-2021&#x2F;motion-mark.png&quot; alt=&quot;MotionMark 1.0 Results&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;kraken-1-1&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#kraken-1-1&quot; aria-label=&quot;Anchor link for: kraken-1-1&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Kraken 1.1&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;mozilla.github.io&#x2F;krakenbenchmark.mozilla.org&#x2F;&quot;&gt;Kraken&lt;&#x2F;a&gt; is a JavaScript performance benchmark that measures the speed of browsers through different tests extracted from real-world applications and libraries.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;chrome-wins&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#chrome-wins&quot; aria-label=&quot;Anchor link for: chrome-wins&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Chrome wins!&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;2-browser-benchmark-comparison-2021&#x2F;kraken.png&quot; alt=&quot;Kraken Results&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;octane-2-0&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#octane-2-0&quot; aria-label=&quot;Anchor link for: octane-2-0&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Octane 2.0&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;chromium.github.io&#x2F;octane&#x2F;&quot;&gt;Octane&lt;&#x2F;a&gt; is a benchmark that measures a JavaScript engine&#x27;s performance through a suite of tests representing certain use cases in JavaScript applications.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;epiphany-wins&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#epiphany-wins&quot; aria-label=&quot;Anchor link for: epiphany-wins&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Epiphany wins!&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;2-browser-benchmark-comparison-2021&#x2F;octane.png&quot; alt=&quot;Octane Results&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;webxprt-3&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#webxprt-3&quot; aria-label=&quot;Anchor link for: webxprt-3&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+WebXPRT 3&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.principledtechnologies.com&#x2F;benchmarkxprt&#x2F;webxprt&#x2F;2018&#x2F;3_v5&#x2F;&quot;&gt;WebXPRT&lt;&#x2F;a&gt; measures the performance of a browser through six HTML5 and JavaScript scenarios that mirror real-life tasks.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;epiphany-wins-1&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#epiphany-wins-1&quot; aria-label=&quot;Anchor link for: epiphany-wins-1&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Epiphany wins!&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;2-browser-benchmark-comparison-2021&#x2F;webxprt.png&quot; alt=&quot;WebXPRT 3 Results&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;maze-solver-30x30&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#maze-solver-30x30&quot; aria-label=&quot;Anchor link for: maze-solver-30x30&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Maze Solver (30x30)&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;testdrive-archive.azurewebsites.net&#x2F;performance&#x2F;mazesolver&#x2F;default.html&quot;&gt;Maze Solver&lt;&#x2F;a&gt; exercises the browser&#x27;s handling of CSS 2.1 and CSS 3 layer constructs which are important components of overall web browser performance.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;epiphany-wins-2&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#epiphany-wins-2&quot; aria-label=&quot;Anchor link for: epiphany-wins-2&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Epiphany wins!&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;2-browser-benchmark-comparison-2021&#x2F;maze-solver.png&quot; alt=&quot;Maze Solver Results&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;speedometer-2-0&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#speedometer-2-0&quot; aria-label=&quot;Anchor link for: speedometer-2-0&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Speedometer 2.0&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;browserbench.org&#x2F;Speedometer2.0&#x2F;&quot;&gt;Speedometer&lt;&#x2F;a&gt; is a browser benchmark that measures the responsiveness of web applications.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;chrome-wins-1&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#chrome-wins-1&quot; aria-label=&quot;Anchor link for: chrome-wins-1&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Chrome wins!&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;2-browser-benchmark-comparison-2021&#x2F;speedometer.png&quot; alt=&quot;Speedometer Results&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;ram-usage-with-5-tabs-open&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#ram-usage-with-5-tabs-open&quot; aria-label=&quot;Anchor link for: ram-usage-with-5-tabs-open&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+RAM Usage with 5 tabs open&lt;&#x2F;h3&gt;
+&lt;p&gt;I opened a total of five tabs: YouTube, Reddit, DuckDuckGo, GitHub and New York Times.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;firefox-wins&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#firefox-wins&quot; aria-label=&quot;Anchor link for: firefox-wins&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Firefox wins!&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;2-browser-benchmark-comparison-2021&#x2F;ram-usage.png&quot; alt=&quot;RAM Usage Results&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;overall-results&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#overall-results&quot; aria-label=&quot;Anchor link for: overall-results&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Overall Results&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;chrome-wins-2&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#chrome-wins-2&quot; aria-label=&quot;Anchor link for: chrome-wins-2&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Chrome wins!&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;2-browser-benchmark-comparison-2021&#x2F;overall-result.png&quot; alt=&quot;Overall Results&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;br&gt;
+&lt;p&gt;Take note that I didn&#x27;t include Basemark and JetStream results on the overall average as Firefox and Epiphany were not able to run these benchmarks without crashing, at least on my hardware.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;basemark-web-3-0&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#basemark-web-3-0&quot; aria-label=&quot;Anchor link for: basemark-web-3-0&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Basemark Web 3.0&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;web.basemark.com&quot;&gt;Basemark Web&lt;&#x2F;a&gt; tests how well a browser performs on web-based applications.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;epiphany-wins-3&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#epiphany-wins-3&quot; aria-label=&quot;Anchor link for: epiphany-wins-3&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Epiphany wins!&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;2-browser-benchmark-comparison-2021&#x2F;basemark-web.png&quot; alt=&quot;Basemark Web 3.0 Results&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;jetstream-2&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#jetstream-2&quot; aria-label=&quot;Anchor link for: jetstream-2&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+JetStream 2&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;browserbench.org&#x2F;JetStream&#x2F;&quot;&gt;Jetstream&lt;&#x2F;a&gt; rewards browsers that start up quickly, execute code quickly and run smoothly.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;chrome-wins-3&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#chrome-wins-3&quot; aria-label=&quot;Anchor link for: chrome-wins-3&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Chrome wins!&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;2-browser-benchmark-comparison-2021&#x2F;jetstream.png&quot; alt=&quot;Jetstream 2 Results&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#conclusion&quot; aria-label=&quot;Anchor link for: conclusion&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Conclusion&lt;&#x2F;h2&gt;
+&lt;p&gt;In the end, all browsers are capable of handling daily tasks. As long as it provides you with regular security updates and also privacy, you do not need to switch to another web browser for a minuscule performance difference. And remember, performance should not be your only consideration on choosing a web browser. Have a nice day!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;appendix&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#appendix&quot; aria-label=&quot;Anchor link for: appendix&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Appendix&lt;&#x2F;h2&gt;
+&lt;p&gt;These are the raw benchmark results:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;2-browser-benchmark-comparison-2021&#x2F;raw-data.png&quot; alt=&quot;Raw Benchmark Results&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">We all know that Google is already dominating the search engine share. Meanwhile, in terms of the browser market share, it is no different. Many browsers nowadays such as Brave and even Microsoft Edge are based on Google's open-source project, Chromium.
+…</summary>
+        </entry><entry xml:lang="en">
+        <title>Best Linux Distros for Beginners in 2021</title>
+        <published>2021-01-14T17:29:00.004+08:00</published>
+        <updated>2021-01-15T17:29:00.004+08:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/1-best-linux-distros-for-beginners-2021/" type="text/html"/>
+        <id>https://seadve.github.io/blog/1-best-linux-distros-for-beginners-2021/</id>
+        
+            <content type="html">&lt;p&gt;Choosing a Linux distro is not an easy task. New users might be overwhelmed with the hundreds of distros to choose from compared to Windows with just a few versions to choose from. I cannot really tell you which is the best for you as we come with different needs and motives, but here is a list of Linux distros that will help you determine what could be the best for you.&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;Note that this list may vary from user to user. The main criteria I use are ease of use, user experience, and software and hardware support.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;5-linux-mint&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#5-linux-mint&quot; aria-label=&quot;Anchor link for: 5-linux-mint&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+5. Linux Mint&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;1-best-linux-distros-for-beginners-2021&#x2F;linux-mint.png&quot; alt=&quot;Linux Mint Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Pros&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Very lightweight and snappy&lt;&#x2F;li&gt;
+&lt;li&gt;Great experience for former Windows users&lt;&#x2F;li&gt;
+&lt;li&gt;Great for older laptops&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;em&gt;Cons&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;The desktop looks dated&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;linuxmint.com&#x2F;&quot;&gt;Linux Mint&lt;&#x2F;a&gt; is an Ubuntu-based distro. It comes with the Cinnamon DE environment by default which is noticeably lighter compared to GNOME. But if you do not like Cinnamon, you can choose between XFCE and MATE which are both similarly fast and light desktop environments.&lt;&#x2F;p&gt;
+&lt;p&gt;It comes with the traditional desktop experience, so it would work great for users who came from Windows. It is very customizable and there are a lot of themes to choose from.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;4-elementary-os&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#4-elementary-os&quot; aria-label=&quot;Anchor link for: 4-elementary-os&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+4. Elementary OS&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;1-best-linux-distros-for-beginners-2021&#x2F;elementary-os.png&quot; alt=&quot;Elementary OS Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Pros&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Very simple to use&lt;&#x2F;li&gt;
+&lt;li&gt;It looks beautiful and minimal&lt;&#x2F;li&gt;
+&lt;li&gt;Supportive app store to indie developers&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;em&gt;Cons&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;You cannot choose other DE besides Pantheon&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;elementary.io&#x2F;&quot;&gt;Elementary OS&lt;&#x2F;a&gt; is yet another Ubuntu-based distro, but the difference is that it comes with its own desktop environment, Pantheon, and a minimal set of applications. It is arguably macOS-inspired due to its design language, dock, and the system panel on the top.&lt;&#x2F;p&gt;
+&lt;p&gt;To be honest, it is one of the most beautiful Linux distros and its minimalistic look adds to the beauty. The thing I like the most about Elementary OS is its app store which makes it seamless to help hard-working developers.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;3-pop-os&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#3-pop-os&quot; aria-label=&quot;Anchor link for: 3-pop-os&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+3. Pop!_OS&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;1-best-linux-distros-for-beginners-2021&#x2F;pop-os.jpeg&quot; alt=&quot;Pop!_OS Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Pros&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Great Nvidia support&lt;&#x2F;li&gt;
+&lt;li&gt;Backed by a hardware-selling company&lt;&#x2F;li&gt;
+&lt;li&gt;Disk encryption on by default&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;em&gt;Cons&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Desktop environment choice is limited to GNOME&lt;&#x2F;li&gt;
+&lt;li&gt;Not very good with older hardware with less than 1 GB of RAM&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;pop.system76.com&#x2F;&quot;&gt;Pop!_OS&lt;&#x2F;a&gt; is an Ubuntu-based Linux distro backed by System76. No wonder why they have better Nvidia driver support as the company backing them sells laptops powered by Nvidia.&lt;&#x2F;p&gt;
+&lt;p&gt;It provides a snappy and polished experience with the help of a slightly-modified GNOME desktop environment. It also comes with an auto-tiling extension which could be handy for power users.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;2-ubuntu&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#2-ubuntu&quot; aria-label=&quot;Anchor link for: 2-ubuntu&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+2. Ubuntu&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;1-best-linux-distros-for-beginners-2021&#x2F;ubuntu.png&quot; alt=&quot;Ubuntu Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Pros&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Great out-of-the-box experience&lt;&#x2F;li&gt;
+&lt;li&gt;Backed by a company&lt;&#x2F;li&gt;
+&lt;li&gt;Many desktop environments to choose from&lt;&#x2F;li&gt;
+&lt;li&gt;Great community support&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;em&gt;Cons&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;GNOME DE could be heavy with older hardware&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;ubuntu.com&#x2F;&quot;&gt;Ubuntu&lt;&#x2F;a&gt; is a Debian-based Linux distro that is backed by Canonical. It comes with GNOME as the default desktop environment, but it comes with others to choose from like Kubuntu (KDE), Lubuntu (LXQt), Ubuntu Mate, UbuntuDDE (Deepin), and many more.&lt;&#x2F;p&gt;
+&lt;p&gt;It is simple and easy to operate once you get used to it. Community support is also one of its selling points due to its popularity. It also offers many useful preinstalled applications that could give you a head start.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;honorable-mentions&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#honorable-mentions&quot; aria-label=&quot;Anchor link for: honorable-mentions&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Honorable Mentions&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;opensuse&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#opensuse&quot; aria-label=&quot;Anchor link for: opensuse&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+OpenSUSE&lt;&#x2F;h3&gt;
+&lt;p&gt;It is a distro that is sponsored by a German company, SUSE. You can choose a rolling or stable release. It might not focus on simplicity, but it offers the user great flexibility.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;deepin&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#deepin&quot; aria-label=&quot;Anchor link for: deepin&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Deepin&lt;&#x2F;h3&gt;
+&lt;p&gt;It is a Debian-based distro that comes with its own desktop environment and set of applications. Not only that, but it is subjectively one of the best-looking distros aside from Elementary.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;manjaro&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#manjaro&quot; aria-label=&quot;Anchor link for: manjaro&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Manjaro&lt;&#x2F;h3&gt;
+&lt;p&gt;This is an Arch-based distro. It is like Arch, but it is already configured out-of-the-box without having to manually install the operating system.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;kde-neon&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#kde-neon&quot; aria-label=&quot;Anchor link for: kde-neon&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+KDE Neon&lt;&#x2F;h3&gt;
+&lt;p&gt;This is a Linux distro based on Ubuntu LTS versions. It comes with the latest and greatest KDE packages. KDE Plasma, I would say, is the most customizable desktop environment. It has great support with theme engines like Kvantum.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;debian&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#debian&quot; aria-label=&quot;Anchor link for: debian&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Debian&lt;&#x2F;h3&gt;
+&lt;p&gt;It is one of the oldest and most stable Linux distros out there. However, for developers, the packages in the repository may be out-of-date.&lt;&#x2F;p&gt;
+&lt;br&gt;
+&lt;h2 id=&quot;1-fedora&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#1-fedora&quot; aria-label=&quot;Anchor link for: 1-fedora&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+1. Fedora&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;1-best-linux-distros-for-beginners-2021&#x2F;fedora.png&quot; alt=&quot;Fedora Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Pros&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Great open-source approach&lt;&#x2F;li&gt;
+&lt;li&gt;Vanilla GNOME experience&lt;&#x2F;li&gt;
+&lt;li&gt;Backed by Red Hat&lt;&#x2F;li&gt;
+&lt;li&gt;Very polished experience&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;em&gt;Cons&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Software options might be limited&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;fedoraproject.org&#x2F;&quot;&gt;Fedora&lt;&#x2F;a&gt; is subjectively the best Linux distro of all time. Like Ubuntu, you are not limited to the GNOME desktop environment due to the variety of officially supported spins. It also comes with strictly FOSS-only preinstalled apps, which might limit your software choice if you do not add additional repositories.&lt;&#x2F;p&gt;
+&lt;p&gt;It is great for laptops because they are packed with additional optimizations for better battery life. Furthermore, it is also easier to update the system as its application and system updates are handled within the same application, unlike Ubuntu.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#conclusion&quot; aria-label=&quot;Anchor link for: conclusion&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Conclusion&lt;&#x2F;h2&gt;
+&lt;p&gt;There is really no best Linux distro. All distros have their purposes that will serve a specific person. No one can tell you what is the best Linux distro. This is just a guide to help you consider a distro that will work best for you. Why not fire up that VM and you can decide for yourself?&lt;&#x2F;p&gt;
+&lt;br&gt;
+&lt;p&gt;If you have opinions on the list, feel free to comment below. Have a good day!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Choosing a Linux distro is not an easy task. New users might be overwhelmed with the hundreds of distros to choose from compared to Windows with just a few versions to choose from. I cannot really tell you which is the best for you as we come with different needs and motives, but here is a list of Linux distros that will help you determine what could be the best for you.
+…</summary>
+        </entry>
+</feed>
