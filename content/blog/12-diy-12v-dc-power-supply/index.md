@@ -19,11 +19,11 @@ Let’s talk about our journey of creating something from scratch (almost?) for 
 
 ## Design and Calculations
 
-Everything began with brainstorming and sketching out ideas. This was our chance to put all the knowledge from our lectures to the test—from diode operating regions to voltage regulation. It was exciting but also a bit daunting.
+It began with brainstorming and sketching out ideas. This was our chance to put all the knowledge from our lectures to the test, from diode operating regions to voltage regulation. It was exciting but also a bit daunting.
 
-The first decision was our power supply's specifications. We aimed for a **12V output**—a solid middle ground between complexity and functionality. Plus, the 5V option was already claimed by another group. For rectification, we chose a **full-wave bridge rectifier** due to its efficiency compared to the half-wave alternative.
+The first decision was our power supply's specifications. We aimed for a **12V output**, a solid middle ground between complexity and functionality. Plus, the 5V option was already claimed by another group. For rectification, we chose a **full-wave bridge rectifier** due to its efficiency compared to the half-wave alternative.
 
-Calculations? Oh yes, there were plenty! Transformers, diodes, capacitors, regulators—everything had to line up perfectly on paper before moving to reality.
+Calculations? Oh yes, there were plenty! Every components had to line up on paper before moving to reality.
 
 We started at the output, aiming for a stable 12V. To achieve this, we selected the **LM7812 voltage regulator**. It was an obvious choice: simple, reliable, and readily available. With an input range of 14.5 to 27V, it could easily provide the 12V we needed.
 
@@ -99,11 +99,11 @@ At the end, it was satisfying to see the final design.
 
 ![PCB Layout](pcb-layout.png)
 
-We had to print it on a sticker paper, transfer it to the copper board, cut it, drill it, etch it, and solder the components. It was a long process, but the result was worth it.
+We had to print it on a sticker paper, transfer it to the copper board, cut it, drill it, etch it, and solder the components.
 
 ![PCB Soldered](pcb-soldered.png)
 
-Did we also mention that we soldered the regulator in reverse for the first time? Oops. But hey, we learned from it.
+Did we also mention that we soldered the regulator in reverse for the first time? Oops.
 
 ### Custom Enclosure
 
@@ -165,14 +165,14 @@ For the second table, we vary the load resistance, and we measured the input vol
 
 ### Data Interpretation
 
-Looking at the tables, the LM7812 did a great job keeping the output mostly steady at 12V, even when we threw in some wild input voltage swings—what a champ! That said, when the load resistance became too low, it struggled a bit, showing the limits of our trusty (but modest) 6-0-6V transformer. On the other hand, our filtering capacitors stepped in like unsung heroes, keeping the ripples under control and giving us a smooth DC output.
+Looking at the tables, the LM7812 did a great job keeping the output mostly steady at 12V, even when we threw in some wild input voltage swings. That said, when the load resistance became too low, it struggled a bit, showing the limits of our trusty (but modest) 6-0-6V transformer. On the other hand, our filtering capacitors kept the ripples under control and gave us a smooth DC output.
 
 ## Closing Words
 
-This DC power supply project was a fantastic learning experience—it brought classroom concepts to life and gave us hands-on insight into circuit design and testing. While it performed well for what it is, it’s important to note that this design isn’t meant for serious, high-stakes applications. Think of it more as a stepping stone than a professional-grade benchmark.
+This DC power supply project was a fantastic learning experience; it brought classroom concepts to life and gave us hands-on insight into circuit design and testing. While it performed well for what it is, it’s important to note that this design isn’t meant for serious, high-stakes applications. Think of it more as a stepping stone than a professional-grade project.
 
 Overall, we learned a lot about troubleshooting, design limitations, and real-world performance. With a bit more fine-tuning, this could even inspire more advanced builds down the line. For now, it’s a win for learning and the satisfaction of making something work (mostly) as planned!
 
-Special thanks to our professor for guiding us and to my amazing groupmates—Roneline, Rhaniel, Peejay, Aaron, and Rohn—for making this experience enjoyable and productive (ask them?). Cheers to teamwork and lessons learned!
+Special thanks to our professor for guiding us and to my amazing groupmates—Roneline, Rhaniel, Peejay, Aaron, and Rohn—for making this experience enjoyable and productive (ask them?).
 
 If you have any questions or feedback, feel free to leave a comment below. We’d love to hear your thoughts or critiques. Until next time, happy tinkering!
