@@ -4,4 +4,17 @@ title = "Donate"
 template = "info-page.html"
 +++
 
-If you would like to back my work and support me as a developer, you may [buy me a coffee](https://www.buymeacoffee.com/seadve) or sponsor me via [GitHub Sponsors](https://github.com/sponsors/SeaDve).
+Buy me a drink, fuel my apps, or simply throw money my way. Every bit means the world to me.
+
+## Buy me a coffee
+
+[@seadve ☕](https://www.buymeacoffee.com/seadve)
+
+## GitHub Sponsors
+
+[@SeaDve ❤️](https://github.com/sponsors/SeaDve)
+
+## Cash App
+
+[$SeaDve 💲](https://cash.app/$SeaDve)
+
