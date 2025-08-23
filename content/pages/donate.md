@@ -6,6 +6,10 @@ template = "info-page.html"
 
 Buy me a drink, fuel my apps, or simply throw money my way. Every bit means the world to me.
 
+## Liberapay
+
+[@SeaDve 🤝](https://liberapay.com/SeaDve/)
+
 ## Buy me a coffee
 
 [@seadve ☕](https://www.buymeacoffee.com/seadve)
