@@ -67,7 +67,7 @@ allowed_domains = [
     { directive = "script-src", domains = ["'self'"] },
     { directive = "style-src", domains = ["'self'", "'unsafe-inline'"] },
     { directive = "frame-src", domains = ["player.vimeo.com", "https://www.youtube-nocookie.com", "https://www.google.com", "googleads.g.doubleclick.net", "tpc.googlesyndication.com", "ep2.adtrafficquality.google"] },
-    { directive = "connect-src", domains = ["'self'", "ep1.adtrafficquality.google"] },
+    { directive = "connect-src", domains = ["'self'", "ep1.adtrafficquality.google", "fundingchoicesmessages.google.com"] },
 ]
 
 [extra.analytics]
