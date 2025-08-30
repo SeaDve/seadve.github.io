@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://seadve.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;seadve.github.io</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>Benchmark</tabi:current_section>
+    </tabi:metadata><title>SeaDve - Benchmark</title>
+        <subtitle>Application developer based in the Philippines</subtitle>
+    <link href="https://seadve.github.io/tags/benchmark/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://seadve.github.io/tags/benchmark/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2023-05-11T23:45:51.417+08:00</updated>
+    <id>https://seadve.github.io/tags/benchmark/atom.xml</id><entry xml:lang="en">
+        <title>Browser Benchmark Comparison 2021: Chrome vs. Edge vs. Firefox vs. Brave vs. Chromium vs. Epiphany</title>
+        <published>2021-01-16T15:46:00.004+08:00</published>
+        <updated>2023-05-11T23:45:51.417+08:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/2-browser-benchmark-comparison-2021/" type="text/html"/>
+        <id>https://seadve.github.io/blog/2-browser-benchmark-comparison-2021/</id>
+        
+            <content type="html">&lt;p&gt;We all know that Google is already dominating the search engine share. Meanwhile, in terms of the browser market share, it is no different. Many browsers nowadays such as Brave and even Microsoft Edge are based on Google&#x27;s open-source project, Chromium.&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;In this article, I will compare various popular web browsers. Four of them use Blink&#x2F;V8 as their engine while Firefox and GNOME Web (Epiphany) use Gecko and WebKitGTK respectively.&lt;&#x2F;p&gt;
+&lt;p&gt;I ran eight benchmarks to test the performance of these browsers. I also measured the RAM usage of each browser manually using GNOME System Monitor. Note that if you replicate this test, your results may differ because you are probably using a different computer.&lt;&#x2F;p&gt;
+&lt;p&gt;Spoiler alert... &lt;strong&gt;Chrome wins!&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;setup&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#setup&quot; aria-label=&quot;Anchor link for: setup&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Setup&lt;&#x2F;h2&gt;
+&lt;p&gt;I used a Laptop that is connected to a wall socket to do this comparison.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Intel i3-2310M&lt;&#x2F;li&gt;
+&lt;li&gt;3 GB DDR3&lt;&#x2F;li&gt;
+&lt;li&gt;Fedora 33 Workstation Edition&lt;&#x2F;li&gt;
+&lt;li&gt;Linux 5.10.6&lt;&#x2F;li&gt;
+&lt;li&gt;GNOME Shell 40.0 on Wayland&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;browser-used&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#browser-used&quot; aria-label=&quot;Anchor link for: browser-used&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Browser used&lt;&#x2F;h3&gt;
+&lt;p&gt;All are set in their default configurations. No additional extensions are installed. I tested two variants of Firefox, one with WebRender enabled.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Firefox 84.0.2&lt;&#x2F;li&gt;
+&lt;li&gt;Firefox  84.0.2 (gfx.webrender.all set to true)&lt;&#x2F;li&gt;
+&lt;li&gt;Chrome 87.0.4280.141&lt;&#x2F;li&gt;
+&lt;li&gt;GNOME Web 3.38.2&lt;&#x2F;li&gt;
+&lt;li&gt;Chromium 87.0.4280.88&lt;&#x2F;li&gt;
+&lt;li&gt;Brave 1.18.78&lt;&#x2F;li&gt;
+&lt;li&gt;Edge Dev 89.0.760.0&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;results&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#results&quot; aria-label=&quot;Anchor link for: results&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Results&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;motionmark-1-0&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#motionmark-1-0&quot; aria-label=&quot;Anchor link for: motionmark-1-0&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+MotionMark 1.0&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;browserbench.org&#x2F;MotionMark&#x2F;&quot;&gt;MotionMark&lt;&#x2F;a&gt; is used to measure a browser&#x27;s capability to animate complex scenes at a target frame rate.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;brave-wins&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#brave-wins&quot; aria-label=&quot;Anchor link for: brave-wins&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Brave wins!&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;2-browser-benchmark-comparison-2021&#x2F;motion-mark.png&quot; alt=&quot;MotionMark 1.0 Results&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;kraken-1-1&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#kraken-1-1&quot; aria-label=&quot;Anchor link for: kraken-1-1&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Kraken 1.1&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;mozilla.github.io&#x2F;krakenbenchmark.mozilla.org&#x2F;&quot;&gt;Kraken&lt;&#x2F;a&gt; is a JavaScript performance benchmark that measures the speed of browsers through different tests extracted from real-world applications and libraries.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;chrome-wins&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#chrome-wins&quot; aria-label=&quot;Anchor link for: chrome-wins&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Chrome wins!&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;2-browser-benchmark-comparison-2021&#x2F;kraken.png&quot; alt=&quot;Kraken Results&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;octane-2-0&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#octane-2-0&quot; aria-label=&quot;Anchor link for: octane-2-0&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Octane 2.0&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;chromium.github.io&#x2F;octane&#x2F;&quot;&gt;Octane&lt;&#x2F;a&gt; is a benchmark that measures a JavaScript engine&#x27;s performance through a suite of tests representing certain use cases in JavaScript applications.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;epiphany-wins&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#epiphany-wins&quot; aria-label=&quot;Anchor link for: epiphany-wins&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Epiphany wins!&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;2-browser-benchmark-comparison-2021&#x2F;octane.png&quot; alt=&quot;Octane Results&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;webxprt-3&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#webxprt-3&quot; aria-label=&quot;Anchor link for: webxprt-3&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+WebXPRT 3&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.principledtechnologies.com&#x2F;benchmarkxprt&#x2F;webxprt&#x2F;2018&#x2F;3_v5&#x2F;&quot;&gt;WebXPRT&lt;&#x2F;a&gt; measures the performance of a browser through six HTML5 and JavaScript scenarios that mirror real-life tasks.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;epiphany-wins-1&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#epiphany-wins-1&quot; aria-label=&quot;Anchor link for: epiphany-wins-1&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Epiphany wins!&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;2-browser-benchmark-comparison-2021&#x2F;webxprt.png&quot; alt=&quot;WebXPRT 3 Results&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;maze-solver-30x30&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#maze-solver-30x30&quot; aria-label=&quot;Anchor link for: maze-solver-30x30&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Maze Solver (30x30)&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;testdrive-archive.azurewebsites.net&#x2F;performance&#x2F;mazesolver&#x2F;default.html&quot;&gt;Maze Solver&lt;&#x2F;a&gt; exercises the browser&#x27;s handling of CSS 2.1 and CSS 3 layer constructs which are important components of overall web browser performance.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;epiphany-wins-2&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#epiphany-wins-2&quot; aria-label=&quot;Anchor link for: epiphany-wins-2&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Epiphany wins!&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;2-browser-benchmark-comparison-2021&#x2F;maze-solver.png&quot; alt=&quot;Maze Solver Results&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;speedometer-2-0&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#speedometer-2-0&quot; aria-label=&quot;Anchor link for: speedometer-2-0&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Speedometer 2.0&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;browserbench.org&#x2F;Speedometer2.0&#x2F;&quot;&gt;Speedometer&lt;&#x2F;a&gt; is a browser benchmark that measures the responsiveness of web applications.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;chrome-wins-1&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#chrome-wins-1&quot; aria-label=&quot;Anchor link for: chrome-wins-1&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Chrome wins!&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;2-browser-benchmark-comparison-2021&#x2F;speedometer.png&quot; alt=&quot;Speedometer Results&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;ram-usage-with-5-tabs-open&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#ram-usage-with-5-tabs-open&quot; aria-label=&quot;Anchor link for: ram-usage-with-5-tabs-open&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+RAM Usage with 5 tabs open&lt;&#x2F;h3&gt;
+&lt;p&gt;I opened a total of five tabs: YouTube, Reddit, DuckDuckGo, GitHub and New York Times.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;firefox-wins&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#firefox-wins&quot; aria-label=&quot;Anchor link for: firefox-wins&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Firefox wins!&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;2-browser-benchmark-comparison-2021&#x2F;ram-usage.png&quot; alt=&quot;RAM Usage Results&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;overall-results&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#overall-results&quot; aria-label=&quot;Anchor link for: overall-results&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Overall Results&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;chrome-wins-2&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#chrome-wins-2&quot; aria-label=&quot;Anchor link for: chrome-wins-2&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Chrome wins!&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;2-browser-benchmark-comparison-2021&#x2F;overall-result.png&quot; alt=&quot;Overall Results&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;br&gt;
+&lt;p&gt;Take note that I didn&#x27;t include Basemark and JetStream results on the overall average as Firefox and Epiphany were not able to run these benchmarks without crashing, at least on my hardware.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;basemark-web-3-0&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#basemark-web-3-0&quot; aria-label=&quot;Anchor link for: basemark-web-3-0&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Basemark Web 3.0&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;web.basemark.com&quot;&gt;Basemark Web&lt;&#x2F;a&gt; tests how well a browser performs on web-based applications.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;epiphany-wins-3&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#epiphany-wins-3&quot; aria-label=&quot;Anchor link for: epiphany-wins-3&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Epiphany wins!&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;2-browser-benchmark-comparison-2021&#x2F;basemark-web.png&quot; alt=&quot;Basemark Web 3.0 Results&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;jetstream-2&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#jetstream-2&quot; aria-label=&quot;Anchor link for: jetstream-2&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+JetStream 2&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;browserbench.org&#x2F;JetStream&#x2F;&quot;&gt;Jetstream&lt;&#x2F;a&gt; rewards browsers that start up quickly, execute code quickly and run smoothly.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;chrome-wins-3&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#chrome-wins-3&quot; aria-label=&quot;Anchor link for: chrome-wins-3&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Chrome wins!&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;2-browser-benchmark-comparison-2021&#x2F;jetstream.png&quot; alt=&quot;Jetstream 2 Results&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#conclusion&quot; aria-label=&quot;Anchor link for: conclusion&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Conclusion&lt;&#x2F;h2&gt;
+&lt;p&gt;In the end, all browsers are capable of handling daily tasks. As long as it provides you with regular security updates and also privacy, you do not need to switch to another web browser for a minuscule performance difference. And remember, performance should not be your only consideration on choosing a web browser. Have a nice day!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;appendix&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#appendix&quot; aria-label=&quot;Anchor link for: appendix&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Appendix&lt;&#x2F;h2&gt;
+&lt;p&gt;These are the raw benchmark results:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;2-browser-benchmark-comparison-2021&#x2F;raw-data.png&quot; alt=&quot;Raw Benchmark Results&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">We all know that Google is already dominating the search engine share. Meanwhile, in terms of the browser market share, it is no different. Many browsers nowadays such as Brave and even Microsoft Edge are based on Google's open-source project, Chromium.
+…</summary>
+        </entry>
+</feed>

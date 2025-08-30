@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://seadve.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;seadve.github.io</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>Software</tabi:current_section>
+    </tabi:metadata><title>SeaDve - Software</title>
+        <subtitle>Application developer based in the Philippines</subtitle>
+    <link href="https://seadve.github.io/tags/software/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://seadve.github.io/tags/software/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2024-09-23T12:29:00.001+08:00</updated>
+    <id>https://seadve.github.io/tags/software/atom.xml</id><entry xml:lang="en">
+        <title>Introducing Delineate!</title>
+        <published>2024-09-23T12:29:00.001+08:00</published>
+        <updated>2024-09-23T12:29:00.001+08:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/11-introducing-delineate/" type="text/html"/>
+        <id>https://seadve.github.io/blog/11-introducing-delineate/</id>
+        
+            <content type="html">&lt;blockquote&gt;
+&lt;p&gt;Delineate provides facilities to edit and draw graphs specified in the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;graphviz.org&#x2F;doc&#x2F;info&#x2F;lang.html&quot;&gt;DOT language&lt;&#x2F;a&gt;. It is designed to be a simple and intuitive tool for creating and editing graphs, with a focus on the user experience.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;As mentioned above, Delineate, previously named Dagger, is a new app to view and edit DOT graphs. It is like &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;apps.kde.org&#x2F;kgraphviewer&#x2F;&quot;&gt;KGraphViewer&lt;&#x2F;a&gt;, but with the ability to edit the graph and is built with LibAdwaita, which makes it more at home on GNOME. There is also another app called &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;artemanufrij&#x2F;graphui&quot;&gt;GraphUI&lt;&#x2F;a&gt;, but it is currently unmaintained and designed for Elementary OS.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;features&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#features&quot; aria-label=&quot;Anchor link for: features&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Features&lt;&#x2F;h2&gt;
+&lt;p&gt;One of the main reasons I developed Delineate is for debugging GStreamer pipeline dumps. I use it extensively to visualize the pipeline, inspect the elements, and analyze the negotiations between them.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;11-introducing-delineate&#x2F;gstreamer-pipeline.png&quot; alt=&quot;GStreamer Pipeline&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;It is also useful for visualizing connections on the message bus, offering an alternative perspective to tools like Bustle.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;11-introducing-delineate&#x2F;message-bus.png&quot; alt=&quot;Message Bus&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Another use case I discovered from Bilal is visualizing the Pipewire graph from the &lt;code&gt;pw-dot&lt;&#x2F;code&gt; command.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;11-introducing-delineate&#x2F;pipewire-dot.png&quot; alt=&quot;Pipewire DOT&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The app also supports changing the layout engine on the fly, which is useful for tweaking the graph to make it more readable depending on the use case.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;11-introducing-delineate&#x2F;layout-engines.gif&quot; alt=&quot;Layout Engines&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Also, thanks to the library behind the app, &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;magjac&#x2F;d3-graphviz&quot;&gt;d3-graphviz&lt;&#x2F;a&gt;, it supports animations, which can be less jarring when modifying the graph.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;11-introducing-delineate&#x2F;animations.gif&quot; alt=&quot;Animations&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Finally, you can export the graph to a PNG, SVG, or JPG image.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;11-introducing-delineate&#x2F;exporting.png&quot; alt=&quot;Exporting&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;getting-delineate&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#getting-delineate&quot; aria-label=&quot;Anchor link for: getting-delineate&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Getting Delineate&lt;&#x2F;h2&gt;
+&lt;p&gt;Delineate is available on &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;flathub.org&#x2F;apps&#x2F;io.github.seadve.Delineate&quot;&gt;Flathub&lt;&#x2F;a&gt;. You can install it from there, and since all of our code is open-source and can be freely modified and distributed according to the license, you can also &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;SeaDve&#x2F;Delineate&#x2F;releases&#x2F;tag&#x2F;v0.1.0&quot;&gt;download&lt;&#x2F;a&gt; and build it from source.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;future-plans&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#future-plans&quot; aria-label=&quot;Anchor link for: future-plans&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Future Plans&lt;&#x2F;h2&gt;
+&lt;p&gt;Since this is the first release, there are many features I would like to add in the future. Some of the features I am considering are:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;More interactive editing and viewing features, such as selective highlighting of elements when searching.&lt;&#x2F;li&gt;
+&lt;li&gt;Support for other graph formats, such as &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;mermaid.js.org&#x2F;&quot;&gt;Mermaid&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;Bird&#x27;s eye view for large graphs.&lt;&#x2F;li&gt;
+&lt;li&gt;More useful text editing features, such as auto-completion, color picker, and more.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;closing-words&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#closing-words&quot; aria-label=&quot;Anchor link for: closing-words&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Closing Words&lt;&#x2F;h2&gt;
+&lt;p&gt;Before I end this post, I would like to thank Brage Fuglseth for the new name, Delineate, and the beautiful icon design.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;11-introducing-delineate&#x2F;logo.png&quot; alt=&quot;Logo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I hope you find Delineate as useful as I do. If you have any feedback or suggestions, feel free to open a discussion or issue on the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;SeaDve&#x2F;Delineate&quot;&gt;GitHub repository&lt;&#x2F;a&gt;. Enjoy the release!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">
+Delineate provides facilities to edit and draw graphs specified in the DOT language. It is designed to be a simple and intuitive tool for creating and editing graphs, with a focus on the user experience.
+
+…</summary>
+        </entry><entry xml:lang="en">
+        <title>Kooha 2.3 Released!</title>
+        <published>2024-03-24T12:29:00.001+08:00</published>
+        <updated>2024-03-24T12:29:00.001+08:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/10-kooha-2-3/" type="text/html"/>
+        <id>https://seadve.github.io/blog/10-kooha-2-3/</id>
+        
+            <content type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;SeaDve&#x2F;Kooha&quot;&gt;Kooha&lt;&#x2F;a&gt; is a simple screen recorder for Linux with a minimal interface. You can simply click the record button without having to configure a bunch of settings.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;While we strive to keep Kooha simple, we also want to make it better. This release, composed of over &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;SeaDve&#x2F;Kooha&#x2F;compare&#x2F;v2.2.4...v2.3.0&quot;&gt;300 commits&lt;&#x2F;a&gt;, is focused on quality-of-life improvements and bug fixes.&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;This release includes a refined interface, improved area selection, more informative notifications, and other changes. Read on to learn more about the new features and improvements.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;new-features-and-improvements&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#new-features-and-improvements&quot; aria-label=&quot;Anchor link for: new-features-and-improvements&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+New Features and Improvements&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;refined-interface&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#refined-interface&quot; aria-label=&quot;Anchor link for: refined-interface&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Refined Interface&lt;&#x2F;h3&gt;
+&lt;p&gt;The main screen now has a more polished look. It now shows the selected format and FPS. This makes it easier to see the current settings at a glance, without having to open the settings window.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;10-kooha-2-3&#x2F;main-screen.png&quot; alt=&quot;Main Screen Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Other than that, progress is now shown when flushing the recording. This gives a better indication when encoding or saving is taking longer than expected.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;10-kooha-2-3&#x2F;flushing.png&quot; alt=&quot;Flushing Page Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Furthermore, the preferences window is also improved. It is now more descriptive and selecting FPS is now easier with a dropdown menu.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;10-kooha-2-3&#x2F;preferences-window.png&quot; alt=&quot;Preferences Window Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;improved-area-selection&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#improved-area-selection&quot; aria-label=&quot;Anchor link for: improved-area-selection&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Improved Area Selection&lt;&#x2F;h3&gt;
+&lt;p&gt;The area selection window is now resizable. You can now resize the window to fit your screen better. Additionally, the previously selected area is now remembered across sessions. This means that if you close Kooha and open it again, the area you selected will be remembered. Other improvements include improved focus handling, sizing fixes, better performance, and a new style.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;10-kooha-2-3&#x2F;area-selection-window.png&quot; alt=&quot;Area Selection Window Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;more-informative-notifications&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#more-informative-notifications&quot; aria-label=&quot;Anchor link for: more-informative-notifications&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+More Informative Notifications&lt;&#x2F;h3&gt;
+&lt;p&gt;Record-done notifications now show the duration and size of the recorded video. This is inspired by GNOME Shell screencast notifications.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;10-kooha-2-3&#x2F;notification.png&quot; alt=&quot;Notification Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Moreover, the notification actions now work even when the application is closed.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;other-changes&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#other-changes&quot; aria-label=&quot;Anchor link for: other-changes&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Other Changes&lt;&#x2F;h3&gt;
+&lt;p&gt;Besides the mentioned features, this release also includes:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Logout and idle are now inhibited while recording.&lt;&#x2F;li&gt;
+&lt;li&gt;The audio no longer stutters and gets corrupted when recording for a long time.&lt;&#x2F;li&gt;
+&lt;li&gt;The audio is now recorded in stereo instead of mono when possible.&lt;&#x2F;li&gt;
+&lt;li&gt;The recordings are no longer deleted when flushing is canceled.&lt;&#x2F;li&gt;
+&lt;li&gt;Incorrect output video orientation on certain compositors is now fixed.&lt;&#x2F;li&gt;
+&lt;li&gt;Performance and stability are improved.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;getting-kooha-2-3&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#getting-kooha-2-3&quot; aria-label=&quot;Anchor link for: getting-kooha-2-3&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Getting Kooha 2.3&lt;&#x2F;h2&gt;
+&lt;p&gt;Kooha is available on &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;flathub.org&#x2F;apps&#x2F;io.github.seadve.Kooha&quot;&gt;Flathub&lt;&#x2F;a&gt;. You can install it from there, and since all of our code is open-source and can be freely modified and distributed according to the license, you can also &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;SeaDve&#x2F;Kooha&#x2F;releases&#x2F;tag&#x2F;v2.3.0&quot;&gt;download&lt;&#x2F;a&gt; and build it from source.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;closing-words&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#closing-words&quot; aria-label=&quot;Anchor link for: closing-words&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Closing Words&lt;&#x2F;h2&gt;
+&lt;p&gt;Thanks to everyone who has supported Kooha, be it through donations, bug reports, translations, or just using it. Your support is what keeps this project going. Enjoy the new release!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">
+Kooha is a simple screen recorder for Linux with a minimal interface. You can simply click the record button without having to configure a bunch of settings.
+
+While we strive to keep Kooha simple, we also want to make it better. This release, composed of over 300 commits, is focused on quality-of-life improvements and bug fixes.
+…</summary>
+        </entry><entry xml:lang="en">
+        <title>Best Linux Distros for Beginners in 2021</title>
+        <published>2021-01-14T17:29:00.004+08:00</published>
+        <updated>2021-01-15T17:29:00.004+08:00</updated>
+        <author>
+            <name>seadve</name>
+        </author>
+        <link rel="alternate" href="https://seadve.github.io/blog/1-best-linux-distros-for-beginners-2021/" type="text/html"/>
+        <id>https://seadve.github.io/blog/1-best-linux-distros-for-beginners-2021/</id>
+        
+            <content type="html">&lt;p&gt;Choosing a Linux distro is not an easy task. New users might be overwhelmed with the hundreds of distros to choose from compared to Windows with just a few versions to choose from. I cannot really tell you which is the best for you as we come with different needs and motives, but here is a list of Linux distros that will help you determine what could be the best for you.&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;Note that this list may vary from user to user. The main criteria I use are ease of use, user experience, and software and hardware support.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;5-linux-mint&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#5-linux-mint&quot; aria-label=&quot;Anchor link for: 5-linux-mint&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+5. Linux Mint&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;1-best-linux-distros-for-beginners-2021&#x2F;linux-mint.png&quot; alt=&quot;Linux Mint Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Pros&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Very lightweight and snappy&lt;&#x2F;li&gt;
+&lt;li&gt;Great experience for former Windows users&lt;&#x2F;li&gt;
+&lt;li&gt;Great for older laptops&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;em&gt;Cons&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;The desktop looks dated&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;linuxmint.com&#x2F;&quot;&gt;Linux Mint&lt;&#x2F;a&gt; is an Ubuntu-based distro. It comes with the Cinnamon DE environment by default which is noticeably lighter compared to GNOME. But if you do not like Cinnamon, you can choose between XFCE and MATE which are both similarly fast and light desktop environments.&lt;&#x2F;p&gt;
+&lt;p&gt;It comes with the traditional desktop experience, so it would work great for users who came from Windows. It is very customizable and there are a lot of themes to choose from.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;4-elementary-os&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#4-elementary-os&quot; aria-label=&quot;Anchor link for: 4-elementary-os&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+4. Elementary OS&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;1-best-linux-distros-for-beginners-2021&#x2F;elementary-os.png&quot; alt=&quot;Elementary OS Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Pros&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Very simple to use&lt;&#x2F;li&gt;
+&lt;li&gt;It looks beautiful and minimal&lt;&#x2F;li&gt;
+&lt;li&gt;Supportive app store to indie developers&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;em&gt;Cons&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;You cannot choose other DE besides Pantheon&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;elementary.io&#x2F;&quot;&gt;Elementary OS&lt;&#x2F;a&gt; is yet another Ubuntu-based distro, but the difference is that it comes with its own desktop environment, Pantheon, and a minimal set of applications. It is arguably macOS-inspired due to its design language, dock, and the system panel on the top.&lt;&#x2F;p&gt;
+&lt;p&gt;To be honest, it is one of the most beautiful Linux distros and its minimalistic look adds to the beauty. The thing I like the most about Elementary OS is its app store which makes it seamless to help hard-working developers.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;3-pop-os&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#3-pop-os&quot; aria-label=&quot;Anchor link for: 3-pop-os&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+3. Pop!_OS&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;1-best-linux-distros-for-beginners-2021&#x2F;pop-os.jpeg&quot; alt=&quot;Pop!_OS Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Pros&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Great Nvidia support&lt;&#x2F;li&gt;
+&lt;li&gt;Backed by a hardware-selling company&lt;&#x2F;li&gt;
+&lt;li&gt;Disk encryption on by default&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;em&gt;Cons&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Desktop environment choice is limited to GNOME&lt;&#x2F;li&gt;
+&lt;li&gt;Not very good with older hardware with less than 1 GB of RAM&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;pop.system76.com&#x2F;&quot;&gt;Pop!_OS&lt;&#x2F;a&gt; is an Ubuntu-based Linux distro backed by System76. No wonder why they have better Nvidia driver support as the company backing them sells laptops powered by Nvidia.&lt;&#x2F;p&gt;
+&lt;p&gt;It provides a snappy and polished experience with the help of a slightly-modified GNOME desktop environment. It also comes with an auto-tiling extension which could be handy for power users.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;2-ubuntu&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#2-ubuntu&quot; aria-label=&quot;Anchor link for: 2-ubuntu&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+2. Ubuntu&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;1-best-linux-distros-for-beginners-2021&#x2F;ubuntu.png&quot; alt=&quot;Ubuntu Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Pros&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Great out-of-the-box experience&lt;&#x2F;li&gt;
+&lt;li&gt;Backed by a company&lt;&#x2F;li&gt;
+&lt;li&gt;Many desktop environments to choose from&lt;&#x2F;li&gt;
+&lt;li&gt;Great community support&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;em&gt;Cons&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;GNOME DE could be heavy with older hardware&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;ubuntu.com&#x2F;&quot;&gt;Ubuntu&lt;&#x2F;a&gt; is a Debian-based Linux distro that is backed by Canonical. It comes with GNOME as the default desktop environment, but it comes with others to choose from like Kubuntu (KDE), Lubuntu (LXQt), Ubuntu Mate, UbuntuDDE (Deepin), and many more.&lt;&#x2F;p&gt;
+&lt;p&gt;It is simple and easy to operate once you get used to it. Community support is also one of its selling points due to its popularity. It also offers many useful preinstalled applications that could give you a head start.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;honorable-mentions&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#honorable-mentions&quot; aria-label=&quot;Anchor link for: honorable-mentions&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Honorable Mentions&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;opensuse&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#opensuse&quot; aria-label=&quot;Anchor link for: opensuse&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+OpenSUSE&lt;&#x2F;h3&gt;
+&lt;p&gt;It is a distro that is sponsored by a German company, SUSE. You can choose a rolling or stable release. It might not focus on simplicity, but it offers the user great flexibility.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;deepin&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#deepin&quot; aria-label=&quot;Anchor link for: deepin&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Deepin&lt;&#x2F;h3&gt;
+&lt;p&gt;It is a Debian-based distro that comes with its own desktop environment and set of applications. Not only that, but it is subjectively one of the best-looking distros aside from Elementary.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;manjaro&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#manjaro&quot; aria-label=&quot;Anchor link for: manjaro&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Manjaro&lt;&#x2F;h3&gt;
+&lt;p&gt;This is an Arch-based distro. It is like Arch, but it is already configured out-of-the-box without having to manually install the operating system.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;kde-neon&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#kde-neon&quot; aria-label=&quot;Anchor link for: kde-neon&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+KDE Neon&lt;&#x2F;h3&gt;
+&lt;p&gt;This is a Linux distro based on Ubuntu LTS versions. It comes with the latest and greatest KDE packages. KDE Plasma, I would say, is the most customizable desktop environment. It has great support with theme engines like Kvantum.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;debian&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#debian&quot; aria-label=&quot;Anchor link for: debian&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Debian&lt;&#x2F;h3&gt;
+&lt;p&gt;It is one of the oldest and most stable Linux distros out there. However, for developers, the packages in the repository may be out-of-date.&lt;&#x2F;p&gt;
+&lt;br&gt;
+&lt;h2 id=&quot;1-fedora&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#1-fedora&quot; aria-label=&quot;Anchor link for: 1-fedora&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+1. Fedora&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;seadve.github.io&#x2F;blog&#x2F;1-best-linux-distros-for-beginners-2021&#x2F;fedora.png&quot; alt=&quot;Fedora Screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Pros&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Great open-source approach&lt;&#x2F;li&gt;
+&lt;li&gt;Vanilla GNOME experience&lt;&#x2F;li&gt;
+&lt;li&gt;Backed by Red Hat&lt;&#x2F;li&gt;
+&lt;li&gt;Very polished experience&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;em&gt;Cons&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Software options might be limited&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;fedoraproject.org&#x2F;&quot;&gt;Fedora&lt;&#x2F;a&gt; is subjectively the best Linux distro of all time. Like Ubuntu, you are not limited to the GNOME desktop environment due to the variety of officially supported spins. It also comes with strictly FOSS-only preinstalled apps, which might limit your software choice if you do not add additional repositories.&lt;&#x2F;p&gt;
+&lt;p&gt;It is great for laptops because they are packed with additional optimizations for better battery life. Furthermore, it is also easier to update the system as its application and system updates are handled within the same application, unlike Ubuntu.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#conclusion&quot; aria-label=&quot;Anchor link for: conclusion&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Conclusion&lt;&#x2F;h2&gt;
+&lt;p&gt;There is really no best Linux distro. All distros have their purposes that will serve a specific person. No one can tell you what is the best Linux distro. This is just a guide to help you consider a distro that will work best for you. Why not fire up that VM and you can decide for yourself?&lt;&#x2F;p&gt;
+&lt;br&gt;
+&lt;p&gt;If you have opinions on the list, feel free to comment below. Have a good day!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Choosing a Linux distro is not an easy task. New users might be overwhelmed with the hundreds of distros to choose from compared to Windows with just a few versions to choose from. I cannot really tell you which is the best for you as we come with different needs and motives, but here is a list of Linux distros that will help you determine what could be the best for you.
+…</summary>
+        </entry>
+</feed>
