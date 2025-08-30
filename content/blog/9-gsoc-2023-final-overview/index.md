@@ -4,7 +4,7 @@ date = 2023-08-28T12:29:00.001+08:00
 updated = 2023-08-28T20:22:00.002+08:00
 
 [taxonomies]
-tags = ["GSoC 2023"]
+tags = ["GSoC 2023", "Internship"]
 
 [extra]
 social_media_card = "card.png"
