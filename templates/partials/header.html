@@ -151,8 +151,12 @@
         <meta name="fediverse:creator" content="@{{ config.extra.fediverse_creator["handle"] }}@{{ config.extra.fediverse_creator["domain"]}}" />
     {%- endif -%}
 
+    <!-- MOD: add adsense meta tag -->
     {# AdSense #}
     <meta name="google-adsense-account" content="ca-pub-1987107241415366">
+    {%- if page.extra.adsense -%}
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1987107241415366" crossorigin="anonymous"></script>
+    {%- endif -%}
 
     {# Search #}
     {%- if config.build_search_index -%}
