@@ -9,6 +9,7 @@
 {% import "macros/target_attribute.html" as macros_target_attribute %}
 {% import "macros/translate.html" as macros_translate %}
 
+<!-- MOD: add global nonce var -->
 {%- set_global nonce =  get_random(start=1000000000000000, end=9999999999999999) -%}
 
 {# Load the internationalisation data for the current language from

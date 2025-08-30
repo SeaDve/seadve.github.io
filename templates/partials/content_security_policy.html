@@ -12,6 +12,7 @@ content="default-src 'self'
     {%- endif -%}
     {%- set serve_local_mermaid = config.extra.serve_local_mermaid | default(value=true) -%}
 
+    {#- MOD: allow script when have nonce -#}
     {#- Initialise a base script-src directive -#}
     {%- set script_src = "script-src 'self' 'nonce-" ~ nonce ~ "' 'unsafe-inline' 'unsafe-eval' https: http:" -%}
 
