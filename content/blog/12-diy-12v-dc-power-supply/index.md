@@ -10,8 +10,8 @@ tags = ["Electronics", "3D Design"]
 social_media_card = "card.jpeg"
 katex = true
 
-adsense = true
 enable_csp = false
+enable_adsense = true
 +++
 
 Let’s talk about our journey of creating something from scratch (almost?) for our **Electronics I** final project. It wasn’t groundbreaking like a full-blown multi-featured DC power supply, but it was a fulfilling learning experience.
