@@ -60,16 +60,6 @@ footer_menu = [
 ]
 copyright = "Copyright © $CURRENT_YEAR Dave Patrick Caberto. All rights reserved."
 
-allowed_domains = [
-    { directive = "font-src", domains = ["'self'", "data:"] },
-    { directive = "img-src", domains = ["'self'", "https://*", "data:"] },
-    { directive = "media-src", domains = ["'self'", "https://cdn.jsdelivr.net/"] },
-    { directive = "script-src", domains = ["'self'"] },
-    { directive = "style-src", domains = ["'self'", "'unsafe-inline'"] },
-    { directive = "frame-src", domains = ["player.vimeo.com", "https://www.youtube-nocookie.com", "https://www.google.com", "googleads.g.doubleclick.net", "tpc.googlesyndication.com", "ep2.adtrafficquality.google"] },
-    { directive = "connect-src", domains = ["'self'", "ep1.adtrafficquality.google", "fundingchoicesmessages.google.com"] },
-]
-
 [extra.analytics]
 service = "goatcounter"
 id = "seadve"
